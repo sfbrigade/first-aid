@@ -41,15 +41,10 @@ disaster = ["tsunami", "earthquake", "hurricane", "tornado", "flood", "drought",
   d.save!
 end
 
-1000.times do
+2000.times do
   Donation.create!(
     user_id: rand(1..1000),
     charity_id: rand(1..100),
+    disaster_id: rand(1..10),
     amount: rand(1..100))
-end
-
-1000.times do
-  CharitiesDisaster.create!(
-    charity_id: rand(1..100),
-    disaster_id: rand(1..10))
 end
