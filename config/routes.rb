@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root 'maps#index'
   resources :maps
+  resources :users
 
 
   resources :disasters, only: [:index, :map, :show] do
