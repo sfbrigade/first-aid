@@ -1,7 +1,5 @@
 %div.container
   %h1
-    n_of_donations = {}
-    donation_total = {}
     = @user.first_name
     = @user.last_name
   %h1 First Aid Donations
@@ -15,22 +13,21 @@
         = charity.title
       - dis_id = charity.donations.find_by(user_id: @user.id).disaster_id
     %p
-      = Disaster.find(dis_id).category.capitalize
+      - category = Disaster.find(dis_id).category.capitalize
+      =category
     %p
       - d_amount = charity.donations.find_by(user_id: @user.id).amount
     %p
       $#{sprintf('%.2f', d_amount)}
+
     - total += d_amount
 
   %br
-
   %h4
     Total Amount: $
     = sprintf('%.2f', total)
 
   %h4
-    Hero:
-
-highest_type = 'hurricane'
-most_money = 56
-
+    - if @hero
+      = @hero
+      Hero
