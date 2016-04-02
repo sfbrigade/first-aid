@@ -1,7 +1,7 @@
 class DisastersController < ApplicationController
 
   def map
-    #first page, narrow feed to map selection
+
   end
 
   def index
