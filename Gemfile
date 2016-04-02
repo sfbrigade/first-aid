@@ -14,7 +14,6 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem "haml-rails"
-
 gem 'faker'
 
 # Use jquery as the JavaScript library
@@ -25,7 +24,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'haml-rails'
 
 gem 'letter_opener'
 gem 'launch'
