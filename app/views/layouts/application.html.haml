@@ -10,6 +10,16 @@
       $(document).on("page:change", getCoordinates)
 
     %script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['PLACE']}"}
+  %nav.navbar.navbar-default.navbar-fixed-top
+    .container-fluid
+      .navbar-header
+        .nav.navbar-nav.navbar-right
+          -# - if session[:user_id]
+          -#   = User.find(session[:user_id]).first_name
+          -# - else
+          -#   = render "users/login"
+          = link_to 'Login', new_user_session_path
+
   %body
     = yield
 

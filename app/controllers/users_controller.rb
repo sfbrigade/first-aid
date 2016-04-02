@@ -1,27 +1,33 @@
 class UsersController < ApplicationController
 
+
+  before_filter :authenticate_user!
   def login
-    @user = User.new
-    #log in form
+    log in form
+    @user = User.find_by_email(params[:email])
+    if @user.password == params[:password]
+      give_token
+    else
+      redirect_to home_url
+    end
   end
 
-  def signup
-    @user = User.new
-    #sign up form
-  end
+  # def signup
+  #   @user = User.new
+  #   #sign up form
+  # end
 
-  def create
-    #new user
-  end
+  # def create
+  #   #new user
+  #   @user = User.new(params[:user])
+  #   @user.password = params[:password]
+  #   @user.save!
+  # end
 
-  def session
-    #after login, create session
-  end
 
   def show
     @user = User.find(params[:id])
     @user_charities = @user.charities
-
 
     @n_of_donations = {}
     @donation_total = {}

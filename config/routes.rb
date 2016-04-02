@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
 
-  root 'maps#index'
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  # devise_scope :user do
+  #   get '/signout', to: 'devise/sessions#destroy', as: :signout
+  # end
 
+  root 'maps#index'
   resources :maps
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-  get 'login', to: 'users#login', as: :login
-  get 'signup', to: 'users#signup', as: :signup
-  post 'session', to: 'users#session', as: :session
-  resources :users, only: [:create, :show]
+
+
   resources :disasters, only: [:index, :map, :show] do
     resources :charities, only: [:show, :index]
   end
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+  # get 'login', to: 'users#login', as: :login
+  # get 'signup', to: 'users#signup', as: :signup
+
 
   # root 'disasters#map'
   # You can have the root of your site routed with "root"
