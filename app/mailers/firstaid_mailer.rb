@@ -1,0 +1,3 @@
+class FirstaidMailer < ApplicationMailer
+  
+end
