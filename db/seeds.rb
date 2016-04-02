@@ -13,10 +13,10 @@
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email(first_name),
     street_address: Faker::Address.street_address,
-    city_state: "#{Faker::Address.city}, #{Faker::Address.state_abbr}",
+    city: Faker::Address.city,
+    state: Faker::Address.state_abbr,
     zip_code: Faker::Address.zip,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude)
+    cell_phone: Faker::PhoneNumber.cell_phone)
 end
 
 100.times do
@@ -25,13 +25,13 @@ end
     description: Faker::Company.catch_phrase,
     url: Faker::Internet.url,
     street_address: Faker::Address.street_address,
-    city_state: "#{Faker::Address.city}, #{Faker::Address.state_abbr}",
+    city: Faker::Address.city,
+    state: Faker::Address.state_abbr,
     zip_code: Faker::Address.zip,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude)
+    phone: Faker::PhoneNumber.phone_number)
 end
 
-disaster = ["tsunami", "earthquake", "hurricane", "tornado", "flood", "drought", "wild fire", "avalanche", "landslide", "disease", "volcano", "blizzard"]
+disaster = ["earthquake", "hurricane", "tornado", "flood", "wild fire"]
 
 10.times do
   d = Disaster.new(

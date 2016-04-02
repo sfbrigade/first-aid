@@ -7,8 +7,8 @@ var getCoordinates = function(){
     dataType: "json"
   })
   .done(function(data){
-    lat = (data.results[0].geometry.viewport.northeast.lat)
-    long = (data.results[0].geometry.viewport.northeast.lng)
+    lat = (data.results[0].geometry.location.lat)
+    long = (data.results[0].geometry.location.lng)
       // var lat = 45
       // var long = -123
     var map = new google.maps.Map(document.getElementById('map'), {
