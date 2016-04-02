@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_many :charities, through: :donations
   has_many :disasters, through: :donations
 
-  before_create :lng_lat
-  after_create :test_email
+  # before_create :lng_lat
+  # after_create :test_email
 
   def full_name
     "#{first_name} #{last_name}"
