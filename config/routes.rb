@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root 'maps#index'
   resources :maps
+  resources :users
 
 
   resources :disasters, only: [:index, :map, :show] do
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
   # get 'signup', to: 'users#signup', as: :signup
 
 
-    root 'disasters#map'
+    # root 'disasters#map'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   # Example of regular route:
