@@ -8,4 +8,36 @@ Brigitte Kozena
 Cody Kendall  
 Jeremy Oltean  
 Matt Harris  
-Todd Seller
+Todd Seller  
+  
+### Wireframes  
+  
+Login  
+![login wireframe](/wireframes/Login.png)  
+  
+Sign Up  
+![sign-up wireframe](/wireframes/Sign up.png)  
+  
+Homepage  
+![homepage wireframe](/wireframes/Homepage.png)  
+  
+Charities  
+![charities wireframe](/wireframes/Charities.png)  
+  
+Donate Now  
+![donate now wireframe](/wireframes/Donate Now.png)  
+  
+Stats  
+![stats wireframe](/wireframes/Stats.png)  
+  
+Mobile News Feed  
+![mobile news feed wireframe](/wireframes/Mobile News Feed.png)  
+  
+Mobile Charities  
+![mobile charities wireframe](/wireframes/Mobile Charities.png)  
+  
+Your Donations Mobile  
+![your donations mobile wireframe](/wireframes/Your Donations Mobile.png)  
+  
+Donate Mobile  
+![donate mobile wireframe](/wireframes/Donate Mobile.png)  
