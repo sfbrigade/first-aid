@@ -7,6 +7,7 @@ class DisastersController < ApplicationController
   def index
     #home page, feed of all disasters in narrowed map scope
     @disasters = Disaster.all
+    p @disasters
   end
 
   def show

@@ -1,1 +1,34 @@
-%h1 Your Data
+%div.container
+  %h1
+    =@user.first_name
+    =@user.last_name
+  %h1 First Aid Donations
+  %br
+  - total = 0
+  %h3 Charities Donated to
+
+  - @user_charities.each do |charity|
+    %p
+      %strong
+        = charity.title
+      - dis_id = charity.donations.find_by(user_id: @user.id).disaster_id
+    %p
+      = Disaster.find(dis_id).category.capitalize
+    %p
+      - d_amount = charity.donations.find_by(user_id: @user.id).amount
+    %p
+      $#{sprintf('%.2f', d_amount)}
+    - total += d_amount
+
+  %br
+
+  %h4
+    Total Amount: $
+    = sprintf('%.2f', total)
+
+  %h4
+    Hero:
+
+highest_type = 'hurricane'
+most_money = 56
+

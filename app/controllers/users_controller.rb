@@ -19,7 +19,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    # Your Donations page, D3 data
+    @user = User.find(params[:id])
+    @user_charities = @user.charities
+    @user_donations = @user.donations
   end
 
 end

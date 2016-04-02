@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get 'login', to: 'users#login', as: :login
   get 'signup', to: 'users#signup', as: :signup
   post 'session', to: 'users#session', as: :session
-  resources :users, only: [:create]
+  resources :users, only: [:create, :show]
   resources :disasters, only: [:index, :map, :show] do
-    resources :charities, only: [:show]
+    resources :charities, only: [:show, :index]
   end
 
   root 'disasters#map'
