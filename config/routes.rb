@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  root 'maps#index'
+
+  resources :maps
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'login', to: 'users#login', as: :login
@@ -9,7 +13,7 @@ Rails.application.routes.draw do
     resources :charities, only: [:show, :index]
   end
 
-  root 'disasters#map'
+  # root 'disasters#map'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   # Example of regular route:

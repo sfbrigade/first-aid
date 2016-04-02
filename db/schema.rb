@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(version: 20160401190512) do
     t.string   "description"
     t.string   "url"
     t.string   "street_address"
-    t.string   "city_state"
+    t.string   "city"
+    t.string   "state"
     t.integer  "zip_code"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "phone"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -51,10 +53,12 @@ ActiveRecord::Schema.define(version: 20160401190512) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "street_address"
-    t.string   "city_state"
+    t.string   "city"
+    t.string   "state"
     t.integer  "zip_code"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "cell_phone"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
