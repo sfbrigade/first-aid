@@ -25,8 +25,6 @@ class User < ActiveRecord::Base
 
   def test_email
     @user = User.last
-    p '*' * 25
-    p @user.id
     MailWorker.perform_in(1.minute, @user.id)
   end
 end
