@@ -25,37 +25,37 @@ class UsersController < ApplicationController
   # # end
 
 
-  # def show
-  #   @user = User.find(params[:id])
-  #   @user_charities = @user.charities
+  def show
+    @user = User.find(params[:id])
+    @user_charities = @user.charities
 
-  #   @n_of_donations = {}
-  #   @donation_total = {}
-  #   @user_charities.each do |charity|
-  #     d_amount = charity.donations.find_by(user_id: @user.id).amount
-  #     dis_id = charity.donations.find_by(user_id: @user.id).disaster_id
-  #     category = Disaster.find(dis_id).category.capitalize
-  #     if @n_of_donations[category]
-  #       @n_of_donations[category] += 1
-  #     else
-  #       @n_of_donations[category] = 1
-  #     end
-  #     if @donation_total[category]
-  #       @donation_total[category] += d_amount
-  #     else
-  #       @donation_total[category] = d_amount
-  #     end
-  #   end
+    @n_of_donations = {}
+    @donation_total = {}
+    @user_charities.each do |charity|
+      d_amount = charity.donations.find_by(user_id: @user.id).amount
+      dis_id = charity.donations.find_by(user_id: @user.id).disaster_id
+      category = Disaster.find(dis_id).category.capitalize
+      if @n_of_donations[category]
+        @n_of_donations[category] += 1
+      else
+        @n_of_donations[category] = 1
+      end
+      if @donation_total[category]
+        @donation_total[category] += d_amount
+      else
+        @donation_total[category] = d_amount
+      end
+    end
 
-  #   @hero = nil
-  #   highest = 0
-  #   @donation_total.each do |key, value|
-  #     if value > highest
-  #       highest = value
-  #       @hero = key
-  #     end
-  #   end
+    @hero = nil
+    highest = 0
+    @donation_total.each do |key, value|
+      if value > highest
+        highest = value
+        @hero = key
+      end
+    end
 
-  # end
+  end
 
 end
