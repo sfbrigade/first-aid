@@ -28,11 +28,11 @@ $(document).ready(function(){
       })
   }
 
-// var getLongLat = function(index, earthquake){
-//   var lat = []
-//   var long = []
-//       // console.log(earthquake.geometry.coordinates[0])
-//   lat.push(earthquake.geometry.coordinates[1])
-//  // var long.push(earthquake.geometry.coordinates[0])
-//  console.log(lat)
-// }
+var getLongLat = function(index, earthquake){
+  var lat = []
+  var long = []
+      // console.log(earthquake.geometry.coordinates[0])
+  lat.push(earthquake.geometry.coordinates[1])
+ // var long.push(earthquake.geometry.coordinates[0])
+ console.log(lat)
+}
