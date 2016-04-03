@@ -9,7 +9,7 @@
     :javascript
       $(document).on("page:change", getCoordinates)
 
-    %script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['PLACE']}"}
+    %script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['PLACE']}&libraries=places"}
   %nav.navbar.navbar-default.navbar-fixed-top
     .container-fluid
       .navbar-header
