@@ -1,19 +1,16 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  resources :users
+  resources :maps
+  resources :disasters, only: [:index, :map, :show] do
+    resources :charities, only: [:show, :index]
+  end
   # devise_scope :user do
   #   get '/signout', to: 'devise/sessions#destroy', as: :signout
   # end
 
-
   root 'maps#index'
-  resources :maps
-  resources :users
-
-
-  resources :disasters, only: [:index, :map, :show] do
-    resources :charities, only: [:show, :index]
-  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # get 'login', to: 'users#login', as: :login
