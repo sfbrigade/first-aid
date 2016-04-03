@@ -10,3 +10,80 @@ body {
   width: 140px;
   height: auto;
 }
+
+.sign-in {
+  padding: 0 30px 30px;
+  border: 1px solid #e4e4e4;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+#sign-in-button {
+  margin: 15px 0;
+}
+
+.sign-in-image {
+  width: 50%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.btn-success, .btn-success-2 {
+  background-color: #009245;
+  border-color: #007233;
+}
+
+.btn-success:hover,
+.btn-success:active:hover,
+.btn-success.active:hover,
+.btn-success.btn-lg:hover,
+.btn-success.btn-lg:active:hover,
+.btn-success.btn-lg.active:hover,
+.btn-success-2:hover,
+.btn-success-2:active:hover,
+.btn-success-2.active:hover {
+  color: #ffffff;
+  background-color: #007233;
+  border-color: #009245;
+}
+
+.btn-success:active,
+.btn-success.active {
+  color: #ffffff;
+  background-color: #007233;
+  border-color: #009245;
+}
+.btn-success:focus,
+.btn-success.focus {
+  color: #ffffff;
+  background-color: #007233;
+  border-color: #009245;
+}
+
+.btn-success:active:focus,
+.btn-success.active:focus {
+  color: #ffffff;
+  background-color: #007233;
+  border-color: #009245;
+}
+
+.form-control:focus {
+  border-color: #009245;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 146, 69, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 146, 69, 0.6);
+}
+
+.btn-one {
+  margin-right: 45px;
+}
+
+.btn-two {
+  margin-right: 15px;
+}
+
+.logout {
+  margin-left: 45px;
+}
