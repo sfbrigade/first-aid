@@ -5,3 +5,30 @@
 %h4
   = @charity.description
 
+// checkout form
+%form{:action => "/disasters/#{params[:disaster_id]}/charities/#{@charity.id}/stripe_charge", :method => "POST"}
+  %script.stripe-button{"data-amount" => "2000", "data-description" => "Help The Cause!($20.00)", "data-image" => "brand-logo.svg", "data-key" => "pk_test_LK6MXgLNu6grGnpLVDbXSgcu", "data-locale" => "auto", "data-name" => "Donate to #{@charity.title}", :src => "https://checkout.stripe.com/checkout.js"}
+
+%h3
+  - if flash[:notice]
+    = flash[:notice]
+  - if flash[:danger]
+    = flash[:danger]
+// form if using stripe.js
+-# %form#payment-form{:action => "/disasters/#{params[:disaster_id]}/charities/#{@charity.id}/stripe_charge", :method => "POST"}
+-#   %span.payment-errors
+-#   .form-row
+-#     %label
+-#       %span Card Number
+-#       %input{"data-stripe" => "number", :size => "20", :type => "text"}/
+-#   .form-row
+-#     %label
+-#       %span CVC
+-#       %input{"data-stripe" => "cvc", :size => "4", :type => "text"}/
+-#   .form-row
+-#     %label
+-#       %span Expiration (MM/YYYY)
+-#       %input{"data-stripe" => "exp-month", :size => "2", :type => "text"}/
+-#     %span /
+-#     %input{"data-stripe" => "exp-year", :size => "4", :type => "text"}/
+-#   %button{:type => "submit"} Submit Payment

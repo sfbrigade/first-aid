@@ -10,6 +10,12 @@
       $(document).on("page:change", getCoordinates)
 
     %script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['PLACE']}"}
+
+    // use stripe.js if wanting customizable form
+    -# %script{:src => "https://js.stripe.com/v2/", :type => "text/javascript"}
+    // set stripe test publishable key for Firs+Aid => pk_test_LK6MXgLNu6grGnpLVDbXSgcu
+    -# %script{ type:"text/javascript"}
+    -#   Stripe.setPublishableKey('pk_test_LK6MXgLNu6grGnpLVDbXSgcu')
   %nav.navbar.navbar-default.navbar-fixed-top
     .container-fluid
       .navbar-header
