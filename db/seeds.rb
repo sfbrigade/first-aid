@@ -274,8 +274,8 @@ end
 
 30.times do
   Donation.create!(
-    user_id: rand(1..1000),
-    charity_id: rand(1..100),
+    user_id: rand(1..10),
+    charity_id: rand(1..13),
     disaster_id: rand(1..10),
     amount: rand(1..100))
 end
