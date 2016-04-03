@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :donations
   has_many :charities, through: :donations
   has_many :disasters, through: :donations
 
-  before_create :lng_lat
-  after_create :test_email
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   def full_name
     "#{first_name} #{last_name}"

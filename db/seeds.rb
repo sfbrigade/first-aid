@@ -16,7 +16,9 @@
     city: Faker::Address.city,
     state: Faker::Address.state_abbr,
     zip_code: Faker::Address.zip,
-    cell_phone: Faker::PhoneNumber.cell_phone)
+    cell_phone: Faker::PhoneNumber.cell_phone,
+    password: 'password',
+    password_confirmation: 'password')
 end
 
 100.times do

@@ -1,6 +1,9 @@
 %h1 Disaster Feed
 
 - @disasters.each do |disaster|
-  = disaster.type
+  %a{href: "/disasters/#{disaster.id}/charities"}
+    = disaster.category
 
-= link_to "A Charity", disaster_path
+  %hr
+
+
