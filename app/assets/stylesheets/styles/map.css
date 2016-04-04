@@ -23,6 +23,10 @@
     pointer-events: none;
   }
 
+  #map {
+    height: 100%;
+  }
+
   .d3-tip {
   line-height: 1;
   font-weight: bold;

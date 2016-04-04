@@ -1,3 +1,5 @@
+
+
 var dMap = function(){
   var width = 960,
       height = 500,
@@ -70,7 +72,7 @@ var dMap = function(){
   // the cordinates csv is here
     $.ajax({
       type: "GET",
-      url: "/disasters",
+      url: "/disasters/",
       dataType: "json"
     })
     .done(function(response) {
@@ -78,15 +80,13 @@ var dMap = function(){
            .data(response)
            .enter()
            .append("a")
-                      .attr("xlink:href", function(d) {
-                    
-                          return "https://www.google.com/search?q="+d.disaster_id;}
-
-
-                      )
+           .attr("class", "disaster_link")
+            .attr("xlink:href", function(d) {
+                return "/disasters/" + d.disasters_id;}
+            )
            .append("circle")
            .attr("cx", function(d) {
-               
+
                    return projection([d.lon, d.lat])[0];
            })
            .attr("cy", function(d) {
@@ -97,7 +97,7 @@ var dMap = function(){
 
           var today = new Date();
           var todays_date = today.toLocaleDateString()
-      
+
           var oneWeekAgo = new Date();
           oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
           var last_weeks_date = oneWeekAgo.toLocaleDateString();
@@ -108,7 +108,7 @@ var dMap = function(){
 
           if(disaster_date === todays_date){
             return "red"
-          }else if (disaster_date < todays_date && disaster_date > date_one_week_ago){
+          }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
             return "orange"
           }else{
             return "yellow"
@@ -116,7 +116,7 @@ var dMap = function(){
         }).style("position", "relative").style("z-index", "100")
            .on('mouseover', tip.show)
            .on('mouseout', tip.hide)
-          
+
       });
   }
 
@@ -132,5 +132,49 @@ var dMap = function(){
 
 
   svg.call(tip);
-
 }
+
+var getCoordinates = function(data){
+      var lat = data.latitude
+      var long = data.longitude
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: lat, lng: long},
+        scrollwheel: false,
+        zoom: 14
+       });
+
+      infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+      service.nearbySearch({
+        location: map.center,
+        radius: 32000,
+        type: ['food']
+      }, callback);
+
+        var marker = new google.maps.Marker({
+        position: {lat: lat, lng: long},
+        map: map
+      })
+
+      function callback(results, status) {
+        console.log(results)
+      }
+      // function createMarker(place) {
+      //   var placeLoc = place.geometry.location;
+      //   var marker = new google.maps.Marker({
+      //     map: map,
+      //     position:placeLoc
+      //   });
+
+      //   google.maps.event.addListener(marker, 'click', function() {
+      //     infowindow.setContent(place.name);
+      //     infowindow.open(map, this);
+      //   });
+       // }
+
+      // .fail(function(data){
+      //   console.log(data)
+      // })
+  }
+
