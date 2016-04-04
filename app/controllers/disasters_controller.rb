@@ -10,7 +10,7 @@ class DisastersController < ApplicationController
     response = []
     if request.xhr?
       @disasters.each do |disaster|
-        response << {lon: disaster.longitude, lat: disaster.latitude, disasters_id: disaster.id, category: disaster.category}
+        response << {lon: disaster.longitude, lat: disaster.latitude, disasters_id: disaster.id, category: disaster.category, date: disaster.created_at}
         end
         respond_to do |format|
           format.json{

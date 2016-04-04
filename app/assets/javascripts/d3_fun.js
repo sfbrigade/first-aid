@@ -79,7 +79,8 @@ var dMap = function(){
            .enter()
            .append("a")
                       .attr("xlink:href", function(d) {
-                          return "https://www.google.com/search?q="+d.city;}
+                        console.log(d)
+                          return "https://www.google.com/search?q="+d.id;}
                       )
            .append("circle")
            .attr("cx", function(d) {
