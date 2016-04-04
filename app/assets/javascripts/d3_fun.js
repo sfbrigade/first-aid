@@ -79,7 +79,6 @@ var dMap = function(){
            .enter()
            .append("a")
                       .attr("xlink:href", function(d) {
-                        console.log(d)
                           return "https://www.google.com/search?q="+d.id;}
                       )
            .append("circle")
