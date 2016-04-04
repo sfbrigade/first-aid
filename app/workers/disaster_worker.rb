@@ -2,7 +2,6 @@ class DisasterWorker
   include Sidekiq::Worker
 
   def perform
-
     lat = []
     long = []
     uri = URI("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_hour.geojson")
@@ -17,7 +16,7 @@ class DisasterWorker
         disaster.save
         @user = User.last
         MailWorker.perform_async(@user.id)
-      end        
+      end
     end
   end
 end
