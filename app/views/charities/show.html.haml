@@ -6,14 +6,14 @@
   = @charity.description
 
 // checkout form
-%form{:action => "/disasters/#{params[:disaster_id]}/charities/#{@charity.id}/stripe_charge", :method => "POST"}
-  %script.stripe-button{"data-amount" => "2000", "data-description" => "Help The Cause!($20.00)", "data-image" => "brand-logo.svg", "data-key" => "pk_test_LK6MXgLNu6grGnpLVDbXSgcu", "data-locale" => "auto", "data-name" => "Donate to #{@charity.title}", :src => "https://checkout.stripe.com/checkout.js"}
+- if user_signed_in?
+  = render "stripe_form"
 
 %h3
-  - if flash[:notice]
-    = flash[:notice]
-  - if flash[:danger]
-    = flash[:danger]
+  - if flash[:good]
+    = flash[:good]
+  - if flash[:problem]
+    = flash[:problem]
 // form if using stripe.js
 -# %form#payment-form{:action => "/disasters/#{params[:disaster_id]}/charities/#{@charity.id}/stripe_charge", :method => "POST"}
 -#   %span.payment-errors

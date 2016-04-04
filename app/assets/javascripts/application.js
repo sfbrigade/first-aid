@@ -15,3 +15,4 @@
 //= require bootstrap
 //= require turbolinks
 //= require map
+//= require stripe
