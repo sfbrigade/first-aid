@@ -48,6 +48,8 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (8.2.2)
+    chronic (0.10.2)
+    cli (1.3.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -166,6 +168,9 @@ GEM
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
+    sidekiq-client-cli (0.1.7)
+      cli
+      sidekiq (>= 2.15)
     spring (1.6.4)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -190,6 +195,8 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -211,10 +218,12 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sidekiq
+  sidekiq-client-cli
   spring
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  whenever
 
 BUNDLED WITH
    1.11.2
