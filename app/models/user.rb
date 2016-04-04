@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  before_create :lng_lat
+  # before_create :lng_lat
 
   def full_name
     if name
