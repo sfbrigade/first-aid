@@ -79,19 +79,58 @@ var dMap = function(){
            .enter()
            .append("a")
                       .attr("xlink:href", function(d) {
-                          return "https://www.google.com/search?q="+d.id;}
+                    
+                          return "https://www.google.com/search?q="+d.disaster_id;}
+
+
                       )
            .append("circle")
            .attr("cx", function(d) {
+               
                    return projection([d.lon, d.lat])[0];
            })
            .attr("cy", function(d) {
                    return projection([d.lon, d.lat])[1];
            })
            .attr("r", 5)
-           .style("fill", "red").style("position", "relative").style("z-index", "100");
+           .style("fill", function(d){
+
+          var today = new Date();
+          var todays_date = today.toLocaleDateString()
+      
+          var oneWeekAgo = new Date();
+          oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+          var last_weeks_date = oneWeekAgo.toLocaleDateString();
+
+          var dateOfDisaster = new Date(d.date);
+          var disaster_date = dateOfDisaster.toLocaleDateString();
+
+
+          if(disaster_date === todays_date){
+            return "red"
+          }else if (disaster_date < todays_date && disaster_date > date_one_week_ago){
+            return "orange"
+          }else{
+            return "yellow"
+          }
+        }).style("position", "relative").style("z-index", "100")
+           .on('mouseover', tip.show)
+           .on('mouseout', tip.hide)
+          
       });
   }
 
   setTimeout(cities, 1000);
+
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+
+      return "<strong>Category:</strong> <span style='color:red'>" + d.category + "</span>";
+    })
+
+
+  svg.call(tip);
+
 }
