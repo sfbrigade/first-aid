@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160404000650) do
     t.integer  "user_id"
     t.integer  "charity_id"
     t.integer  "disaster_id"
-    t.float    "amount"
+    t.integer  "amount"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
