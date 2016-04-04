@@ -5,3 +5,12 @@
 %h4
   = @charity.description
 
+// checkout form
+- if user_signed_in?
+  = render "stripe_form"
+
+%h3
+  - if flash[:good]
+    = flash[:good]
+  - if flash[:problem]
+    = flash[:problem]
