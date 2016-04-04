@@ -5,9 +5,6 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     %meta{:charset => "utf-8"}
-      %script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['PLACE']}&libraries=places"}
-      :javascript
-        $(document).on("page:change", dMap)
       %nav.navbar.navbar-default.navbar-fixed-top
         .container-fluid
           .navbar-header
@@ -25,6 +22,7 @@
               - else
                 = "Signed in as #{current_user.full_name}"
                 = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-success navbar-btn btn-one logout'
+      %script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['PLACE']}"}
       %script{:src => "//d3js.org/d3.v3.min.js"}
       %script{:src => "//d3js.org/topojson.v1.min.js"}
       %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"}

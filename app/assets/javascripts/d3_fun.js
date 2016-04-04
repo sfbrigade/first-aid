@@ -78,9 +78,9 @@ var dMap = function(){
            .data(response)
            .enter()
            .append("a")
-                      .attr("xlink:href", function(d) {
-                          return "https://www.google.com/search?q="+d.id;}
-                      )
+            .attr("xlink:href", function(d) {
+                return "https://www.google.com/search?q="+d.id;}
+            )
            .append("circle")
            .attr("cx", function(d) {
                    return projection([d.lon, d.lat])[0];
@@ -94,4 +94,62 @@ var dMap = function(){
   }
 
   setTimeout(cities, 1000);
+  getCoordinates();
 }
+
+var getCoordinates = function(){
+    $.ajax({
+      type: "GET",
+      url: '/',
+      dataType: "json"
+    })
+    .done(function(data){
+      lat = (data.results[0].geometry.location.lat)
+      long = (data.results[0].geometry.location.lng)
+        // var lat = 45
+        // var long = -123
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: lat, lng: long},
+        scrollwheel: false,
+        zoom: 14
+       });
+
+      // infowindow = new google.maps.InfoWindow();
+      // var service = new google.maps.places.PlacesService(map);
+      // service.nearbySearch({
+      //   location: map.center,
+      //   radius: 32000,
+      //   type: ['food']
+      // }, callback);
+
+        var marker = new google.maps.Marker({
+        position: {lat: lat, lng: long},
+        map: map
+      })
+
+      // function callback(results, status) {
+      //   console.log(results)
+      //   if (status === google.maps.places.PlacesServiceStatus.OK) {
+      //     for (var i = 0; i < results.length; i++) {
+      //       createMarker(results[i]);
+      //     }
+      //   }
+      // }
+      // function createMarker(place) {
+      //   var placeLoc = place.geometry.location;
+      //   var marker = new google.maps.Marker({
+      //     map: map,
+      //     position:placeLoc
+      //   });
+
+      //   google.maps.event.addListener(marker, 'click', function() {
+      //     infowindow.setContent(place.name);
+      //     infowindow.open(map, this);
+      //   });
+      //  }
+    })
+      .fail(function(data){
+        console.log(data)
+      })
+  }
+

@@ -22,3 +22,7 @@
     stroke-linecap: round;
     pointer-events: none;
   }
+
+  #map {
+    height: 100%;
+  }
