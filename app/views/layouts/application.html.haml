@@ -5,28 +5,31 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
+    %meta{:charset => "utf-8"}
+      %nav.navbar.navbar-default.navbar-fixed-top
+        .container-fluid
+          .navbar-header
+            %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#main-nav", "data-toggle" => "collapse", type: "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            = link_to image_tag('brand-logo.svg'), root_path, class: 'navbar-brand'
+          .collapse.navbar-collapse#main-nav
+            %ul.nav.navbar-nav.navbar-right
+              - if !user_signed_in?
+                = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: 'btn btn-success navbar-btn btn-two'
+                = link_to 'Login', new_user_session_path, class: 'btn btn-success navbar-btn btn-two'
+                = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-default navbar-btn btn-one'
+              - else
+                = "Signed in as #{current_user.full_name}"
+                = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-success navbar-btn btn-one logout'
 
-    :javascript
-      $(document).on("page:change", getCoordinates)
+      %script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['PLACE']}&libraries=places"}
+      %script{:src => "//d3js.org/d3.v3.min.js"}
+      %script{:src => "//d3js.org/topojson.v1.min.js"}
+      %script{:src => "http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"}
+      %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"}
+    %body
+      = yield
 
-    %script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['PLACE']}"}
-  %nav.navbar.navbar-default.navbar-fixed-top
-    .container-fluid
-      .navbar-header
-        %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#main-nav", "data-toggle" => "collapse", type: "button"}
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        = link_to image_tag('brand-logo.svg'), root_path, class: 'navbar-brand'
-      .collapse.navbar-collapse#main-nav
-        %ul.nav.navbar-nav.navbar-right
-          - if !user_signed_in?
-            = link_to 'Login', new_user_session_path, class: 'btn btn-success navbar-btn btn-two'
-            = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-default navbar-btn btn-one'
-          - else
-            = "Signed in as #{current_user.full_name}"
-            = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-success navbar-btn btn-one logout'
-
-  %body
-    = yield

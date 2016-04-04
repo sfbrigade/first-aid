@@ -5,17 +5,20 @@ class Disaster < ActiveRecord::Base
 
   # before_create :new_disaster
 
-  def new_disaster
-    lat = []
-    long = []
-    uri = URI("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_hour.geojson")
-    @location = Net::HTTP.get_response(uri).body
+  # private
 
-    json = JSON.parse(@location)
-    json['features'].each do |locations|
-       self.longitude = locations['geometry']['coordinates'][0]
-       self.latitude = locations['geometry']['coordinates'][1]
-    end
+  #   def new_disaster
+  #     lat = []
+  #     long = []
+  #     uri = URI("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_hour.geojson")
+  #     @location = Net::HTTP.get_response(uri).body
 
-  end
+  #     json = JSON.parse(@location)
+  #     json['features'].each do |locations|
+  #        self.longitude = locations['geometry']['coordinates'][0]
+  #        self.latitude = locations['geometry']['coordinates'][1]
+  #     end
+
+  #   end
+
 end

@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
   resources :maps
   resources :disasters, only: [:index, :map, :show] do
     resources :charities, only: [:show, :index]
+    # POST route from stripe form to stripe_charge in charities_controller
+    post 'charities/:id/stripe_charge', to: 'charities#stripe_charge', as: :stripe_charge
   end
-  # devise_scope :user do
-  #   get '/signout', to: 'devise/sessions#destroy', as: :signout
-  # end
+
+  devise_scope :user do
+    get '/signout', to: 'devise/sessions#destroy', as: :signout
+  end
 
   root 'maps#index'
   # The priority is based upon order of creation: first created -> highest priority.

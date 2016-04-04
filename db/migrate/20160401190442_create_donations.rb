@@ -4,7 +4,7 @@ class CreateDonations < ActiveRecord::Migration
       t.integer :user_id
       t.integer :charity_id
       t.integer :disaster_id
-      t.float :amount
+      t.integer :amount
 
       t.timestamps null: false
     end
