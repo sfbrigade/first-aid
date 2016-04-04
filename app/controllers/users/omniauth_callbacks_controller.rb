@@ -2,16 +2,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
+    p '$' * 100
+    # if User.find_by_email(request.env["omniauth.auth"])
+    p request.env["omniauth.auth"]
+    p '$' * 100
     @user = User.from_omniauth(request.env["omniauth.auth"])
     
     # p request.env["omniauth.auth"]
     
     @user.save
     if @user.persisted?
-      p '$' * 100
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
-      p '$' * 100
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
