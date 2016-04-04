@@ -68,12 +68,13 @@ Rails.application.configure do
   # Configure smtp email
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
+    address:              'just90.justhost.com',
+    port:                 465,
+    domain:               'first-aid.online',
     user_name:            ENV['EMAIL_ADDRESS'],
     password:             ENV['EMAIL_SECRET'],
-    authentication:       'plain',
-    enable_starttls_auto: true
+    authentication:       :login,
+    tls:                  true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
