@@ -7,7 +7,7 @@
   = charity.description
   %br
   %form{:action => "/disasters/#{params[:disaster_id]}/charities/#{charity.id}/stripe_charge", :method => "POST"}
-    %input#custom-donation{:min => "1.00", :placeholder => "10.00", :step => "10.00 ", :type => "number"}/
+    %input#custom-donation{:min => "1.00", :placeholder => "10.00", :step => "10.00 ", :type => "number", name: 'donation_amount'}/
   %script.stripe-button{"data-amount" => "", "data-description" => "Help The Cause!", "data-label" => "Donate Now", "data-key" => "pk_test_LK6MXgLNu6grGnpLVDbXSgcu", "data-locale" => "auto", "data-panel-label" => "Donate", "data-name" => "Donate to #{charity.title}", :src => "https://checkout.stripe.com/checkout.js"}
   %hr
 

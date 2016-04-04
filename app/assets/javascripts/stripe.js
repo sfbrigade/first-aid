@@ -29,18 +29,19 @@
 //     $form.get(0).submit();
 //   }
 // };
-$(document).ready(function(){
-  $('.stripe-button-el').on("click", function(){
-        // Stripe accepts payment amounts in cents so we have to convert dollars to cents by multiplying by 100
-       var amount = parseInt( $('#custom-donation').val()*100);
-       var route = $('form').attr('action')
-       var input = $('form').serialize()
-       console.log(input)
-       $(".stripe-button").attr( "data-amount", amount );
-       $.ajax({
-          url: route,
-          method: "POST",
-          data: input
-       })
-  })
-})
+// $(document).ready(function(){
+//   $('.stripe-button-el').on("click", function(e){
+//     event.preventDefault()
+//         // Stripe accepts payment amounts in cents so we have to convert dollars to cents by multiplying by 100
+//        var amount = parseInt( $('#custom-donation').val()*100);
+//        var route = $('form').attr('action')
+//        var input = $('form').serialize()
+//        console.log(input)
+//        $(".stripe-button").attr( "data-amount", amount );
+//        $.ajax({
+//           url: route,
+//           method: "POST",
+//           data: input
+//        })
+//   })
+// })
