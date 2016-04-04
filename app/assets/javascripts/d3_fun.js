@@ -80,8 +80,9 @@ var dMap = function(){
            .append("a")
                       .attr("xlink:href", function(d) {
                         console.log(d)
-                       
                           return "https://www.google.com/search?q="+d.disaster_id;}
+
+
                       )
            .append("circle")
            .attr("cx", function(d) {
@@ -94,9 +95,25 @@ var dMap = function(){
            })
            .attr("r", 5)
            .style("fill", "red").style("position", "relative").style("z-index", "100")
+           .on('mouseover', tip.show)
+           .on('mouseout', tip.hide)
           
       });
   }
 
   setTimeout(cities, 1000);
+
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+      console.log("hey")
+      console.log(d.category)
+      console.log(d)
+      return "<strong>Category:</strong> <span style='color:red'>" + d.category + "</span>";
+    })
+
+
+  svg.call(tip);
+
 }
