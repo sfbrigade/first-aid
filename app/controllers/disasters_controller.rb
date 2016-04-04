@@ -22,9 +22,18 @@ class DisastersController < ApplicationController
 
   def show
     #a specific disaster with associated charities
+
     @disaster = Disaster.find(params[:id])
+    if request.xhr?
     #list nearby charities
     # @charities = Charities.find_by()
+    respond_to do |format|
+          format.json{
+            render json: @disaster
+          }
+      end
+
+    end
   end
 
 

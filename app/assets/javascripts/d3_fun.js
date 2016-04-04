@@ -1,3 +1,5 @@
+
+
 var dMap = function(){
   var width = 960,
       height = 500,
@@ -70,7 +72,7 @@ var dMap = function(){
   // the cordinates csv is here
     $.ajax({
       type: "GET",
-      url: "/disasters",
+      url: "/disasters/",
       dataType: "json"
     })
     .done(function(response) {
@@ -78,63 +80,86 @@ var dMap = function(){
            .data(response)
            .enter()
            .append("a")
+           .attr("class", "disaster_link")
             .attr("xlink:href", function(d) {
-                return "https://www.google.com/search?q="+d.id;}
+                return "/disasters/" + d.disasters_id;}
             )
            .append("circle")
            .attr("cx", function(d) {
+
                    return projection([d.lon, d.lat])[0];
            })
            .attr("cy", function(d) {
                    return projection([d.lon, d.lat])[1];
            })
            .attr("r", 5)
-           .style("fill", "red").style("position", "relative").style("z-index", "100");
+           .style("fill", function(d){
+
+          var today = new Date();
+          var todays_date = today.toLocaleDateString()
+
+          var oneWeekAgo = new Date();
+          oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+          var last_weeks_date = oneWeekAgo.toLocaleDateString();
+
+          var dateOfDisaster = new Date(d.date);
+          var disaster_date = dateOfDisaster.toLocaleDateString();
+
+
+          if(disaster_date === todays_date){
+            return "red"
+          }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
+            return "orange"
+          }else{
+            return "yellow"
+          }
+        }).style("position", "relative").style("z-index", "100")
+           .on('mouseover', tip.show)
+           .on('mouseout', tip.hide)
+
       });
   }
 
   setTimeout(cities, 1000);
-  getCoordinates();
+
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+
+      return "<strong>Category:</strong> <span style='color:red'>" + d.category + "</span>";
+    })
+
+
+  svg.call(tip);
 }
 
-var getCoordinates = function(){
-    $.ajax({
-      type: "GET",
-      url: '/',
-      dataType: "json"
-    })
-    .done(function(data){
-      lat = (data.results[0].geometry.location.lat)
-      long = (data.results[0].geometry.location.lng)
-        // var lat = 45
-        // var long = -123
+var getCoordinates = function(data){
+      var lat = data.latitude
+      var long = data.longitude
+
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: lat, lng: long},
         scrollwheel: false,
         zoom: 14
        });
 
-      // infowindow = new google.maps.InfoWindow();
-      // var service = new google.maps.places.PlacesService(map);
-      // service.nearbySearch({
-      //   location: map.center,
-      //   radius: 32000,
-      //   type: ['food']
-      // }, callback);
+      infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+      service.nearbySearch({
+        location: map.center,
+        radius: 32000,
+        type: ['food']
+      }, callback);
 
         var marker = new google.maps.Marker({
         position: {lat: lat, lng: long},
         map: map
       })
 
-      // function callback(results, status) {
-      //   console.log(results)
-      //   if (status === google.maps.places.PlacesServiceStatus.OK) {
-      //     for (var i = 0; i < results.length; i++) {
-      //       createMarker(results[i]);
-      //     }
-      //   }
-      // }
+      function callback(results, status) {
+        console.log(results)
+      }
       // function createMarker(place) {
       //   var placeLoc = place.geometry.location;
       //   var marker = new google.maps.Marker({
@@ -146,10 +171,10 @@ var getCoordinates = function(){
       //     infowindow.setContent(place.name);
       //     infowindow.open(map, this);
       //   });
-      //  }
-    })
-      .fail(function(data){
-        console.log(data)
-      })
+       // }
+
+      // .fail(function(data){
+      //   console.log(data)
+      // })
   }
 

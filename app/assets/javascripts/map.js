@@ -7,9 +7,23 @@ $(document).ready(function(){
     event.preventDefault();
     window.location.replace('/users/sign_up');
   });
+
+ disasterArea();
 })
 
-
+var disasterArea = function(){
+ $("body").on("click", ".disaster_link", function(){
+    event.preventDefault();
+    var url = $(this).attr('href')
+    $.ajax({
+       url: url,
+       type: "GET"
+    })
+    .done(function(data){
+      getCoordinates(data)
+    })
+  })
+}
 
   // var getCoordinates = function(){
 
