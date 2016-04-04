@@ -45,7 +45,7 @@
     User.create!(
     first_name: "Jeremy",
     last_name: "Oltean",
-    email: "jeremyoltean1@gmail.com",
+    email: "jeremyoltean@gmail.com",
     street_address: "45500 Fremont Blvd",
     city: "Fremont",
     state: "CA",
