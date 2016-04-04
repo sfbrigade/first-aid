@@ -80,17 +80,21 @@ var dMap = function(){
            .append("a")
                       .attr("xlink:href", function(d) {
                         console.log(d)
-                          return "https://www.google.com/search?q="+d.id;}
+                       
+                          return "https://www.google.com/search?q="+d.disaster_id;}
                       )
            .append("circle")
            .attr("cx", function(d) {
+                    console.log(d.lat)
+                    console.log(d.lon)
                    return projection([d.lon, d.lat])[0];
            })
            .attr("cy", function(d) {
                    return projection([d.lon, d.lat])[1];
            })
            .attr("r", 5)
-           .style("fill", "red").style("position", "relative").style("z-index", "100");
+           .style("fill", "red").style("position", "relative").style("z-index", "100")
+          
       });
   }
 
