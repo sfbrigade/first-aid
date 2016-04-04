@@ -30,12 +30,15 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+# Whenever provides a clear syntax for writing and deploying cron jobs
+gem 'whenever', :require => false
 
 gem 'd3-rails'
 
 gem 'letter_opener'
 gem 'launch'
 gem 'sidekiq'
+gem 'sidekiq-client-cli'
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -5,7 +5,6 @@ class Disaster < ActiveRecord::Base
 
   # before_create :new_disaster
 
-
   # private
 
   #   def new_disaster
@@ -21,4 +20,5 @@ class Disaster < ActiveRecord::Base
   #     end
 
   #   end
+
 end
