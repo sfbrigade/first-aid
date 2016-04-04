@@ -1,8 +1,9 @@
 ActionMailer::Base.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
+    address:              'just90.justhost.com',
+    port:                 465,
+    domain:               'first-aid.online',
     user_name:            ENV['EMAIL_ADDRESS'],
     password:             ENV['EMAIL_SECRET'],
-    authentication:       'plain',
-    enable_starttls_auto: true
+    authentication:       :login,
+    tls:                  true
   }
