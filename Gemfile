@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem "haml-rails"
 gem 'faker'
 gem 'devise'
+gem 'omniauth-facebook'
 
 
 # add stripe gem
