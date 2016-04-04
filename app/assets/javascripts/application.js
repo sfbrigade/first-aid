@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require d3
+//= require d3_fun
 //= require map
 //= require stripe

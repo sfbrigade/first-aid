@@ -12,18 +12,18 @@ class UsersController < ApplicationController
   #   end
   # end
 
-  # def signup
-  #   @user = User.new
-  #   #sign up form
-  # end
 
-  # def create
-  #   #new user
-  #   @user = User.new(params[:user])
-  #   @user.password = params[:password]
-  #   @user.save!
-  # end
+  # # def signup
+  # #   @user = User.new
+  # #   #sign up form
+  # # end
 
+  # # def create
+  # #   #new user
+  # #   @user = User.new(params[:user])
+  # #   @user.password = params[:password]
+  # #   @user.save!
+  # # end
 
   def show
 

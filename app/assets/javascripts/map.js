@@ -1,5 +1,7 @@
 $(document).ready(function(){
 })
+
+
   var getCoordinates = function(){
 
     $.ajax({
@@ -15,18 +17,63 @@ $(document).ready(function(){
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: lat, lng: long},
         scrollwheel: false,
-        zoom: 4
+        zoom: 14
        });
 
+      infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+      service.nearbySearch({
+        location: map.center,
+        radius: 32000,
+        type: ['food']
+      }, callback);
+
+      //   var marker = new google.maps.Marker({
+      //   position: {lat: lat, lng: long},
+      //   map: map
+      // })
+
+      function callback(results, status) {
+        console.log(results)
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
         var marker = new google.maps.Marker({
-        position: {lat: lat, lng: long},
-        map: map
-      })
+          map: map,
+          position:placeLoc
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+       }
     })
       .fail(function(data){
         console.log(data)
       })
   }
+
+
+//   var map;
+// var infowindow;
+
+// function initMap() {
+  // var pyrmont = {lat: -33.867, lng: 151.195};
+
+  // map = new google.maps.Map(document.getElementById('map'), {
+  //   center: pyrmont,
+  //   zoom: 15
+  // });
+
+// }
+
+
 
 // var getLongLat = function(index, earthquake){
 //   var lat = []

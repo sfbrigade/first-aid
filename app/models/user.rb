@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_create :lng_lat
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -23,5 +25,10 @@ class User < ActiveRecord::Base
     @json = JSON.parse(@location.body)
     self.latitude = @json['results'][0]['geometry']['location']['lat']
     self.longitude = @json['results'][0]['geometry']['location']['lng']
+  end
+
+  def test_email
+    @user = User.last
+    MailWorker.perform_in(1.minute, @user.id)
   end
 end
