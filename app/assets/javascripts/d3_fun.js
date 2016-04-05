@@ -2,7 +2,7 @@ var dMap = function(){
 
   var width = 1170,
       height = 725,
-
+ 
       centered;
 
   var projection = d3.geo.albersUsa()
@@ -96,15 +96,6 @@ var dMap = function(){
             )
            .append("circle")
            .attr("cx", function(d) {
-<<<<<<< HEAD
-                  
-
-                   return projection([d.lon, d.lat])[0];
-           })
-           .attr("cy", function(d) {
-            console.log(d.lat)
-                   return projection([d.lon, d.lat])[1];
-=======
               var coords = projection([d.lon, d.lat]);
               if (coords) {
                    return coords[0];
@@ -115,7 +106,6 @@ var dMap = function(){
               if (coords) {
                    return coords[1];
               }
->>>>>>> master
            })
            .attr("r", 5)
            .style("fill", function(d){
