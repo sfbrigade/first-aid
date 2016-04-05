@@ -31,13 +31,13 @@ class User < ActiveRecord::Base
 
   before_create :lng_lat
 
-  # def full_name
-  #   if name
-  #     "#{name}"
-  #   else
-  #     "#{first_name} #{last_name}"
-  #   end
-  # end
+  def full_name
+    if name
+      "#{name}"
+    else
+      "#{first_name} #{last_name}"
+    end
+  end
 
   private
 

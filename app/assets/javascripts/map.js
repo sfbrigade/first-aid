@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
  hideMapOnSignIn();
  hideMapOnSignUp();
  disasterArea();
@@ -19,12 +18,6 @@ var hideMapOnSignUp = function(){
     window.location.replace('/users/sign_up');
   });
 }
-
-
- $(document).on("page:change", dMap)
- disasterArea();
-})
-
 
 var disasterArea = function(){
  $("body").on("click", ".disaster_link", function(){

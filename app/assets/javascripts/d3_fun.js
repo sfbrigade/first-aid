@@ -75,57 +75,63 @@ var dMap = function(){
     })
     .done(function(response) {
       // for(i = 0; i < response.length; i++){
-      //   console.log(response[i].lat)
-      //   console.log(response[i].lon)
+      //   if(response[i].lat >= 25 && response[i].lon <= -65 && response[i].lat <= 50 && response[i].lon >= -125 || response[i].lon <= -140 && response[i].lon >= -166 && response[i].lat >= 56 && response[i].lat <= 72 || response[i].lon <= -154 && response[i].lon >= -161 && response[i].lat >= 18.8 && response[i].lat <= 22.5 ){
 
-      // }
-        g.selectAll("circle")
-           .data(response)
-           .enter()
-           .append("a")
-           .attr("class", "disaster_link")
-            .attr("xlink:href", function(d) {
-                return "/disasters/" + d.disasters_id;}
-            )
-           .append("circle")
-           .attr("cx", function(d) {
+        // console.log(response)
+            g.selectAll("circle")
+               .data(response)
+               .enter()
+               .append("a")
+               .attr("class", "disaster_link")
+               .attr("xlink:href", function(d) {
+                  // console.log(d)
+                    return "/disasters/" + d.disasters_id;}
+                )
+               .append("circle")
+               .attr("cx", function(d) {
+                  var coords = projection([d.lon, d.lat]);
+                  if(coords){
+                  console.log(coords[0])
+                    console.log("coord[0]:")
+                    if(coords[0] > 235 && coords[0] < 951 && (coords[1] > 164) && (coords[1] < 555)){
+                      return coords[0];
+                    }
+                  }
+               })
+               .attr("cy", function(d) {
+                  var coords = projection([d.lon, d.lat]);
+                    if(coords){
+                  console.log(coords[1])
+                    console.log("coord[1]:")
+                      if(coords[0] > 235 && coords[0] < 951 && (coords[1] > 164) && (coords[1] < 555)){
+                        return coords[1];
+                      }
+                    }
+                })
+               .attr("r", 5)
+               .style("fill", function(d){
+                // console.log(d)
+              var today = new Date();
+              var todays_date = today.toLocaleDateString()
 
-              var coords = projection([d.lon, d.lat]);
-              if(coords){
-                return coords[0];
+              var oneWeekAgo = new Date();
+              oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+              var last_weeks_date = oneWeekAgo.toLocaleDateString();
+
+              var dateOfDisaster = new Date(d.date);
+              var disaster_date = dateOfDisaster.toLocaleDateString();
+
+
+              if(disaster_date === todays_date){
+                return "red"
+              }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
+                return "orange"
+              }else{
+                return "yellow"
               }
-           })
-           .attr("cy", function(d) {
-              var coords = projection([d.lon, d.lat]);
-                if(coords){
-                  return coords[1];
-                }
-            })
-           .attr("r", 5)
-           .style("fill", function(d){
-
-          var today = new Date();
-          var todays_date = today.toLocaleDateString()
-
-          var oneWeekAgo = new Date();
-          oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-          var last_weeks_date = oneWeekAgo.toLocaleDateString();
-
-          var dateOfDisaster = new Date(d.date);
-          var disaster_date = dateOfDisaster.toLocaleDateString();
-
-
-          if(disaster_date === todays_date){
-            return "red"
-          }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
-            return "orange"
-          }else{
-            return "yellow"
-          }
-        }).style("position", "relative").style("z-index", "100")
-           .on('mouseover', tip.show)
-           .on('mouseout', tip.hide)
-
+            }).style("position", "relative").style("z-index", "100")
+               .on('mouseover', tip.show)
+               .on('mouseout', tip.hide)
       });
   }
 
@@ -138,53 +144,29 @@ var dMap = function(){
 
       return "<strong>Category:</strong> <span style='color:red'>" + d.category + "</span>";
     })
-
-
   svg.call(tip);
 }
 
 var getCoordinates = function(data){
-      var lat = data.latitude
-      var long = data.longitude
+  var lat = data.latitude
+  var long = data.longitude
 
-      // var map = new google.maps.Map(document.getElementById('map'), {
-      //   center: {lat: lat, lng: long},
-      //   scrollwheel: false,
-      //   zoom: 14
-      //  });
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: lat, lng: long},
+    scrollwheel: false,
+    zoom: 14
+   });
 
-      infowindow = new google.maps.InfoWindow();
-      var service = new google.maps.places.PlacesService();
-      service.nearbySearch({
-        location: {lat: lat, lng: long},
-        radius: 32000,
-        type: ['food']
-      }, callback);
+  infowindow = new google.maps.InfoWindow();
+  var service = new google.maps.places.PlacesService(map);
+  service.nearbySearch({
+    location: {lat: lat, lng: long},
+    radius: 32000,
+    type: ['food']
+  }, callback);
 
-        // var marker = new google.maps.Marker({
-        // position: {lat: lat, lng: long},
-        // map: map
-      // })
-
-      function callback(results, status) {
-        console.log(results)
-      }
-      // function createMarker(place) {
-      //   var placeLoc = place.geometry.location;
-      //   var marker = new google.maps.Marker({
-      //     map: map,
-      //     position:placeLoc
-      //   });
-
-      //   google.maps.event.addListener(marker, 'click', function() {
-      //     infowindow.setContent(place.name);
-      //     infowindow.open(map, this);
-      //   });
-       // }
-
-      // .fail(function(data){
-      //   console.log(data)
-      // })
+  function callback(results, status) {
+    console.log(results)
   }
 }
 
