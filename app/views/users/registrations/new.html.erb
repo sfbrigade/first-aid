@@ -2,8 +2,13 @@
   <div class="row">
     <div class="col-lg-offset-3 col-lg-6 sign-in">
       <img src="/assets/logo-tagline-712029fa759a9065f629c28253e5552ce5d184e157d96ba0efe3191d3449c447.svg" class="sign-in-image center-block" alt="Crabazon Logo"/>
-      <h2 class="text-center">Sign Up</h2>
-
+      <div class="facebook-sign-up">
+        <%= link_to(image_tag('/assets/sign-up-facebook-fdf8eb89a92bd3635d299baa288a2b3043d3ec2dedae00b767f1367d10454679.svg', alt: 'Login with Facebook'), omniauth_authorize_path(resource_name, :facebook)) %>
+      </div>
+      <div class="sign-up-separator text-center">
+        <h1>or</h1>
+      </div>
+      
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form') do |f| %>
         <%= devise_error_messages! %>
         

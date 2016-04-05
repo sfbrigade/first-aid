@@ -18,6 +18,7 @@ gem "haml-rails"
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'twilio-ruby'
+gem 'sinatra', :require => nil
 
 # add stripe gem
 gem "stripe"
