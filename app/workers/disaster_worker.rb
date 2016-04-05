@@ -15,9 +15,10 @@ class DisasterWorker
       p disaster
       if disaster.id == nil
         disaster.save
-        @user = User.last
+        @user = User.find(3)
         MailWorker.perform_async(@user.id)
-      end        
+        TwilioWorker.perform_async(@user.id, disaster.id)
+      end
     end
   end
 end
