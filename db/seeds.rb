@@ -6,66 +6,66 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-    User.create!(
-    first_name: "Todd",
-    last_name: "Seller",
-    email: "me@toddseller.com",
-    street_address: "1600 Pennsylvania Ave NW",
-    city: "Washington",
-    state: "DC",
-    zip_code: 20500,
-    # cell_phone: Faker::PhoneNumber.cell_phone,
-    password: 'password',
-    password_confirmation: 'password')
+    # User.create!(
+    # first_name: "Todd",
+    # last_name: "Seller",
+    # email: "me@toddseller.com",
+    # street_address: "1600 Pennsylvania Ave NW",
+    # city: "Washington",
+    # state: "DC",
+    # zip_code: 20500,
+    # # cell_phone: Faker::PhoneNumber.cell_phone,
+    # password: 'password',
+    # password_confirmation: 'password')
 
-    User.create!(
-    first_name: "Brigitte",
-    last_name: "Kozena",
-    email: "brigittekozena@gmail.com",
-    street_address: "750 Hearst Castle Rd",
-    city: "San Simeon",
-    state: "CA",
-    zip_code: 93452,
-    # cell_phone: Faker::PhoneNumber.cell_phone,
-    password: 'password',
-    password_confirmation: 'password')
+    # User.create!(
+    # first_name: "Brigitte",
+    # last_name: "Kozena",
+    # email: "brigittekozena@gmail.com",
+    # street_address: "750 Hearst Castle Rd",
+    # city: "San Simeon",
+    # state: "CA",
+    # zip_code: 93452,
+    # # cell_phone: Faker::PhoneNumber.cell_phone,
+    # password: 'password',
+    # password_confirmation: 'password')
 
-    User.create!(
-    first_name: "Matt",
-    last_name: "Harris",
-    email: "matrharr@gmail.com",
-    street_address: "Flushing Meadow - Corona Park",
-    city: "Flushing",
-    state: "NY",
-    zip_code: 11368,
-    cell_phone: 16154064891,
-    password: 'password',
-    password_confirmation: 'password')
+    # User.create!(
+    # first_name: "Matt",
+    # last_name: "Harris",
+    # email: "matrharr@gmail.com",
+    # street_address: "Flushing Meadow - Corona Park",
+    # city: "Flushing",
+    # state: "NY",
+    # zip_code: 11368,
+    # cell_phone: 16154064891,
+    # password: 'password',
+    # password_confirmation: 'password')
 
-    User.create!(
-    first_name: "Jeremy",
-    last_name: "Oltean",
-    email: "jeremyoltean@gmail.com",
-    street_address: "45500 Fremont Blvd",
-    city: "Fremont",
-    state: "CA",
-    zip_code: 94538,
-    # cell_phone: Faker::PhoneNumber.cell_phone,
-    password: 'password',
-    password_confirmation: 'password')
+    # User.create!(
+    # first_name: "Jeremy",
+    # last_name: "Oltean",
+    # email: "jeremyoltean@gmail.com",
+    # street_address: "45500 Fremont Blvd",
+    # city: "Fremont",
+    # state: "CA",
+    # zip_code: 94538,
+    # # cell_phone: Faker::PhoneNumber.cell_phone,
+    # password: 'password',
+    # password_confirmation: 'password')
 
 
-    User.create!(
-    first_name: "Cody",
-    last_name: "Kendall",
-    email: "cody.kendall21@gmail.com",
-    street_address: "1900 Fall River Rd",
-    city: "Estes Park",
-    state: "CO",
-    zip_code: 80517,
-    # cell_phone: Faker::PhoneNumber.cell_phone,
-    password: 'password',
-    password_confirmation: 'password')
+    # User.create!(
+    # first_name: "Cody",
+    # last_name: "Kendall",
+    # email: "cody.kendall21@gmail.com",
+    # street_address: "1900 Fall River Rd",
+    # city: "Estes Park",
+    # state: "CO",
+    # zip_code: 80517,
+    # # cell_phone: Faker::PhoneNumber.cell_phone,
+    # password: 'password',
+    # password_confirmation: 'password')
 
 #     first_name = Faker::Name.first_name
 #     User.create!(
@@ -272,10 +272,10 @@
 #   d.save!
 # end
 
-# 30.times do
-#   Donation.create!(
-#     user_id: rand(1..10),
-#     charity_id: rand(1..13),
-#     disaster_id: rand(1..10),
-#     amount: rand(1..100))
-# end
+30.times do
+  Donation.create!(
+    user_id: rand(1..10),
+    charity_id: rand(1..13),
+    disaster_id: rand(1..10),
+    amount: rand(1..100))
+end

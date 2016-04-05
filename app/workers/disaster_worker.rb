@@ -19,7 +19,7 @@ class DisasterWorker
         disaster.save
         @users = User.all
         @users.each do |user|
-          AlertWorker.perform_async(user.id, disaster.id)
+          # AlertWorker.perform_async(user.id, disaster.id)
           # TwilioWorker.perform_async(user.id, disaster.id)
         end
       end        
