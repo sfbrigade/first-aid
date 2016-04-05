@@ -1,6 +1,8 @@
 var dMap = function(){
+
   var width = 1170,
       height = 725,
+ 
       centered;
 
   var projection = d3.geo.albersUsa()
@@ -22,6 +24,8 @@ var dMap = function(){
 
   var g = svg.append("g");
 
+
+
   // This is the map
   d3.json("/assets/us.json", function(error, us) {
     if (error) throw error;
@@ -31,14 +35,21 @@ var dMap = function(){
         .style('position', 'relative', 'z-index', '0')
       .selectAll("path")
         .data(topojson.feature(us, us.objects.states).features)
+
       .enter().append("path")
         .attr("d", path)
-        .on("click", clicked);
+        .on("click", clicked)
+          .on("mouseover", function(){
+          d3.select(this).style("fill", "orange")})
+        .on("mouseout", function(){
+          d3.select(this).style("fill", "#aaa")})
+        
 
     g.append("path")
         .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
         .attr("id", "state-borders")
-        .attr("d", path);
+        .attr("d", path)
+
   });
 
   function clicked(d) {
@@ -58,7 +69,8 @@ var dMap = function(){
     }
 
     g.selectAll("path")
-        .classed("active", centered && function(d) { return d === centered; });
+        .classed("active", centered && function(d) { return d === centered; })
+
 
     g.transition()
         .duration(750)
@@ -180,4 +192,229 @@ var getCoordinates = function(data){
       //   console.log(data)
       // })
   }
+
+  var dPieChart = function(){
+  
+  var canvas = d3.select('#wrapper')
+              .append('svg')
+              .attr({'width':650,'height':500});
+         $.ajax({type: "GET",
+              url: "/users/currentsession",
+              dataType: "json"}).done(function(response){
+         $.ajax({
+                type: "GET",
+                url: "/users/" + response,
+                dataType: "json"
+              }).done(function(response) {
+                var data = response[0].amount
+                var total_amount = response[0].total_amount
+        // console.log(data)
+           
+
+      // var amount = [{"category":"Flood", "value":40}, 
+      //         {"label":"Hurricane", "value":30}, 
+      //         {"label":"Earthquake", "value":20},
+      //         {"label":"Fire", "value":15},
+      //         {"label":"Disease", "value":10}];
+
+              var colors = ['#c8e5e8','#282efa', '#505cf6', '#a0b7ed', '#7889f1'];
+
+              var colorscale = d3.scale.linear().domain([0,data.length]).range(colors);
+
+        pi = 3.141592653589793238462643383279502884197169;
+
+      var width = 700,
+        height = 500,
+        radius = Math.min(width, height) / 2;
+
+      var pie = d3.layout.pie()
+        .value(function(d) {
+          return d.value;
+        })
+        .startAngle(-180 * (pi / 180))
+        .endAngle(180 * (pi / 180));
+
+          var arc = d3.svg.arc()
+        .innerRadius(radius - 150)
+        .outerRadius(radius - 20);
+
+      var arcOver = d3.svg.arc()
+        .innerRadius((radius - 150) + 10)
+        .outerRadius((radius - 20) + 10);
+
+
+      var renderarcs = canvas.append('g')
+              .attr('transform','translate(300,250)')
+              .selectAll('.arc')
+              .data(pie(data))
+              .enter().append("g")
+              .attr('class',"arc");
+
+               
+      renderarcs.append("text")
+                  .attr("dy", ".05em")
+                  .attr("text-anchor", "middle")
+                  .text( "")
+                  .attr("id", "value")
+                  .attr("class", "text-tooltip")        
+                      .style("text-anchor", "middle")
+                      .style("font-family", "Arial" )
+                      .attr("font-weight", "bold")
+                      .style("font-size", radius/6 +"px");
+
+      renderarcs.append("text")
+                  .attr("dy", "1.00em")
+                  .attr("text-anchor", "middle")
+                  .text( "")
+                  .attr("id", "category")
+                  .attr("class", "text-tooltip")        
+                      .style("text-anchor", "middle" )
+                      .style("font-family", "Arial" )
+                      .attr("font-weight", "bold")
+                      .style("font-size", radius/8 +"px");
+      
+      
+
+      d3.select("#category").text("Total").style('fill', 'orange')
+
+
+      function changeValue(i){
+        if (i < total_amount +1){
+        d3.select("#value").text("$" + i).style('fill', 'orange')
+        setTimeout(function(){
+            changeValue(i += parseInt(total_amount/100) ) //total_amount/100
+        }, 0.5);}
+      }
+
+      changeValue(0);
+      d3.select("#value").text("$" + total_amount).style('fill', 'orange')
+
+
+      renderarcs.append('path')
+          .attr('fill',function(d,i){ return colorscale(i); })
+
+          .on("mouseover", function(d) {
+                    d3.select(this).transition()
+                       .duration(200)
+                       .attr("d", arcOver);
+
+                    d3.select("#value").text('$' + d.value).style('fill', $(this).attr('fill'))
+                    console.log(d.data)
+                    d3.select("#category").text(d.data.category).style('fill', $(this).attr('fill'))
+                   })
+
+
+          .on("mouseout", function(d) {
+                    d3.select(this).transition()
+                       .duration(200)
+                       .attr("d", arc);
+                    d3.select("#value").text('$' + total_amount).style('fill', 'orange')
+                    d3.select("#category").text("Total").style('fill', 'orange')
+
+                   })
+          .transition().delay(function(d, i) { return i * 200; }).duration(200)
+            .attrTween('d', function(d) {
+                 var i = d3.interpolate(d.startAngle+0.1, d.endAngle);
+                 return function(t) {
+                     d.endAngle = i(t);
+                   return arc(d);
+                   
+                 }
+             })
+            })
+  })
+}
+
+var dBarChart = function(){
+  var margin = {top: 40, right: 20, bottom: 30, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+  var formatPercent = d3.format(".0%");
+
+  var x = d3.scale.ordinal()
+      .rangeRoundBands([0, width], .1);
+
+  var y = d3.scale.linear()
+      .range([height, 0]);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+      return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+    })
+
+  var svg = d3.select("#wrapper2").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.call(tip);
+      $.ajax({type: "GET",
+              url: "/users/currentsession",
+              dataType: "json"}).done(function(response){
+        $.ajax({
+                type: "GET",
+                url: "/users/" + response,
+                dataType: "json"
+              }).done(function(response) {
+                var data = response[0].frequency
+            
+
+  data.forEach(function(d) {
+    x.domain(data.map(function(d) { return d.category; }));
+    y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Frequency");
+
+  svg.selectAll(".bar")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
+      .attr("fill", "orange")
+      .attr("y", 430)
+      .attr("height", 0)
+      .transition().duration(750).ease("quad")
+      .attr("x", function(d) { return x(d.category); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("height", function(d) { return height - y(d.frequency)})
+
+  });
+
+
+  function type(d) {
+    d.frequency = +d.frequency;
+    return d;
+  }
+  })//close ajax
+})//close outer ajax
+}
+      
 
