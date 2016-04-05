@@ -32,9 +32,21 @@ class DisastersController < ApplicationController
             render json: @disaster
           }
       end
-
     end
   end
+
+  #twilio test routes
+  # def send_disaster_notification
+  #   message = "A disaster has occurred."
+  #   notify(message)
+  #   redirect_to root_path
+  # end
+
+  # def notify(message)
+  #   phone = current_user.cell_phone
+  #   MessageSender.send_message(
+  #     request.host, phone, message)
+  # end
 
 
 end
