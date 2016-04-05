@@ -6,4 +6,6 @@ ActionMailer::Base.smtp_settings = {
     password:             ENV['EMAIL_SECRET'],
     authentication:       :login,
     tls:                  true
+
   }
+
