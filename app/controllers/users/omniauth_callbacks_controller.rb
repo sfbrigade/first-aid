@@ -9,6 +9,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     
     @user.save
     if @user.persisted?
+      if @user.sign_in_count < 1
+        MailWorker.perform_async(@user.id)
+      end
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
     else
