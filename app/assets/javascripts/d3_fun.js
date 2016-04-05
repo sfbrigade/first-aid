@@ -20,7 +20,9 @@ var dMap = function(){
       .attr("class", "background")
       .attr("width", width)
       .attr("height", height)
-      .on("click", clicked);
+      .on("click", clicked)
+
+
 
   var g = svg.append("g");
 
@@ -36,6 +38,8 @@ var dMap = function(){
       .selectAll("path")
         .data(topojson.feature(us, us.objects.states).features)
 
+
+
       .enter().append("path")
         .attr("d", path)
         .on("click", clicked)
@@ -49,6 +53,7 @@ var dMap = function(){
         .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
         .attr("id", "state-borders")
         .attr("d", path)
+        .style("opacity",0).transition().duration(5000).style("opacity", 100)
 
   });
 
@@ -106,9 +111,7 @@ var dMap = function(){
               if (coords) {
                    return coords[1];
               }
-           })
-           .attr("r", 5)
-           .style("fill", function(d){
+           }).style("fill", function(d){
 
           var today = new Date();
           var todays_date = today.toLocaleDateString()
@@ -120,7 +123,6 @@ var dMap = function(){
           var dateOfDisaster = new Date(d.date);
           var disaster_date = dateOfDisaster.toLocaleDateString();
 
-
           if(disaster_date === todays_date){
             return "red"
           }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
@@ -129,13 +131,23 @@ var dMap = function(){
             return "yellow"
           }
         }).style("position", "relative").style("z-index", "100")
+           .attr("r", 0)
+           .transition()
+           .duration(250)
+           .attr("r", 7)
+           .transition()
+           .duration(250)
+           .attr("r", 2)
+           .transition()
+           .duration(250)
+           .attr("r", 5)
            .on('mouseover', tip.show)
            .on('mouseout', tip.hide)
 
       });
   }
 
-  setTimeout(cities, 1000);
+  setTimeout(cities, 1500);
 
   var tip = d3.tip()
     .attr('class', 'd3-tip')
