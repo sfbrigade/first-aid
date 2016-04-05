@@ -91,10 +91,6 @@ var dMap = function(){
       dataType: "json"
     })
     .done(function(response) {
-      // for(i = 0; i < response.length; i++){
-      //   if(response[i].lat >= 25 && response[i].lon <= -65 && response[i].lat <= 50 && response[i].lon >= -125 || response[i].lon <= -140 && response[i].lon >= -166 && response[i].lat >= 56 && response[i].lat <= 72 || response[i].lon <= -154 && response[i].lon >= -161 && response[i].lat >= 18.8 && response[i].lat <= 22.5 ){
-
-        // console.log(response)
             g.selectAll("circle")
                .data(response)
                .enter()
@@ -108,22 +104,14 @@ var dMap = function(){
                .attr("cx", function(d) {
                   var coords = projection([d.lon, d.lat]);
                   if(coords){
-                  console.log(coords[0])
-                    console.log("coord[0]:")
-                    if(coords[0] > 235 && coords[0] < 951 && (coords[1] > 164) && (coords[1] < 555)){
                       return coords[0];
                     }
-                  }
                })
                .attr("cy", function(d) {
                   var coords = projection([d.lon, d.lat]);
                     if(coords){
-                  console.log(coords[1])
-                    console.log("coord[1]:")
-                      if(coords[0] > 235 && coords[0] < 951 && (coords[1] > 164) && (coords[1] < 555)){
                         return coords[1];
                       }
-                    }
                 })
                .attr("r", 5)
                .style("fill", function(d){
@@ -146,47 +134,51 @@ var dMap = function(){
               }else{
                 return "yellow"
               }
+// <<<<<<< HEAD
             }).style("position", "relative").style("z-index", "100")
                .on('mouseover', tip.show)
                .on('mouseout', tip.hide)
-           })
-           .attr("cy", function(d) {
-                   var coords = projection([d.lon, d.lat]);
-              if (coords) {
-                   return coords[1];
-              }
-           }).style("fill", function(d){
+// =======
+//            })
+//            .attr("cy", function(d) {
+//                    var coords = projection([d.lon, d.lat]);
+//               if (coords) {
+//                    return coords[1];
+//               }
+//            }).style("fill", function(d){
 
-          var today = new Date();
-          var todays_date = today.toLocaleDateString()
+//           var today = new Date();
+//           var todays_date = today.toLocaleDateString()
 
-          var oneWeekAgo = new Date();
-          oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-          var last_weeks_date = oneWeekAgo.toLocaleDateString();
+//           var oneWeekAgo = new Date();
+//           oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+//           var last_weeks_date = oneWeekAgo.toLocaleDateString();
 
-          var dateOfDisaster = new Date(d.date);
-          var disaster_date = dateOfDisaster.toLocaleDateString();
+//           var dateOfDisaster = new Date(d.date);
+//           var disaster_date = dateOfDisaster.toLocaleDateString();
 
-          if(disaster_date === todays_date){
-            return "red"
-          }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
-            return "orange"
-          }else{
-            return "yellow"
-          }
-        }).style("position", "relative").style("z-index", "100")
-           .attr("r", 0)
-           .transition()
-           .duration(250)
-           .attr("r", 7)
-           .transition()
-           .duration(250)
-           .attr("r", 2)
-           .transition()
-           .duration(250)
-           .attr("r", 5)
-           .on('mouseover', tip.show)
-           .on('mouseout', tip.hide)
+//           if(disaster_date === todays_date){
+//             return "red"
+//           }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
+//             return "orange"
+//           }else{
+//             return "yellow"
+//           }
+//         }).style("position", "relative").style("z-index", "100")
+//            .attr("r", 0)
+//            .transition()
+//            .duration(250)
+//            .attr("r", 7)
+//            .transition()
+//            .duration(250)
+//            .attr("r", 2)
+//            .transition()
+//            .duration(250)
+//            .attr("r", 5)
+//            .on('mouseover', tip.show)
+//            .on('mouseout', tip.hide)
+
+// >>>>>>> master
       });
   }
 
