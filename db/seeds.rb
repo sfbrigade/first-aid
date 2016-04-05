@@ -38,14 +38,14 @@
     city: "Flushing",
     state: "NY",
     zip_code: 11368,
-    cell_phone: Faker::PhoneNumber.cell_phone,
+    cell_phone: 16154064891,
     password: 'password',
     password_confirmation: 'password')
 
     User.create!(
     first_name: "Jeremy",
     last_name: "Oltean",
-    email: "jeremyoltean1@gmail.com",
+    email: "jeremyoltean@gmail.com",
     street_address: "45500 Fremont Blvd",
     city: "Fremont",
     state: "CA",
@@ -118,7 +118,7 @@
     cell_phone: Faker::PhoneNumber.cell_phone,
     password: 'password',
     password_confirmation: 'password')
-  
+
     first_name = Faker::Name.first_name
     User.create!(
     first_name: first_name,
@@ -221,7 +221,7 @@
     state: "AR",
     zip_code: 72201,
     phone: Faker::PhoneNumber.phone_number)
-    
+
     Charity.create!(
     title: Faker::Company.name,
     description: Faker::Company.catch_phrase,
@@ -231,7 +231,7 @@
     state: "HI",
     zip_code: 96816,
     phone: Faker::PhoneNumber.phone_number)
-    
+
     Charity.create!(
     title: Faker::Company.name,
     description: Faker::Company.catch_phrase,

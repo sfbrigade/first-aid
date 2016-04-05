@@ -1,19 +1,18 @@
-
-
 var dMap = function(){
- 
-  var width = 960,
-      height = 500,
+
+  var width = 1170,
+      height = 725,
+
       centered;
 
   var projection = d3.geo.albersUsa()
-      .scale(1070)
+      .scale(1000)
       .translate([width / 2, height / 2]);
 
   var path = d3.geo.path()
       .projection(projection);
 
-  var svg = d3.select("body").append("svg")
+  var svg = d3.select(".map-body").append("svg")
       .attr("width", width)
       .attr("height", height);
 
@@ -97,6 +96,7 @@ var dMap = function(){
             )
            .append("circle")
            .attr("cx", function(d) {
+<<<<<<< HEAD
                   
 
                    return projection([d.lon, d.lat])[0];
@@ -104,6 +104,18 @@ var dMap = function(){
            .attr("cy", function(d) {
             console.log(d.lat)
                    return projection([d.lon, d.lat])[1];
+=======
+              var coords = projection([d.lon, d.lat]);
+              if (coords) {
+                   return coords[0];
+              }
+           })
+           .attr("cy", function(d) {
+                   var coords = projection([d.lon, d.lat]);
+              if (coords) {
+                   return coords[1];
+              }
+>>>>>>> master
            })
            .attr("r", 5)
            .style("fill", function(d){
@@ -151,24 +163,24 @@ var getCoordinates = function(data){
       var lat = data.latitude
       var long = data.longitude
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: lat, lng: long},
-        scrollwheel: false,
-        zoom: 14
-       });
+      // var map = new google.maps.Map(document.getElementById('map'), {
+      //   center: {lat: lat, lng: long},
+      //   scrollwheel: false,
+      //   zoom: 14
+      //  });
 
       infowindow = new google.maps.InfoWindow();
-      var service = new google.maps.places.PlacesService(map);
+      var service = new google.maps.places.PlacesService();
       service.nearbySearch({
-        location: map.center,
+        location: {lat: lat, lng: long},
         radius: 32000,
         type: ['food']
       }, callback);
 
-        var marker = new google.maps.Marker({
-        position: {lat: lat, lng: long},
-        map: map
-      })
+        // var marker = new google.maps.Marker({
+        // position: {lat: lat, lng: long},
+        // map: map
+      // })
 
       function callback(results, status) {
         console.log(results)

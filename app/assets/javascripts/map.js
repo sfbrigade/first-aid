@@ -7,7 +7,7 @@ $(document).ready(function(){
     event.preventDefault();
     window.location.replace('/users/sign_up');
   });
-
+ $(document).on("page:change", dMap)
  disasterArea();
 })
 
