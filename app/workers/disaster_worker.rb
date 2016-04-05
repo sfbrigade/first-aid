@@ -15,8 +15,10 @@ class DisasterWorker
       p disaster
       if disaster.id == nil
         disaster.save
-        @user = User.last
-        MailWorker.perform_async(@user.id)
+        @users = User.all
+        @users.each do |user|
+          AlertWorker.perform_async(user.id, disaster.id)
+        end
       end        
     end
   end
