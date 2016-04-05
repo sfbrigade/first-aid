@@ -6,7 +6,7 @@
   #states {
     fill: #aaa;
   }
-  path:hover {
+  statepath:hover {
     fill: orange;
   }
 
@@ -16,7 +16,7 @@
 
   #state-borders {
     fill: none;
-    stroke: #fff;
+    stroke: #e4e4e4;
     stroke-width: 1.5px;
     stroke-linejoin: round;
     stroke-linecap: round;
@@ -50,4 +50,20 @@
   margin: -1px 0 0 0;
   top: 100%;
   left: 0;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
 }
