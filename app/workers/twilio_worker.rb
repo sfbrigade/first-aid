@@ -8,4 +8,10 @@ class TwilioWorker
     message = "#{@user.first_name}, A #{@disaster.category} has occurred! Please visit www.first-aid.online to donate!"
     MessageSender.send_message(@user.cell_phone, message)
   end
+  queue = Sidekiq::Queue.new('twilio')
+  queue.each do |job|
+    job.klass
+    job.args
+    job.delete if job.jib == 'f08ab070fd219ad127a2e8dd'
+  end
 end

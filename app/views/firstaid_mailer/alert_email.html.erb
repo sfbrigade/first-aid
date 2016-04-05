@@ -143,7 +143,7 @@
                                           <span style="font-family: 'Roboto', Helvetica, Arial, sans-serif !important;"></span>
                                         </p>
                                         <p style="mso-table-lspace:0;mso-table-rspace:0; margin:0; padding:0 1px">
-                                          <span style="font-family: 'Roboto', Helvetica, Arial, sans-serif !important;">If you have just signed up because of a natural disaster, please donate to a local charity in the area of the disaster. If you have just signed up to be ready, please consider donating to a local charity in your area.</span>
+                                          <span style="font-family: 'Roboto', Helvetica, Arial, sans-serif !important;">Please consider donating to a local charity today!</span>
                                         </p>
                                         <table align="center">
                                           <tr>
@@ -151,7 +151,7 @@
                                               <table width="175" align="left"  bgcolor="#009245" style="border-top-left-radius:4px; border-bottom-left-radius:4px;border-top-right-radius:4px; border-bottom-right-radius:4px;">
                                                 <tr>
                                                   <td style="padding:6px;" align="center">
-                                                    <a href="https://crabazon.herokuapp.com/users/sign_in" target="_blank" style="color:#ffffff;font-size:18px;font-weight:400;text-align:center;text-decoration:none;font-family: Helvetica, Arial, sans-serif;-webkit-text-size-adjust:none;">
+                                                    <a href=<%= "http://localhost:3000/disasters/#{@disaster.id}/charities" %> target="_blank" style="color:#ffffff;font-size:18px;font-weight:400;text-align:center;text-decoration:none;font-family: Helvetica, Arial, sans-serif;-webkit-text-size-adjust:none;">
                                                       <span style="font-family: 'Roboto', Helvetica, Arial, sans-serif !important;">Donate Today!</span>
                                                     </a>
                                                   </td>
