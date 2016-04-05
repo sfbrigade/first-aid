@@ -2,7 +2,7 @@ var dMap = function(){
 
   var width = 1170,
       height = 725,
- 
+
       centered;
 
   var projection = d3.geo.albersUsa()
@@ -47,7 +47,7 @@ var dMap = function(){
           d3.select(this).style("fill", "orange")})
         .on("mouseout", function(){
           d3.select(this).style("fill", "#aaa")})
-        
+
 
     g.append("path")
         .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
@@ -165,11 +165,11 @@ var getCoordinates = function(data){
       var lat = data.latitude
       var long = data.longitude
 
-      // var map = new google.maps.Map(document.getElementById('map'), {
-      //   center: {lat: lat, lng: long},
-      //   scrollwheel: false,
-      //   zoom: 14
-      //  });
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: lat, lng: long},
+        scrollwheel: false,
+        zoom: 14
+       });
 
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService();
@@ -206,7 +206,7 @@ var getCoordinates = function(data){
   }
 
   var dPieChart = function(){
-  
+
   var canvas = d3.select('#wrapper')
               .append('svg')
               .attr({'width':650,'height':500});
@@ -221,10 +221,10 @@ var getCoordinates = function(data){
                 var data = response[0].amount
                 var total_amount = response[0].total_amount
         // console.log(data)
-           
 
-      // var amount = [{"category":"Flood", "value":40}, 
-      //         {"label":"Hurricane", "value":30}, 
+
+      // var amount = [{"category":"Flood", "value":40},
+      //         {"label":"Hurricane", "value":30},
       //         {"label":"Earthquake", "value":20},
       //         {"label":"Fire", "value":15},
       //         {"label":"Disease", "value":10}];
@@ -262,13 +262,13 @@ var getCoordinates = function(data){
               .enter().append("g")
               .attr('class',"arc");
 
-               
+
       renderarcs.append("text")
                   .attr("dy", ".05em")
                   .attr("text-anchor", "middle")
                   .text( "")
                   .attr("id", "value")
-                  .attr("class", "text-tooltip")        
+                  .attr("class", "text-tooltip")
                       .style("text-anchor", "middle")
                       .style("font-family", "Arial" )
                       .attr("font-weight", "bold")
@@ -279,13 +279,13 @@ var getCoordinates = function(data){
                   .attr("text-anchor", "middle")
                   .text( "")
                   .attr("id", "category")
-                  .attr("class", "text-tooltip")        
+                  .attr("class", "text-tooltip")
                       .style("text-anchor", "middle" )
                       .style("font-family", "Arial" )
                       .attr("font-weight", "bold")
                       .style("font-size", radius/8 +"px");
-      
-      
+
+
 
       d3.select("#category").text("Total").style('fill', 'orange')
 
@@ -330,7 +330,7 @@ var getCoordinates = function(data){
                  return function(t) {
                      d.endAngle = i(t);
                    return arc(d);
-                   
+
                  }
              })
             })
@@ -381,7 +381,7 @@ var dBarChart = function(){
                 dataType: "json"
               }).done(function(response) {
                 var data = response[0].frequency
-            
+
 
   data.forEach(function(d) {
     x.domain(data.map(function(d) { return d.category; }));
@@ -428,5 +428,5 @@ var dBarChart = function(){
   })//close ajax
 })//close outer ajax
 }
-      
+
 
