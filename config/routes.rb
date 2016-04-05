@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
+  get 'users/currentsession', to: 'users#currentsession', as: :current_session
   resources :users
   resources :maps
   resources :disasters, only: [:index, :map, :show] do
@@ -12,6 +13,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/signout', to: 'devise/sessions#destroy', as: :signout
   end
+
+ 
+
+
 
   root 'maps#index'
 
