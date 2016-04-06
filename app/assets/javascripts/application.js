@@ -20,4 +20,4 @@
 //= require map
 //= require piechart
 //= require stripe
-
+//= require statbarcall
