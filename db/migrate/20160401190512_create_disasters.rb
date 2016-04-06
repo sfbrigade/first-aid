@@ -9,3 +9,4 @@ class CreateDisasters < ActiveRecord::Migration
     end
   end
 end
+
