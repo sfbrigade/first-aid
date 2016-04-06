@@ -31,6 +31,10 @@ body {
   margin-top: 20px;
 }
 
+.btn-primary {
+  background-color: #3b5998;
+}
+
 .btn-success, .btn-success-2 {
   background-color: #009245;
   border-color: #007233;
@@ -102,6 +106,16 @@ body {
   margin-top: 65px;
 }
 
+.facebook-login i {
+  font-size: 30px;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+button.btn.btn-primary span {
+  margin-top: -100px !important;
+}
+
 .login-separator {
   margin-top: 45px;
 }
@@ -126,4 +140,8 @@ body {
   height: auto;
   margin-right: 5px;
   border-radius: 5px;
+}
+
+.links {
+  margin-top: 20px;
 }

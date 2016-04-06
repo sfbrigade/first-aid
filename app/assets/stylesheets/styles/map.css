@@ -67,3 +67,7 @@
 .x.axis path {
   display: none;
 }
+
+#wrapper svg {
+  margin: 0 auto;
+}

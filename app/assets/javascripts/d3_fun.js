@@ -2,7 +2,6 @@ var dMap = function(){
 
   var width = 1170,
       height = 725,
-
       centered;
 
   var projection = d3.geo.albersUsa()
@@ -57,6 +56,8 @@ var dMap = function(){
     if (d && centered !== d) {
       var centroid = path.centroid(d);
       x = centroid[0];
+      console.log('--------')
+      console.log(x)
       y = centroid[1];
       k = 4;
       centered = d;
@@ -65,6 +66,7 @@ var dMap = function(){
       y = height / 2;
       k = 1;
       centered = null;
+      console.log(x);
     }
 
     g.selectAll("path")
@@ -75,6 +77,8 @@ var dMap = function(){
         .duration(750)
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
         .style("stroke-width", 1.5 / k + "px");
+        console.log('*****')
+        console.log(-x)
   }
 
   var cities = function(){
