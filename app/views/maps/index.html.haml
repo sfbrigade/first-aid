@@ -1,12 +1,19 @@
 .container
   .row
     .col-lg-12
-      .map-body.center-block
-      %div#wrapper
-        :javascript
-          $(document).on("page:change", dPieChart)
-      %div#wrapper2
-        :javascript
-          $(document).on("page:change", dBarChart)
+      .col-lg-2.col-md-12
+        #charities
+      .col-lg-8.col-md-12
+        .map-body.center-block
+        #statbar
+      .col-lg-2.col-md-2.pull-right.text-center.hidden-xs.hidden-sm.hidden-md
+        #wrapper.center-block
+          :javascript
+            $(document).on("page:change", dPieChart)
+        / .row
+        /   #wrapper2
+        /     :javascript
+        /        $(document).on("page:change", dBarChart)
+
 
 

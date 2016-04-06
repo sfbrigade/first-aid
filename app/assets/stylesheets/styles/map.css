@@ -23,10 +23,6 @@
     pointer-events: none;
   }
 
-  #map {
-    height: 100%;
-  }
-
   .d3-tip {
   line-height: 1;
   font-weight: bold;
@@ -71,3 +67,41 @@
 .x.axis path {
   display: none;
 }
+
+.map-body {
+/*    margin:2%;
+    padding:20px;
+    border-radius: 5px;*/
+  }
+
+#wrapper{
+    border:2px solid #d0d0d0;
+}
+
+
+#wrapper2{
+    border:2px solid #d0d0d0;
+}
+
+#charities{
+  background: yellow;
+  width: 200 px;
+  height: 200 px;
+}
+
+@media screen and (min-width: 941px) {
+  #wrapper{
+    visibility: visible;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  #wrapper{
+    visibility: hidden;
+  }
+}
+
+
+
+
+

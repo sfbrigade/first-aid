@@ -18,4 +18,5 @@
 //= require d3_fun
 //= require map
 //= require stripe
+//= require statbar
 
