@@ -28,7 +28,6 @@ class UsersController < ApplicationController
   #   end
   # end
 
-
   # # def signup
   # #   @user = User.new
   # #   #sign up form
