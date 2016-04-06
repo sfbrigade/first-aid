@@ -1,5 +1,6 @@
 class MapsController < ApplicationController
   def index
+
     if params[:address]
       address = params[:address].split(" ").join("+")
     end
