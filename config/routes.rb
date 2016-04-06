@@ -14,6 +14,14 @@ Rails.application.routes.draw do
     get '/signout', to: 'devise/sessions#destroy', as: :signout
   end
 
+<<<<<<< HEAD
+=======
+  get '/sidebar', to: 'map#sidebar',as: :sidebar
+ 
+
+
+
+>>>>>>> master
   root 'maps#index'
 
   require 'sidekiq/web'

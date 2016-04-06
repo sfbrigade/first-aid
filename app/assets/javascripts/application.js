@@ -20,7 +20,11 @@
 //= require map
 //= require piechart
 //= require stripe
+
 //= require websocket
 
 //= require websocket_rails/main
+
+
+//= require statbarcall
 

@@ -16,4 +16,8 @@ class MapsController < ApplicationController
     p '$' * 100
 
   end
+
+  def sidebar
+    
+  end
 end

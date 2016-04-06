@@ -1,8 +1,33 @@
 .container-fluid
   .row
     .col-lg-12
-      .col-lg-3.col-md-12
-      .col-lg-6.col-md-12
+      .col-lg-2.col-md-12
+        #charities
+      .col-lg-8.col-md-12
         .map-body.center-block
+        %a.slideout-menu-toggle{:href => "#"}
+          To Slide
+      .col-lg-2.col-md-2.pull-right.text-center
+        .slideout-menu
+          %h3
+            Hurricane Hero
+            %a.slideout-menu-toggle{:href => "#"} ×
+          %a.viewAllStats
+            All Stats
+            :javascript
+              $('.viewAllStats').on("click", dPieChart)
+              $('.viewAllStats').on("click", dBarChart)
+          %a.viewMyStats
+            My Stats
+            :javascript
+              $('.viewMyStats').on("click", dPieChart)
+              $('.viewMyStats').on("click", dBarChart)
+          #wrapper.center-block
+            :javascript
+              $('.slideout-menu-toggle').on("click", dPieChart)
+          #wrapper2
+            :javascript
+              $('.slideout-menu-toggle').on("click", dBarChart)
+
 
 
