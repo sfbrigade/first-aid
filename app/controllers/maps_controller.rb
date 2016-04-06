@@ -1,5 +1,6 @@
 class MapsController < ApplicationController
   def index
+
     if params[:address]
       address = params[:address].split(" ").join("+")
     end
@@ -10,6 +11,9 @@ class MapsController < ApplicationController
       format.html
       format.json {render json: @location}
     end
+    p '$' * 100
+    @current = current_user.to_json
+    p '$' * 100
 
   end
 end
