@@ -1,7 +1,7 @@
 var dMap = function(){
 
-  var width = 1170,
-      height = 725,
+  var width = 915,
+      height = 730,
  
       centered;
 
@@ -63,6 +63,8 @@ var dMap = function(){
     if (d && centered !== d) {
       var centroid = path.centroid(d);
       x = centroid[0];
+      console.log('--------')
+      console.log(x)
       y = centroid[1];
       k = 4;
       centered = d;
@@ -71,6 +73,7 @@ var dMap = function(){
       y = height / 2;
       k = 1;
       centered = null;
+      console.log(x);
     }
 
     g.selectAll("path")
@@ -81,6 +84,8 @@ var dMap = function(){
         .duration(750)
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
         .style("stroke-width", 1.5 / k + "px");
+        console.log('*****')
+        console.log(-x)
   }
 
   var cities = function(){
@@ -209,7 +214,7 @@ var getCoordinates = function(data){
   
   var canvas = d3.select('#wrapper')
               .append('svg')
-              .attr({'width':325,'height':250});
+              .attr({'width':325,'height':250})
          $.ajax({type: "GET",
               url: "/users/currentsession",
               dataType: "json"}).done(function(response){
@@ -235,9 +240,10 @@ var getCoordinates = function(data){
 
         pi = 3.141592653589793238462643383279502884197169;
 
-      var width = 350,
-        height = 250,
-        radius = Math.min(width, height) / 2;
+      var width = $('#wrapper').width(),
+        height = $('#wrapper').height(),
+        radius = Math.min(width, height) / 2,
+        centered;
 
       var pie = d3.layout.pie()
         .value(function(d) {
@@ -247,16 +253,17 @@ var getCoordinates = function(data){
         .endAngle(180 * (pi / 180));
 
           var arc = d3.svg.arc()
-        .innerRadius(radius - 150)
-        .outerRadius(radius - 20);
+        .innerRadius(radius - 75)
+        .outerRadius(radius - 10);
 
       var arcOver = d3.svg.arc()
-        .innerRadius((radius - 150) + 10)
-        .outerRadius((radius - 20) + 10);
+        .innerRadius((radius - 75) + 10)
+        .outerRadius((radius - 10) + 10);
 
-
+      var boxHeight = $('#wrapper').height() / 2
+      var boxWidth = $('#wrapper').width() / 2
       var renderarcs = canvas.append('g')
-              .attr('transform','translate(175,125)')
+              .attr('transform',"translate(" + boxWidth + "," + boxHeight + ")")
               .selectAll('.arc')
               .data(pie(data))
               .enter().append("g")
@@ -339,8 +346,8 @@ var getCoordinates = function(data){
 
 var dBarChart = function(){
   var margin = {top: 40, right: 20, bottom: 30, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      width = 480 - margin.left - margin.right,
+      height = 250 - margin.top - margin.bottom;
 
   var formatPercent = d3.format(".0%");
 

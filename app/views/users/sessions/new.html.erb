@@ -29,13 +29,15 @@
           </div>
         <% end %>
 
-        <%= render "devise/shared/links" %>
       </div>
       <div class="col-lg-2 login-separator text-center">
         <h1>or</h1>
       </div>
-      <div class="col-lg-5 facebook-login">
-        <%= link_to(image_tag('/assets/facebook-f3a1af316dd7e59c94ab0999c30ed649c872e1e6f723eb1c28620bce2d43eb29.svg', alt: 'Login with Facebook'), omniauth_authorize_path(resource_name, :facebook)) %>
+      <div class="col-lg-5 facebook-login text-center">
+        <a href="/users/auth/facebook"><button class="btn btn-primary"><i class="fa fa-facebook"></i>Login with Facebook</button></a>
+      </div>
+      <div class="col-lg-12 links">
+        <%= render "users/shared/links" %>
       </div>
     </div>
   </div>

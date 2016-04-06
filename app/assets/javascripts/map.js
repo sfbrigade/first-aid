@@ -1,13 +1,15 @@
 $(document).ready(function(){
- $(".btn-two").on('click', function(){
+  $(".btn-two").on('click', function(){
     event.preventDefault();
     window.location.replace('/users/sign_in');
   });
- $(".btn-one").on('click', function(){
+  $(".btn-one").on('click', function(){
     event.preventDefault();
     window.location.replace('/users/sign_up');
   });
- $(document).on("page:change", dMap)
+  $(document).on("page:change", dMap);
+  $(document).on("page:change", dPieChart);
+  $(document).on("page:change", dBarChart);
  disasterArea();
 })
 
