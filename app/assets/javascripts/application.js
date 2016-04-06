@@ -20,4 +20,6 @@
 //= require map
 //= require piechart
 //= require stripe
+//= require websocket_rails/main
+//= require disaster_socket
 

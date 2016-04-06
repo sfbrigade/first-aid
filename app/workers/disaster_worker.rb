@@ -2,6 +2,10 @@ class DisasterWorker
   include Sidekiq::Worker
 
   def perform
+    # Example
+    # test = Disaster.last
+    # WebsocketRails[:disasters].trigger(:new_disaster, test)
+
     lat = []
     long = []
     uri = URI("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_hour.geojson")
