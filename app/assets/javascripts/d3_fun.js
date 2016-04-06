@@ -209,7 +209,7 @@ var getCoordinates = function(data){
   
   var canvas = d3.select('#wrapper')
               .append('svg')
-              .attr({'width':650,'height':500});
+              .attr({'width':325,'height':250});
          $.ajax({type: "GET",
               url: "/users/currentsession",
               dataType: "json"}).done(function(response){
@@ -235,8 +235,8 @@ var getCoordinates = function(data){
 
         pi = 3.141592653589793238462643383279502884197169;
 
-      var width = 700,
-        height = 500,
+      var width = 350,
+        height = 250,
         radius = Math.min(width, height) / 2;
 
       var pie = d3.layout.pie()
@@ -256,7 +256,7 @@ var getCoordinates = function(data){
 
 
       var renderarcs = canvas.append('g')
-              .attr('transform','translate(300,250)')
+              .attr('transform','translate(175,125)')
               .selectAll('.arc')
               .data(pie(data))
               .enter().append("g")
