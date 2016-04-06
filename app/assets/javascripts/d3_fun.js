@@ -1,16 +1,6 @@
  function mapSizeChange() {
       d3.select("g").attr("transform", "scale(" + $(".map-body").width()/900 + ")");
-      $("svg").height($(".map-body").width()*0.618);
-  }
-
- function pieSizeChange() {
-      d3.select("g").attr("transform", "scale(" + $("#wrapper").width()/900 + ")");
-      $("svg").height($("#wrapper").width()*0.618);
-  }
-
-  function barSizeChange(){
-    width = $('#wrapper2').width() 
-    height = $('#wrapper2').height()  
+      $(".map-body svg ").height($(".map-body").width()*0.618);
   }
 
 var dMap = function(){
@@ -160,7 +150,9 @@ d3.select(window).on("resize", mapSizeChange);
            .transition()
            .duration(250)
            .attr("r", 5)
-           .on('mouseover', tip.show)
+
+           
+           g.selectAll("circle").on('mouseover', tip.show)
            .on('mouseout', tip.hide)
 
       });
@@ -211,9 +203,13 @@ var getCoordinates = function(data){
     
   }
  var dPieChart = function(){
+  d3.select('#wrapper svg').remove();
+
+setTimeout(function() {
 
   var canvas = d3.select('#wrapper')
               .append('svg')
+              .attr('height', '250')
          $.ajax({type: "GET",
               url: "/users/currentsession",
               dataType: "json"}).done(function(response){
@@ -239,8 +235,8 @@ var getCoordinates = function(data){
 
         pi = 3.141592653589793238462643383279502884197169;
 
-      var width = $('#wrapper').width(),
-        height = $('#wrapper').height(),
+      var width = 225,
+        height = 225,
         radius = Math.min(width, height) / 2,
         centered;
 
@@ -252,15 +248,15 @@ var getCoordinates = function(data){
         .endAngle(180 * (pi / 180));
 
       var arc = d3.svg.arc()
-        .innerRadius(radius - 50)
+        .innerRadius(radius - 70)
         .outerRadius(radius - 10);
 
       var arcOver = d3.svg.arc()
-        .innerRadius((radius - 50) + 10)
+        .innerRadius((radius - 70) + 10)
         .outerRadius((radius - 10) + 10);
 
-      var boxHeight = $('#wrapper').height() / 2
-      var boxWidth = $('#wrapper').width() / 2
+      var boxHeight = 250 / 2
+      var boxWidth = 300 / 2
       var renderarcs = canvas.append('g')
               .attr('transform',"translate(" + boxWidth + "," + boxHeight + ")")
               .selectAll('.arc')
@@ -341,14 +337,23 @@ var getCoordinates = function(data){
              })
             })
   })
+   //your code to be executed after 1 second
+}, 1000);
 }
 
 var dBarChart = function(){
-  var margin = {top: 40, right: 20, bottom: 30, left: 40},
-      width = $(window).width() * 0.2 - margin.left - margin.right,
-      height = $(window).height() * 0.4 - margin.top - margin.bottom;
+  // d3.select(window).on("resize", mapSizeChange);
+    // d3.select('svg < #wrapper').remove()
+    // d3.select('g < #wrapper').remove()
+    d3.select('#wrapper2 svg').remove();
 
-  d3.select(window).on("resize", barSizeChange);
+    setTimeout(function() {
+
+  var margin = {top: 40, right: 20, bottom: 30, left: 40},
+      width = 250 - margin.left - margin.right,
+      height = 250 - margin.top - margin.bottom;
+
+  // d3.select(window).on("resize", barSizeChange);
 
   var formatPercent = d3.format(".0%");
 
@@ -380,6 +385,7 @@ var dBarChart = function(){
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   svg.call(tip);
+
       $.ajax({type: "GET",
               url: "/users/currentsession",
               dataType: "json"}).done(function(response){
@@ -435,4 +441,6 @@ var dBarChart = function(){
   }
   })//close ajax
 })//close outer ajax
+   //your code to be executed after 1 second
+}, 1000);//
 }

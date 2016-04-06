@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get '/signout', to: 'devise/sessions#destroy', as: :signout
   end
 
+  get '/sidebar', to: 'map#sidebar',as: :sidebar
  
 
 

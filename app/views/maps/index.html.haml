@@ -5,15 +5,29 @@
         #charities
       .col-lg-8.col-md-12
         .map-body.center-block
-        #statbar
-      .col-lg-2.col-md-2.pull-right.text-center.hidden-xs.hidden-sm.hidden-md
-        #wrapper.center-block
-          :javascript
-            $(document).on("page:change", dPieChart)
-        / .row
-        /   #wrapper2
-        /     :javascript
-        /        $(document).on("page:change", dBarChart)
+        %a.slideout-menu-toggle{:href => "#"}
+          To Slide
+      .col-lg-2.col-md-2.pull-right.text-center
+        .slideout-menu
+          %h3
+            Hurricane Hero
+            %a.slideout-menu-toggle{:href => "#"} ×
+          %a.viewAllStats
+            All Stats
+            :javascript
+              $('.viewAllStats').on("click", dPieChart)
+              $('.viewAllStats').on("click", dBarChart)
+          %a.viewMyStats
+            My Stats
+            :javascript
+              $('.viewMyStats').on("click", dPieChart)
+              $('.viewMyStats').on("click", dBarChart)
+          #wrapper.center-block
+            :javascript
+              $('.slideout-menu-toggle').on("click", dPieChart)
+          #wrapper2
+            :javascript
+              $('.slideout-menu-toggle').on("click", dBarChart)
 
 
 
