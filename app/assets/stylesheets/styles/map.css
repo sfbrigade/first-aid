@@ -23,10 +23,6 @@
     pointer-events: none;
   }
 
-  #map {
-    height: 100%;
-  }
-
   .d3-tip {
   line-height: 1;
   font-weight: bold;
@@ -70,4 +66,8 @@
 
 .x.axis path {
   display: none;
+}
+
+#wrapper svg {
+  margin: 0 auto;
 }

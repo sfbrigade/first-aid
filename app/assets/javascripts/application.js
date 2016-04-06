@@ -16,7 +16,9 @@
 //= require turbolinks
 //= require d3
 //= require d3_fun
+//= require barchart
 //= require map
+//= require piechart
 //= require stripe
 //= require websocket
 

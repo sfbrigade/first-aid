@@ -14,14 +14,20 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem "haml-rails"
-# gem 'faker'
+gem 'faker'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'twilio-ruby'
 gem 'sinatra', :require => nil
+
 # add websocket gem --matt
 gem 'websocket-rails'
 gem 'faye-websocket', '0.10.0'
+
+# add google places gem
+gem 'google_places'
+
+
 # add stripe gem
 gem "stripe"
 gem "stripe_event"
@@ -43,6 +49,7 @@ gem 'launch'
 gem 'sidekiq'
 gem 'sidekiq-client-cli'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'font-awesome-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -56,6 +63,11 @@ gem 'dotenv-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
 end
 
 group :development do

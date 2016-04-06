@@ -12,7 +12,7 @@ before_filter :configure_sign_up_params, only: [:create]
     @user = User.new(params[:user].permit(:first_name, :last_name, :street_address, :city, :state, :zip_code, :cell_phone, :email, :password))
     respond_to do |format|
       if @user.save
-        MailWorker.perform_in(1.minute, @user.id)
+        # MailWorker.perform_in(1.minute, @user.id)
         format.html { redirect_to(after_sign_in_path_for(resource), notice: 'User was successfully created.') }
         # for
         #   mat.json { render json: @user, status: :created, location: @user }
