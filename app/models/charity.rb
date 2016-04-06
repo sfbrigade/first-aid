@@ -3,6 +3,8 @@ class Charity < ActiveRecord::Base
   has_many :users, through: :donations
   has_many :disasters, through: :donations
 
+  validates :title, :street_address, :city, :state, :zip_code, presence: true
+  
   # before_create :lng_lat
 
   private
