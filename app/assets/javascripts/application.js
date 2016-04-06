@@ -19,6 +19,5 @@
 //= require barchart
 //= require map
 //= require piechart
-//= require google_coord
 //= require stripe
 
