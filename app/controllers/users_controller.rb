@@ -12,7 +12,7 @@ class UsersController < ApplicationController
             render json: response
           }
       end
-    else 
+    else
       render :index
     end
 
@@ -66,17 +66,17 @@ class UsersController < ApplicationController
       end
     end
 
-       donation_frequency_array = []
-    @n_of_donations.each do |donation|
-          donation_frequency_array << {"category": donation[0], "frequency": donation[1]}
-    end
+    #    donation_frequency_array = []
+    # @n_of_donations.each do |donation|
+    #       donation_frequency_array << {"category": donation[0], "frequency": donation[1]}
+    # end
 
-    total_amount = 0
-    donation_amount_array = []
-    @donation_total.each do |donation|
-          donation_amount_array << {"category": donation[0], "value": donation[1]/100}
-          total_amount += donation[1]/100
-    end
+    # total_amount = 0
+    # donation_amount_array = []
+    # @donation_total.each do |donation|
+    #       donation_amount_array << {"category": donation[0], "value": donation[1]/100}
+    #       total_amount += donation[1]/100
+    # end
     # @user_charities.each do |charity|
     #   d_amount = charity.donations.find_by(user_id: @user.id).amount
     #   dis_id = charity.donations.find_by(user_id: @user.id).disaster_id
@@ -92,7 +92,7 @@ class UsersController < ApplicationController
     #     @donation_total[category] = d_amount
     #   end
     # end
- 
+
     hero = nil
     highest = 0
     @donation_total.each do |key, value|
@@ -101,7 +101,7 @@ class UsersController < ApplicationController
         hero = key
       end
     end
-    
+
     response = []
     if request.xhr?
         response << {amount: donation_amount_array, frequency: donation_frequency_array, hero: hero, total_amount: total_amount}

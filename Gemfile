@@ -19,7 +19,9 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'twilio-ruby'
 gem 'sinatra', :require => nil
-
+# add websocket gem --matt
+gem 'websocket-rails'
+gem 'faye-websocket', '0.10.0'
 # add stripe gem
 gem "stripe"
 gem "stripe_event"

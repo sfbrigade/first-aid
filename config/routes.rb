@@ -14,12 +14,9 @@ Rails.application.routes.draw do
     get '/signout', to: 'devise/sessions#destroy', as: :signout
   end
 
- 
-
-
-
   root 'maps#index'
-
+  # get '/disaster_socket', to: 'disasterworker#perform'
+  # get '/message_socket', to: 'websocketcontroller#perform'
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
   # The priority is based upon order of creation: first created -> highest priority.
