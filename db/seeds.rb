@@ -54,7 +54,6 @@
     # password: 'password',
     # password_confirmation: 'password')
 
-
     # User.create!(
     # first_name: "Cody",
     # last_name: "Kendall",

@@ -5,6 +5,9 @@ class Charity < ActiveRecord::Base
 
   before_create :lng_lat
 
+  validates :title, :street_address, :city, :state, :zip_code, presence: true
+
+
   private
 
   def lng_lat
