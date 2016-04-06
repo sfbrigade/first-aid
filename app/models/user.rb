@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_create do |user|
       user.provider = auth.provider
@@ -60,6 +61,11 @@ class User < ActiveRecord::Base
       self.latitude = @json['results'][0]['geometry']['location']['lat']
       self.longitude = @json['results'][0]['geometry']['location']['lng']
     end
+  end
+
+  def test_email
+    @user = User.last
+    MailWorker.perform_in(1.minute, @user.id)
   end
 
 end
