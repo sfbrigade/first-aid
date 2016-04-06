@@ -262,15 +262,15 @@
 #     zip_code: 46225,
 #     phone: Faker::PhoneNumber.phone_number)
 
-# disaster = ["earthquake", "hurricane", "tornado", "flood", "wild fire"]
+disaster = ["earthquake", "hurricane", "tornado", "flood", "wild fire"]
 
-# 10.times do
-#   d = Disaster.new(
-#     latitude: Faker::Address.latitude,
-#     longitude: Faker::Address.longitude)
-#   d.category = disaster.sample
-#   d.save!
-# end
+10.times do
+  d = Disaster.new(
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude)
+  d.category = disaster.sample
+  d.save!
+end
 
 30.times do
   Donation.create!(

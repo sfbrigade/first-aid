@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $(document).on("page:change", dMap)
  hideMapOnSignIn();
  hideMapOnSignUp();
  disasterArea();
@@ -28,7 +29,7 @@ var disasterArea = function(){
        type: "GET"
     })
     .done(function(data){
-      getCoordinates(data)
+      console.log(data)
     })
   })
 }

@@ -8,8 +8,32 @@ class CharitiesController < ApplicationController
   end
 
   def index
+    radius = 1000
+    earth = 6371.0
     @disaster = Disaster.find(params[:disaster_id])
-    @charities = @disaster.charities
+    positive_latitude_calc = @disaster.latitude + (radius/earth)
+    negative_latitude_calc = @disaster.latitude - (radius/earth)
+    positive_longitude_calc = @disaster.longitude + (radius/earth/Math::cos(@disaster.latitude))
+    negative_longitude_calc = @disaster.longitude - (radius/earth/Math::cos(@disaster.latitude))
+    p positive_latitude_calc
+    p negative_latitude_calc
+    p positive_longitude_calc
+    p negative_longitude_calc
+    @charities = @disaster.charities  #Charities that have donated to this disaster
+    if request.xhr?
+        respond_to do |format|
+          @charities.each do |charity|
+              format.json{
+                if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude > negative_longitude_calc) && (charity.longitude < positive_longitude_calc)
+                  render json: charity
+                end
+              }
+            end
+          end
+    else
+      render :index
+    end
+
   end
 
   # POST from charity donation form
@@ -38,6 +62,4 @@ class CharitiesController < ApplicationController
       redirect_to "/disasters/#{params[:disaster_id]}/charities/#{params[:id]}"
 
   end
-
-
 end

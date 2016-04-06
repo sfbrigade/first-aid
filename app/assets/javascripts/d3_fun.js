@@ -91,7 +91,7 @@ var dMap = function(){
                .append("a")
                .attr("class", "disaster_link")
                .attr("xlink:href", function(d) {
-                    return "/disasters/" + d.disasters_id;}
+                    return "/disasters/" + d.disasters_id + "/charities";}
                 )
                .append("circle")
                .style("fill", function(d){

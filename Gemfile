@@ -19,6 +19,8 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'twilio-ruby'
 gem 'sinatra', :require => nil
+# add google places gem
+gem 'google_places'
 
 # add stripe gem
 gem "stripe"
