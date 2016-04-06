@@ -14,11 +14,13 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem "haml-rails"
-# gem 'faker'
+gem 'faker'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'twilio-ruby'
 gem 'sinatra', :require => nil
+# add google places gem
+gem 'google_places'
 
 # add stripe gem
 gem "stripe"
@@ -55,6 +57,11 @@ gem 'dotenv-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
 end
 
 group :development do

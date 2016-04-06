@@ -1,6 +1,6 @@
 %h1 Disaster Feed
 %form{action:"/disasters/1/send_disaster_notification", method: "POST"}
-  / %button{name:"send_sms"}
+  %button{name:"send_sms"}
 - @disasters.each do |disaster|
   %a{href: "/disasters/#{disaster.id}/charities"}
     = disaster.category
