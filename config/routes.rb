@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks", passwords: 'users/passwords' }
   get 'users/currentsession', to: 'users#currentsession', as: :current_session
   resources :users
   resources :maps
@@ -20,6 +20,9 @@ Rails.application.routes.draw do
 
 
   root 'maps#index'
+
+  # require 'sidekiq/web'
+  # mount Sidekiq::Web => '/sidekiq'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # get 'login', to: 'users#login', as: :login

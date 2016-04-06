@@ -9,6 +9,7 @@ body {
 .navbar-brand img {
   width: 140px;
   height: auto;
+  margin-left: 30px;
 }
 
 .sign-in {
@@ -28,6 +29,10 @@ body {
   width: 50%;
   height: auto;
   margin-top: 20px;
+}
+
+.btn-primary {
+  background-color: #3b5998;
 }
 
 .btn-success, .btn-success-2 {
@@ -101,6 +106,42 @@ body {
   margin-top: 65px;
 }
 
+.facebook-login i {
+  font-size: 30px;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+button.btn.btn-primary span {
+  margin-top: -100px !important;
+}
+
 .login-separator {
   margin-top: 45px;
+}
+
+.facebook-sign-up {
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 60%;
+}
+
+.sign-up-separator {
+  margin: 20px 0;
+}
+
+.sign-up-separator h1 {
+  font-weight: 300;
+  color: #aaaaaa;
+}
+
+.user-image {
+  width: 10%;
+  height: auto;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.links {
+  margin-top: 20px;
 }

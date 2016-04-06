@@ -3,6 +3,8 @@ class Disaster < ActiveRecord::Base
   has_many :users, through: :donations
   has_many :charities, through: :donations
 
+  validates :category, :latitude, :longitude, presence: true
+
   # before_create :new_disaster
 
   # private

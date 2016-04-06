@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_create do |user|
       user.provider = auth.provider
@@ -29,12 +30,21 @@ class User < ActiveRecord::Base
   end
 
   before_create :lng_lat
+  before_save :split_name
 
   def full_name
     if name
       "#{name}"
     else
       "#{first_name} #{last_name}"
+    end
+  end
+
+  def split_name
+    if self.first_name == nil && self.last_name == nil
+      name_array = name.split
+      self.last_name = name_array.pop
+      self.first_name = name_array.join(' ')
     end
   end
 
@@ -57,4 +67,5 @@ class User < ActiveRecord::Base
     @user = User.last
     MailWorker.perform_in(1.minute, @user.id)
   end
+
 end
