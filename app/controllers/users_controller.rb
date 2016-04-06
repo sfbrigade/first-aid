@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 
+
   before_filter :authenticate_user!
 
   def currentsession
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
             render json: response
           }
       end
-    else 
+    else
       render :index
     end
 
@@ -92,7 +93,7 @@ class UsersController < ApplicationController
     #     @donation_total[category] = d_amount
     #   end
     # end
- 
+
     hero = nil
     highest = 0
     @donation_total.each do |key, value|
@@ -101,7 +102,7 @@ class UsersController < ApplicationController
         hero = key
       end
     end
-    
+
     response = []
     if request.xhr?
         response << {amount: donation_amount_array, frequency: donation_frequency_array, hero: hero, total_amount: total_amount}
@@ -113,6 +114,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
 
 
 end

@@ -17,7 +17,15 @@
 //= require d3
 //= require map
 //= require stripe
+
+//= require websocket
+
+//= require websocket_rails/main
+
+
 //= require statbarcall
+
 //= require d3_pie
 //= require d3_map
 //= require d3_bar
+
