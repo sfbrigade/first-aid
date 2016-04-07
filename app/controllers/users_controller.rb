@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
        donation_frequency_array = []
     @n_of_donations.each do |donation|
-          donation_frequency_array << {"category": donation[0], "frequency": donation[1].to_i}
+          donation_frequency_array << {"category": donation[0], "frequency": donation[1]}
     end
 
     total_amount = 0
@@ -56,6 +56,8 @@ class UsersController < ApplicationController
           donation_amount_array << {"category": donation[0], "value": donation[1]/100}
           total_amount += donation[1]/100
     end
+    p "donations mine **************"
+    p donation_frequency_array
 
 
     hero = nil

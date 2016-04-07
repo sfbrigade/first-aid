@@ -1,10 +1,9 @@
 $(document).ready(function(){
+  $("body").tooltip({ selector: '[data-toggle=tooltip]' });
   $(document).on("page:change", dMap)
  disasterInformation();
  charityInformation();
 })
-
-
 
 
 function mapSizeChange() {
