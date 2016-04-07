@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   get '/sidebar', to: 'map#sidebar',as: :sidebar
 
-
   root 'maps#index'
 
   # require 'sidekiq/web'

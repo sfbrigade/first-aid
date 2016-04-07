@@ -3,6 +3,12 @@ $(document).ready(function(){
  disasterArea();
 })
 
+function mapSizeChange() {
+    d3.select("g").attr("transform", "scale(" + $(".map-body").width()/900 + ")");
+    $(".map-body svg ").height($(".map-body").width()*0.618);
+}
+
+
 var disasterArea = function(){
  $("body").on("click", ".disaster_link", function(){
     event.preventDefault();
