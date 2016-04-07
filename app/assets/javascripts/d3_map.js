@@ -95,7 +95,7 @@ d3.select(window).on("resize", mapSizeChange);
            .append("a")
            .attr("class", "disaster_link")
            .attr("xlink:href", function(d) {
-                return "/disasters/" + d.disasters_id + "charities";
+                return "/disasters/" + d.disasters_id;
             })
            .append("circle")
            .attr("cx", function(d) {
