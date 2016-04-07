@@ -26,7 +26,7 @@ var charityInformation = function(){
     .done(function(data){
       // console.log(that)
       var url2 = $(that).attr('href')
-      console.log(url2)
+      console.log(data)
         charityList = $('.charity_info');
         charityList.toggleClass("open")
         console.log(charityList.hasClass("open"))
@@ -38,6 +38,9 @@ var charityInformation = function(){
             // $('.charity_info').append(data[i].url)
             $('.charity_info').append("<p class='charity_phone'>"+data[i].phone+"<p>")
             // $('.charity_info').append("<p>"+data[i].street_address+"<p>")
+//             $('.charity_info').append('<form action="' + url2 + '/charities/' + data[i].id + '/stripe_charge'" method='POST'>
+//               <script class='stripe-button' data-description='Help The Cause!' data-key='pk_test_LK6MXgLNu6grGnpLVDbXSgcu' data-label='Donate Now' data-locale='auto' data-name='Donate to' + data[i].title'  data-panel-label='Donate' src='https:checkout.stripe.com/checkout.js'></script>')
+// </form>)
             $('.charity_info').append("<hr>")
           }
         }else{
