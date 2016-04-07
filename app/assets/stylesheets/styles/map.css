@@ -201,6 +201,23 @@
 }
 
 .slideout-image {
+  position: absolute;
+  top: -3px;
+  /*right: 100px;*/
   margin-left: 25px;
-  height: 35px;
+  vertical-align: middle;
+}
+@media (min-width: 769px) {
+  .slideout-image {
+    right: 425px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slideout-image {  
+  right: 100px;
+  }
+  nav {
+    height: 51px;
+  }
 }
