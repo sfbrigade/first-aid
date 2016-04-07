@@ -5,7 +5,7 @@ var dBarChart = function(){
 
     setTimeout(function() {
 
-  var margin = {top: 40, right: 20, bottom: 30, left: 40},
+  var margin = {top: 40, right: 20, bottom: 70, left: 40},
       width = 250 - margin.left - margin.right,
       height = 250 - margin.top - margin.bottom;
 
@@ -58,20 +58,28 @@ var dBarChart = function(){
     x.domain(data.map(function(d) { return d.category; }));
     y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+//to change text
+        svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis)
+        .selectAll("text")
+          .attr("y", 0)
+          .attr("x", 9)
+          .attr("dy", ".35em")
+          .attr("transform", "rotate(90)")
+          .style("text-anchor", "start");
 
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
       .append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 6)
+        .attr("y", -40)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .text("Frequency");
+
 
   svg.selectAll(".bar")
       .data(data)
@@ -112,9 +120,9 @@ var dAllBarChart = function(){
 
     setTimeout(function() {
 
-  var margin = {top: 40, right: 20, bottom: 30, left: 40},
+  var margin = {top: 40, right: 20, bottom: 70, left: 40},
       width = 250 - margin.left - margin.right,
-      height = 250 - margin.top - margin.bottom;
+      height = 300 - margin.top - margin.bottom;
 
 
   var formatPercent = d3.format(".0%");
@@ -161,20 +169,28 @@ var dAllBarChart = function(){
     x.domain(data.map(function(d) { return d.category; }));
     y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+       svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis)
+        .selectAll("text")
+        .remove() // this removes the label - the below adds them vertically 
+          // .attr("y", 0)
+          // .attr("x", 9)
+          // .attr("dy", ".35em")
+          // .attr("transform", "rotate(90)")
+          // .style("text-anchor", "start");
 
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
       .append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 6)
+        .attr("y", -40)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .text("Frequency");
+
 
   svg.selectAll(".bar")
       .data(data)
@@ -192,6 +208,10 @@ var dAllBarChart = function(){
 
       svg.selectAll(".bar").on('mouseover', tip.show)
       .on('mouseout', tip.hide)
+
+      // svg.selectAll(".bar").call(axis).selectAll("text").remove();
+
+
 
   });
 
