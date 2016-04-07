@@ -7,27 +7,20 @@
         .map-body.center-block
         %a.slideout-menu-toggle{:href => "#"}
           To Slide
-      .col-lg-2.col-md-2.pull-right.text-center
+      .col-lg-offset-10.col-lg-2.col-md-2.pull-right.text-center
         .slideout-menu
           %h3
             Hurricane Hero
             %a.slideout-menu-toggle{:href => "#"} ×
           %a.viewAllStats
             All Stats
-            :javascript
-              $('.viewAllStats').on("click", dAllPieChart)
-              $('.viewAllStats').on("click", dAllBarChart)
           %a.viewMyStats
             My Stats
-            :javascript
-              $('.viewMyStats').on("click", dPieChart)
-              $('.viewMyStats').on("click", dBarChart)
           #wrapper.center-block
-            :javascript
-              $('.slideout-menu-toggle').on("click", dPieChart)
           #wrapper2
-            :javascript
-              $('.slideout-menu-toggle').on("click", dBarChart)
+          #mystats
+            My Statistics
+
 
 
 
