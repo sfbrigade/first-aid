@@ -19,35 +19,13 @@ class UsersController < ApplicationController
 
   end
 
-  # def login
-  #   log in form
-  #   @user = User.find_by_email(params[:email])
-  #   if @user.password == params[:password]
-  #     give_token
-  #   else
-  #     redirect_to home_url
-  #   end
-  # end
-
-
-  # # def signup
-  # #   @user = User.new
-  # #   #sign up form
-  # # end
-
-  # # def create
-  # #   #new user
-  # #   @user = User.new(params[:user])
-  # #   @user.password = params[:password]
-  # #   @user.save!
-  # # end
 
   def show
 
     @user = User.find(params[:id])
     @user_donations = @user.donations
 
-    @n_of_donations = {}
+    @n_of_donations = {"Earthquake"=>0, "Hurricane"=>0, "Tornado"=>0, "Flood"=>0, "Wild fire"=>0}
     @donation_total = {}
     # @user_charities = @user.charities
 
@@ -92,6 +70,18 @@ class UsersController < ApplicationController
     #   else
     #     @donation_total[category] = d_amount
     #   end
+    # end
+
+    #    donation_frequency_array = []
+    # @n_of_donations.each do |donation|
+    #       donation_frequency_array << {"category": donation[0], "frequency": donation[1].to_i}
+    # end
+
+    # total_amount = 0
+    # donation_amount_array = []
+    # @donation_total.each do |donation|
+    #       donation_amount_array << {"category": donation[0], "value": donation[1]/100}
+    #       total_amount += donation[1]/100
     # end
 
     hero = nil
