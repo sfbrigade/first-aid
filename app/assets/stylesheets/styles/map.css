@@ -1,8 +1,8 @@
 .slideout-menu {
   position: fixed;
   top: 25px;
-  left: -270px;
-  width: 270px;
+  right: -280px;
+  width: 280px;
   height: 100%;
   background: #333;
   z-index: 100;
@@ -18,7 +18,7 @@
 .slideout-menu .slideout-menu-toggle {
   position: absolute;
   top: 12px;
-  right: 10px;
+  left: 10px;
   display: inline-block;
   padding: 6px 9px 5px;
   font-family: Arial, sans-serif;
@@ -105,6 +105,7 @@
     pointer-events: all;
   }
 
+
   #states {
     fill: #aaa;
   }
@@ -177,20 +178,24 @@
   width: 200 px;
   height: 200 px;
 }
-/*
-@media screen and (min-width: 941px) {
-  #wrapper{
-    visibility: visible;
+
+/*@media screen and (min-width: 1200px) {
+  .slideout-menu-toggle{
+    display: none;
   }
+
 }
 
-@media screen and (max-width: 940px) {
-  #wrapper{
-    visibility: hidden;
+@media screen and (max-width: 1201px) {
+   .slideout-menu-toggle{
+    display: visible;
   }
+}*/
+
+.viewAllStats{
+  display: none;
 }
-*/
 
-
-
-
+#mystats{
+  display: none;
+}
