@@ -42,7 +42,7 @@ d3.select(window).on("resize", mapSizeChange);
         .attr("d", path)
         .on("click", clicked)
           .on("mouseover", function(){
-          d3.select(this).style("fill", "orange")})
+          d3.select(this).style("fill", "#009245")})
         .on("mouseout", function(){
           d3.select(this).style("fill", "#aaa")})
 

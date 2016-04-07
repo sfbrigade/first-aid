@@ -32,37 +32,18 @@
                     %button.btn.btn-success{:type => 'submit'} Update 
         :javascript
           modalCall();
-      .col-lg-2.col-md-12
+      .col-lg-8.col-md-12.col-lg-push-2
+        .map-body.center-block
+      .col-lg-2.col-md-12.col-lg-pull-8
         #charities
           .us_map
             .charity_info
-      .col-lg-8.col-md-12
-        .map-body.center-block
       .col-lg-offset-10.col-lg-2.col-md-2.pull-right.text-center
         .slideout-menu
           %h3
             %div.statisticstitle
               My Statistics
-            %a.slideout-menu-toggle{:href => "#"} ×
-<<<<<<< HEAD
-          %a.viewAllStats
-            All Stats
-            / :javascript
-            /   $('.viewAllStats').on("click", dAllPieChart)
-            /   $('.viewAllStats').on("click", dAllBarChart)
-          %a.viewMyStats
-            My Stats
-            / :javascript
-            /   $('.viewMyStats').on("click", dPieChart)
-            /   $('.viewMyStats').on("click", dBarChart)
-          #wrapper.center-block
-            / :javascript
-            /   $('.slideout-menu-toggle').on("click", dPieChart)
-          #wrapper2
-            / :javascript
-            /   $('.slideout-menu-toggle').on("click", dBarChart)
-          
-=======
+            %a.slideout-menu-toggle{:href => "#"} &times;
             %a.statsbutton.viewAllStats
               View all Stats
             %a.statsbutton.viewMyStats
@@ -70,7 +51,5 @@
           #wrapper.center-block
           #wrapper2
 
-
->>>>>>> master
 
 

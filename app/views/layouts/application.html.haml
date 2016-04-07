@@ -17,12 +17,13 @@
             = link_to image_tag('brand-logo.svg'), '/', class: 'navbar-brand'
           - if user_signed_in?
             .nav.navbar-nav 
-              = link_to image_tag('40logo.png'), '#', class: 'slideout-image slideout-menu-toggle navbar-btn'
+              = link_to image_tag('stats.svg'), '#', class: 'slideout-image slideout-menu-toggle navbar-btn'
           .collapse.navbar-collapse#main-nav
             %ul.nav.navbar-nav.navbar-right
               - if !user_signed_in?
                 = link_to 'Login', '/users/sign_in', class: 'btn btn-success navbar-btn btn-one'
               - else
+                = image_tag(current_user.image, class: 'facebook-image') 
                 = "Signed in as #{current_user.full_name}"
                 = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-success navbar-btn btn-one logout'
 

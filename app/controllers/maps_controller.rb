@@ -1,10 +1,10 @@
 class MapsController < ApplicationController
   def index
-    user = current_user
-      positive_latitude_calc = user.latitude + rounded_latitude
-      negative_latitude_calc = user.latitude - rounded_latitude
-      positive_longitude_calc = user.longitude + 0.3
-      negative_longitude_calc = user.longitude - 0.3
+    if user_signed_in?
+      positive_latitude_calc = current_user.latitude + rounded_latitude
+      negative_latitude_calc = current_user.latitude - rounded_latitude
+      positive_longitude_calc = current_user.longitude + 0.3
+      negative_longitude_calc = current_user.longitude - 0.3
       in_area_charities = Charity.all
       @response = []
       in_area_charities.each do |charity|
@@ -12,6 +12,7 @@ class MapsController < ApplicationController
           @response << charity
         end
       end
+    end
 
     if params[:address]
       address = params[:address].split(" ").join("+")
