@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
        donation_frequency_array = []
     @n_of_donations.each do |donation|
-          donation_frequency_array << {"category": donation[0], "frequency": donation[1]}
+          donation_frequency_array << {"category": donation[0], "frequency": donation[1].to_i}
     end
 
     total_amount = 0
