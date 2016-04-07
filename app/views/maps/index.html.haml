@@ -1,6 +1,37 @@
 .container-fluid
   .row
     .col-lg-12
+      - if user_signed_in? && current_user.street_address == nil
+        / %button.btn.btn-primary{"data-toggle" => 'modal', 'data-target' => '#address-modal'} Test
+        #address-modal.modal.fade{:role => "dialog", :tabindex => "-1"}
+          .modal-dialog
+            .modal-content
+              .modal-header
+                %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                  %span{"aria-hidden" => "true"} &times;
+                %h2.modal-title.text-center 
+                  %img.modal-header-image{:alt => 'Firs+Aid Logo', :src => '/assets/logo-tagline-712029fa759a9065f629c28253e5552ce5d184e157d96ba0efe3191d3449c447.svg'}
+              .modal-body
+                %p= "#{current_user.first_name}, to donate to local charities near you, please provide your address, and include your cell number if you would like to be contact by text message of breaking disasters."
+                %form#update-address{:action => "/users/#{current_user.id}", :method => 'POST'}
+                  .form-group
+                    %input.form-control{:type => "text", :name => 'street_address', :placeholder => 'Street Address'}
+                  .form-group.row
+                    .col-lg-7
+                      %input.form-control{:type => 'text', :name => 'city', :placeholder => 'City'}
+                    .col-lg-2
+                      %input.form-control{:type => 'text', :name => 'state', :placeholder => 'State'}
+                    .col-lg-3
+                      %input.form-control{:type => 'text', :name => 'zip_code', :placeholder => 'Zip'}
+                  .form-group.row
+                    .col-lg-7
+                      %input.form-control{:type => 'text', :name => 'cell_phone', :placeholder => 'Cell Number'}
+                  .modal-footer
+                    %button.btn.btn-default{'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button'} Complete Later
+                    / %input{:type => 'hidden', :name => '_method', :value => 'PUT'}
+                    %button.btn.btn-success{:type => 'submit'} Update 
+        :javascript
+          modalCall();
       .col-lg-2.col-md-12
         #charities
           .us_map
@@ -13,6 +44,25 @@
             %div.statisticstitle
               My Statistics
             %a.slideout-menu-toggle{:href => "#"} ×
+<<<<<<< HEAD
+          %a.viewAllStats
+            All Stats
+            / :javascript
+            /   $('.viewAllStats').on("click", dAllPieChart)
+            /   $('.viewAllStats').on("click", dAllBarChart)
+          %a.viewMyStats
+            My Stats
+            / :javascript
+            /   $('.viewMyStats').on("click", dPieChart)
+            /   $('.viewMyStats').on("click", dBarChart)
+          #wrapper.center-block
+            / :javascript
+            /   $('.slideout-menu-toggle').on("click", dPieChart)
+          #wrapper2
+            / :javascript
+            /   $('.slideout-menu-toggle').on("click", dBarChart)
+          
+=======
             %a.statsbutton.viewAllStats
               View all Stats
             %a.statsbutton.viewMyStats
@@ -21,5 +71,6 @@
           #wrapper2
 
 
+>>>>>>> master
 
 

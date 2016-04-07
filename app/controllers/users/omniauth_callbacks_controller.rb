@@ -6,7 +6,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     p request.env["omniauth.auth"]
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
-    
     @user.save
     if @user.persisted?
       if @user.sign_in_count < 1
