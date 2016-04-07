@@ -26,18 +26,20 @@ var dBarChart = function(){
       .scale(y)
       .orient("left")
 
-  var tip = d3.tip()
-    .attr('class', 'd3-tip')
-    .offset([-10, 0])
-    .html(function(d) {
-      return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
-    })
-
   var svg = d3.select("#wrapper2").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+ var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .style('z-index', '99999999')
+    .html(function(d) {
+      return "<strong>Category:</strong> <span style='color:red'>" + d.category + "</span> <br><strong>Frequency:</strong> <span style='color:red'>" + d.frequency+ "</span>";
+      console.log("Tip")
+    })
 
   svg.call(tip);
 
@@ -76,8 +78,6 @@ var dBarChart = function(){
       .enter()
       .append("rect")
       .attr("class", "bar")
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
       .attr("fill", "orange")
       .attr("y", height )
       .attr("height", 0)
@@ -86,6 +86,10 @@ var dBarChart = function(){
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.frequency); })
       .attr("height", function(d) { return height - y(d.frequency)})
+
+      svg.selectAll(".bar")
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
 
   });
 
@@ -132,8 +136,9 @@ var dAllBarChart = function(){
   var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0])
+    .style('z-index', '99999999')
     .html(function(d) {
-      return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+      return "<strong>Category:</strong> <span style='color:red'>" + d.category + "</span> <br><strong>Frequency:</strong> <span style='color:red'>" + d.frequency+ "</span>";
     })
 
   var svg = d3.select("#wrapper2").append("svg")
@@ -176,8 +181,6 @@ var dAllBarChart = function(){
       .enter()
       .append("rect")
       .attr("class", "bar")
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
       .attr("fill", "orange")
       .attr("y", height )
       .attr("height", 0)
@@ -186,6 +189,9 @@ var dAllBarChart = function(){
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.frequency); })
       .attr("height", function(d) { return height - y(d.frequency)})
+
+      svg.selectAll(".bar").on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
 
   });
 
