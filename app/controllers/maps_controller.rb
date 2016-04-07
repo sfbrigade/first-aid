@@ -25,9 +25,7 @@ class MapsController < ApplicationController
       format.html
       format.json {render json: @location}
     end
-    p '$' * 100
     @current = current_user.to_json
-    p '$' * 100
 
   end
 
@@ -39,8 +37,7 @@ class MapsController < ApplicationController
   
     @donations = Donation.all
     @n_of_donations = {}
-    @donation_total = {}
-
+    @donation_total = {"Earthquake"=>0, "Hurricane"=>0, "Tornado"=>0, "Flood"=>0, "Wild fire"=>0}
 
     @donations.each do |donation|
       d_amount = donation.amount
@@ -51,11 +48,7 @@ class MapsController < ApplicationController
       else
         @n_of_donations[category] = 1
       end
-      if @donation_total[category]
-        @donation_total[category] += d_amount
-      else
-        @donation_total[category] = d_amount
-      end
+      @donation_total[category] += d_amount
     end
 
     donation_frequency_array = []
@@ -69,11 +62,12 @@ class MapsController < ApplicationController
     total_amount = 0
     donation_amount_array = []
     @donation_total.each do |donation|
-          donation_amount_array << {"category": donation[0], "value": donation[1]/100}
-          total_amount += donation[1]/100
+      donation_amount_array << {"category": donation[0], "value": donation[1]/100}
+      total_amount += donation[1]/100
     end
 
-    p donation_amount_array.sort! { |x, y| x["value"]<=> y["value"] }# sort is not working 
+    donation_amount_array.sort! { |a, b| a[:value] <=> b[:value] }# sort is not working 
+    donation_amount_array.reverse!
 
 
     hero = nil
