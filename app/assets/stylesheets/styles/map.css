@@ -20,7 +20,6 @@
   text-align: center;
 }
 
-
 .d3-tip.n:after {
   margin: -1px 0 0 0;
   top: 100%;
@@ -38,7 +37,9 @@
   text-decoration: none;
 }
 
+
 .slideout-menu {
+
   position: fixed;
   top: 25px;
   right: -280px;
@@ -211,9 +212,52 @@
   }
 }*/
 
+
+.us_map {
+  background-color: white;
+}
+
+.charity_info {
+  position: relative;
+  /*width: 15%;*/
+  background-color: white;
+}
+
+.charity_phone {
+  border-bottom: 1px solid;
+}
+
+#nearby_chars {
+  border-bottom: 1px solid black;
+  color: #009245;
+  font-size: 22px;
+}
+
+.charity_title {
+  font-size: 18px;
+  text-decoration: underline;
+  color: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .viewMyStats{
   display: none;
 }
+
 
 #mystats{
   display: none;
@@ -233,7 +277,7 @@
 }
 
 @media (max-width: 768px) {
-  .slideout-image {  
+  .slideout-image {
   right: 100px;
   }
   nav {

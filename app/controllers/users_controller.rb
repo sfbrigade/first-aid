@@ -56,8 +56,7 @@ class UsersController < ApplicationController
           donation_amount_array << {"category": donation[0], "value": donation[1]/100}
           total_amount += donation[1]/100
     end
-    p "donations mine **************"
-    p donation_frequency_array
+
 
 
     hero = nil
@@ -81,6 +80,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    @user.update(street_address: params[:street_address], city: params[:city], state: params[:state], zip_code: params[:zip_code], cell_phone: params[:cell_phone])
+    @user.save
+    response = true
 
+    respond_to do |format|
+      format.json{
+        render json: response
+      }
+    end
+  end
 
 end

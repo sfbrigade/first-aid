@@ -11,8 +11,6 @@ $(document).ready(function () {
       $('.viewAllStats').show()
       $('.statisticstitle').empty()
       $('.statisticstitle').append('My Donations')
-
-
    })
     $('.viewAllStats').on("click", function(){
       $(this).hide()
@@ -20,8 +18,6 @@ $(document).ready(function () {
       $('.statisticstitle').empty()
       $('.statisticstitle').append('All Donations')
    })
-
-
    $('.slideout-menu-toggle').on("click", dPieChart)
    $('.slideout-menu-toggle').on("click", dBarChart)
 

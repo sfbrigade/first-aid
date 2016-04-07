@@ -1,8 +1,17 @@
-$(document).ready(function(){
+$(document).on("page:change", function() {
+  dMap();
+  disasterInformation();
+  charityInformation();
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-  $(document).on("page:change", dMap)
- disasterInformation();
- charityInformation();
+  // $('.slideout-menu-toggle').on('click', menuSlide);
+  // // $('.viewAllStats').on("click", dAllPieChart)
+  // // $('.viewAllStats').on("click", dAllBarChart)
+  // // $('.viewMyStats').on("click", dPieChart)
+  // // $('.viewMyStats').on("click", dBarChart)
+  // // $('.slideout-menu-toggle').on("click", dPieChart)
+  // // $('.slideout-menu-toggle').on("click", dBarChart)
+  $('#update-address').on('submit', updateAddress)    
+
 })
 
 
