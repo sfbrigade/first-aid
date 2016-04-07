@@ -8,26 +8,20 @@ class CharitiesController < ApplicationController
   end
 
   def index
+    @charities = []
     @disaster = Disaster.find(params[:disaster_id])
+    in_area_charities = Charity.all
     positive_latitude_calc = @disaster.latitude + rounded_latitude
     negative_latitude_calc = @disaster.latitude - rounded_latitude
     positive_longitude_calc = @disaster.longitude + 0.3
     negative_longitude_calc = @disaster.longitude - 0.3
-    in_area_charities = Charity.all
-    @charities = []
     in_area_charities.each do |charity|
       if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude > negative_longitude_calc) && (charity.longitude < positive_longitude_calc)
          @charities << charity
       end
     end
     if request.xhr?
-
       render :index, layout: false
-        # respond_to do |format|
-        #     format.json{
-        #         render json: response
-        #       }
-        # end
     else
       render :index
     end
@@ -61,11 +55,9 @@ class CharitiesController < ApplicationController
   end
 
   private
-
     def rounded_latitude
       radius = 1000
       earth = 6371.0
       (radius/earth)
     end
-
 end
