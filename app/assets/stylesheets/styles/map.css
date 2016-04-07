@@ -71,7 +71,7 @@
   vertical-align: top;
 }
 .slideout-menu .slideout-menu-toggle:hover {
-  color: #fff;
+  color: #009245;
 }
 .slideout-menu ul {
   list-style: none;
@@ -261,6 +261,10 @@
 
 #mystats{
   display: none;
+}
+
+.slideout-image img {
+  height: 40px;
 }
 
 .slideout-image {
