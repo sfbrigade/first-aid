@@ -13,26 +13,24 @@ class CharitiesController < ApplicationController
     negative_latitude_calc = @disaster.latitude - rounded_latitude
     positive_longitude_calc = @disaster.longitude + 0.3
     negative_longitude_calc = @disaster.longitude - 0.3
-    @charities = @disaster.charities  #Charities that have donated to this disaster
     in_area_charities = Charity.all
-    response = []
+    @charities = []
+    in_area_charities.each do |charity|
+      if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude > negative_longitude_calc) && (charity.longitude < positive_longitude_calc)
+         @charities << charity
+      end
+    end
     if request.xhr?
-        respond_to do |format|
-          in_area_charities.each do |charity|
-            if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude > negative_longitude_calc) && (charity.longitude < positive_longitude_calc)
-              p "this is inside stuff"
-              response << charity
-            end
-          end
-            format.json{
-                render json: response
-              }
-          end
 
+      render :index, layout: false
+        # respond_to do |format|
+        #     format.json{
+        #         render json: response
+        #       }
+        # end
     else
       render :index
     end
-
   end
 
   # POST from charity donation form
