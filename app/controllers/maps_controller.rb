@@ -51,14 +51,14 @@ class MapsController < ApplicationController
 
     donation_frequency_array = []
     @n_of_donations.each do |donation|
-      donation_frequency_array << {"category" => donation[0], "frequency" => donation[1]} #CHANGED FROM STRING SYMBOL TO SYMBOL
+      donation_frequency_array << {"category": donation[0], "frequency": donation[1]} #CHANGED FROM STRING SYMBOL TO SYMBOL
     end
 
 
     total_amount = 0
     donation_amount_array = []
     @donation_total.each do |donation|
-      donation_amount_array << {"category" => donation[0], "value" => donation[1]/100} #CHANGED FROM STRING SYMBOL TO SYMBOL
+      donation_amount_array << {"category": donation[0], "value": donation[1]/100} #CHANGED FROM STRING SYMBOL TO SYMBOL
       total_amount += donation[1]/100
     end
 
