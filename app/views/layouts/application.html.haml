@@ -22,14 +22,12 @@
               - else
                 = "Signed in as #{current_user.full_name}"
                 = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-success navbar-btn btn-one logout'
-
-      -# %script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['PLACE']}&libraries=places&callback=dMap"}
       %script{:src => "//d3js.org/d3.v3.min.js"}
       %script{:src => "//d3js.org/topojson.v1.min.js"}
       %script{:src => "http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"}
       %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"}
       %script{:src => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"}
       %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/jquery-sidebar/3.3.2/jquery.sidebar.min.js"}
-      
+
     %body
       = yield
