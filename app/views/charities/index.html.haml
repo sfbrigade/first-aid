@@ -1,5 +1,6 @@
 #nearby_chars Nearby Charities
 - @charities.each do |charity|
+  %br
   %a.charity_title{href: "/disasters/#{@disaster.id}/charities/#{charity.id}"}= charity.title
   %br
   = charity.street_address

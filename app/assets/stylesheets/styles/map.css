@@ -200,10 +200,14 @@
 }*/
 
 
+.us_map {
+  background-color: white;
+}
+
 .charity_info {
   position: relative;
-  bottom: 37em;
-  width: 15%;
+  /*width: 15%;*/
+  background-color: white;
 }
 
 .charity_phone {

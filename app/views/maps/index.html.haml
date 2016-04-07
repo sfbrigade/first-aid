@@ -9,7 +9,7 @@
               .modal-header
                 %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
                   %span{"aria-hidden" => "true"} &times;
-                %h2.modal-title.text-center 
+                %h2.modal-title.text-center
                   %img.modal-header-image{:alt => 'Firs+Aid Logo', :src => '/assets/logo-tagline-712029fa759a9065f629c28253e5552ce5d184e157d96ba0efe3191d3449c447.svg'}
               .modal-body
                 %p= "#{current_user.first_name}, to donate to local charities near you, please provide your address, and include your cell number if you would like to be contact by text message of breaking disasters."
@@ -29,7 +29,7 @@
                   .modal-footer
                     %button.btn.btn-default{'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button'} Complete Later
                     / %input{:type => 'hidden', :name => '_method', :value => 'PUT'}
-                    %button.btn.btn-success{:type => 'submit'} Update 
+                    %button.btn.btn-success{:type => 'submit'} Update
         :javascript
           modalCall();
       .col-lg-2.col-md-12
@@ -44,7 +44,6 @@
             %div.statisticstitle
               My Statistics
             %a.slideout-menu-toggle{:href => "#"} ×
-<<<<<<< HEAD
           %a.viewAllStats
             All Stats
             / :javascript
@@ -61,16 +60,10 @@
           #wrapper2
             / :javascript
             /   $('.slideout-menu-toggle').on("click", dBarChart)
-          
-=======
             %a.statsbutton.viewAllStats
               View all Stats
             %a.statsbutton.viewMyStats
               View my Stats
           #wrapper.center-block
           #wrapper2
-
-
->>>>>>> master
-
 
