@@ -10,25 +10,16 @@ $(document).ready(function () {
       $(this).hide()
       $('.viewAllStats').show()
       $('.statisticstitle').empty()
-      $('.statisticstitle').append('My Statistics')
-
-
+      $('.statisticstitle').append('My Donations')
    })
     $('.viewAllStats').on("click", function(){
       $(this).hide()
       $('.viewMyStats').show()
       $('.statisticstitle').empty()
-      $('.statisticstitle').append('All Statistics')
+      $('.statisticstitle').append('All Donations')
    })
-
-
    $('.slideout-menu-toggle').on("click", dPieChart)
    $('.slideout-menu-toggle').on("click", dBarChart)
-   // $('.slideout-menu-toggle').on("click", dPieChartBig)
-   // $(window).on("load", dPieChartBig)
-
-   // $(window).on("load", dBarChart)
-
 
 
 //side bar
