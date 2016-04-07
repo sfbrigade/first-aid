@@ -222,8 +222,14 @@
 
 .charity_title {
   font-size: 18px;
-  text-decoration: underline;
+  text-decoration: none;
   color: inherit;
+
+}
+
+.charity_title:hover {
+  color: #009245;
+  text-decoration: none;
 }
 
 
