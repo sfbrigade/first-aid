@@ -17,7 +17,7 @@ setTimeout(function() {
                 var data = response[0].amount
                 var total_amount = response[0].total_amount
 
-              var colors = ['#c8e5e8','#282efa', '#505cf6', '#a0b7ed', '#7889f1'];
+              var colors = ['#009245', '#bdc3c7'];
 
               var colorscale = d3.scale.linear().domain([0,data.length]).range(colors);
 
@@ -77,19 +77,19 @@ setTimeout(function() {
 
 
 
-      d3.select("#category").text("Total").style('fill', 'orange')
+      d3.select("#category").text("Total").style('fill', '#333')
 
 
       function changeValue(i){
         if (i < total_amount +1){
-        d3.select("#value").text("$" + i).style('fill', 'orange')
+        d3.select("#value").text("$" + i).style('fill', '#333')
         setTimeout(function(){
             changeValue(i += parseInt(total_amount/100) ) //total_amount/100
         }, 0.5);}
       }
 
       changeValue(0);
-      d3.select("#value").text("$" + total_amount).style('fill', 'orange')
+      d3.select("#value").text("$" + total_amount).style('fill', '#333')
 
 
       renderarcs.append('path')
@@ -110,8 +110,8 @@ setTimeout(function() {
                     d3.select(this).transition()
                        .duration(200)
                        .attr("d", arc);
-                    d3.select("#value").text('$' + total_amount).style('fill', 'orange')
-                    d3.select("#category").text("Total").style('fill', 'orange')
+                    d3.select("#value").text('$' + total_amount).style('fill', '#333')
+                    d3.select("#category").text("Total").style('fill', '#333')
 
                    })
           .transition().delay(function(d, i) { return i * 200; }).duration(200)
@@ -145,7 +145,7 @@ setTimeout(function() {
                 var data = response[0].amount
                 var total_amount = response[0].total_amount
 
-              var colors = ['#c8e5e8','#282efa', '#505cf6', '#a0b7ed', '#7889f1'];
+              var colors = ['#009245', '#bdc3c7'];
 
               var colorscale = d3.scale.linear().domain([0,data.length]).range(colors);
 
@@ -205,19 +205,19 @@ setTimeout(function() {
 
 
 
-      d3.select("#category").text("Total").style('fill', 'orange')
+      d3.select("#category").text("Total").style('fill', '#333')
 
 
       function changeValue(i){
         if (i < total_amount +1){
-        d3.select("#value").text("$" + i).style('fill', 'orange')
+        d3.select("#value").text("$" + i).style('fill', '#333')
         setTimeout(function(){
             changeValue(i += parseInt(total_amount/100) ) //total_amount/100
         }, 0.5);}
       }
 
       changeValue(0);
-      d3.select("#value").text("$" + total_amount).style('fill', 'orange')
+      d3.select("#value").text("$" + total_amount).style('fill', '#333')
 
 
       renderarcs.append('path')
@@ -256,3 +256,4 @@ setTimeout(function() {
 
    }, 1000);
 }
+

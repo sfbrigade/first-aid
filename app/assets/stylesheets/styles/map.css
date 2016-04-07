@@ -1,30 +1,32 @@
+
 .slideout-menu {
+
   position: fixed;
   top: 25px;
-  left: -270px;
-  width: 270px;
+  right: -280px;
+  width: 280px;
   height: 100%;
-  background: #333;
+  background: #f8f8f8;
   z-index: 100;
 }
 .slideout-menu h3 {
   position: relative;
-  padding: 12px 10px;
-  color: #fff;
+  padding: 14px 10px;
+  /*color: #fff;*/
   font-size: 1.2em;
   font-weight: 400;
-  border-bottom: 4px solid #222;
+  /*border-bottom: 4px solid #222;*/
 }
 .slideout-menu .slideout-menu-toggle {
   position: absolute;
   top: 12px;
-  right: 10px;
+  left: 10px;
   display: inline-block;
   padding: 6px 9px 5px;
   font-family: Arial, sans-serif;
   font-weight: bold;
   line-height: 1;
-  background: #222;
+  /*background: #aaa;*/
   color: #999;
   text-decoration: none;
   vertical-align: top;
@@ -105,6 +107,12 @@
     pointer-events: all;
   }
 
+.statsbutton{
+  position:absolute;
+  right:10px;
+  font-size: 10px;
+}
+
   #states {
     fill: #aaa;
   }
@@ -163,7 +171,7 @@
 
 
 .bar:hover {
-  fill: orangered ;
+  fill: #418a40 ;
 }
 
 .x.axis path {
@@ -177,20 +185,85 @@
   width: 200 px;
   height: 200 px;
 }
-/*
-@media screen and (min-width: 941px) {
-  #wrapper{
-    visibility: visible;
+
+/*@media screen and (min-width: 1200px) {
+  .slideout-menu-toggle{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 1201px) {
+   .slideout-menu-toggle{
+    display: visible;
+  }
+}*/
+
+
+.charity_info {
+  position: relative;
+  bottom: 37em;
+  width: 15%;
+}
+
+.charity_phone {
+  border-bottom: 1px solid;
+}
+
+#nearby_chars {
+  border-bottom: 1px solid black;
+  color: #009245;
+  font-size: 22px;
+}
+
+.charity_title {
+  font-size: 18px;
+  text-decoration: underline;
+  color: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.viewMyStats{
+  display: none;
+}
+
+
+#mystats{
+  display: none;
+}
+
+.slideout-image {
+  position: absolute;
+  top: -3px;
+  /*right: 100px;*/
+  margin-left: 25px;
+  vertical-align: middle;
+}
+@media (min-width: 769px) {
+  .slideout-image {
+    right: 425px;
   }
 }
 
-@media screen and (max-width: 940px) {
-  #wrapper{
-    visibility: hidden;
+@media (max-width: 768px) {
+  .slideout-image {
+  right: 100px;
+  }
+  nav {
+    height: 51px;
   }
 }
-*/
-
-
-
-

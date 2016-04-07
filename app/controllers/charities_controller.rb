@@ -8,31 +8,23 @@ class CharitiesController < ApplicationController
   end
 
   def index
+    @charities = []
     @disaster = Disaster.find(params[:disaster_id])
+    in_area_charities = Charity.all
     positive_latitude_calc = @disaster.latitude + rounded_latitude
     negative_latitude_calc = @disaster.latitude - rounded_latitude
-    positive_longitude_calc = @disaster.longitude + latitude_longitude_distance
-    negative_longitude_calc = @disaster.longitude - latitude_longitude_distance
-    @charities = @disaster.charities  #Charities that have donated to this disaster
-    in_area_charities = Charity.all
-    response = []
-      p "iim here in charities"
+    positive_longitude_calc = @disaster.longitude + 0.3
+    negative_longitude_calc = @disaster.longitude - 0.3
+    in_area_charities.each do |charity|
+      if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude > negative_longitude_calc) && (charity.longitude < positive_longitude_calc)
+         @charities << charity
+      end
+    end
     if request.xhr?
-        respond_to do |format|
-          in_area_charities.each do |charity|
-            if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude < negative_longitude_calc) && (charity.longitude > positive_longitude_calc)
-              response << charity
-            end
-          end
-            format.json{
-                render json: response
-              }
-          end
-
+      render :index, layout: false
     else
       render :index
     end
-
   end
 
   # POST from charity donation form
@@ -63,15 +55,9 @@ class CharitiesController < ApplicationController
   end
 
   private
-
-    def latitude_longitude_distance
-      (rounded_latitude/Math::cos(@disaster.latitude))
-    end
-
     def rounded_latitude
       radius = 1000
       earth = 6371.0
       (radius/earth)
     end
-
 end

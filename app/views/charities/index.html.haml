@@ -1,10 +1,12 @@
-%h1 All Charities For
-%h1= @disaster.category.capitalize
-%hr
+#nearby_chars Nearby Charities
 - @charities.each do |charity|
-  %a{href: "/disasters/#{@disaster.id}/charities/#{charity.id}"}= charity.title
+  %a.charity_title{href: "/disasters/#{@disaster.id}/charities/#{charity.id}"}= charity.title
   %br
-  = charity.description
+  = charity.street_address
+  = charity.city
+  = charity.state
+  %br
+    = charity.phone
   %br
   - if current_user
     - @charity = charity

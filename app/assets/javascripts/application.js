@@ -20,7 +20,7 @@
 //= require stripe
 //= require websocket
 //= require websocket_rails/main
-//= require statbarcall
+//= require statistics
 //= require d3_pie
 //= require d3_map
 //= require d3_bar
