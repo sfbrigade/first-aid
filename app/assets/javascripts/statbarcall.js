@@ -9,29 +9,28 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
-$(document).ready(function () {
 
-    $('.slideout-menu-toggle').on('click', function(event){
-      event.preventDefault();
-d3.select(window).on("resize", mapSizeChange);
 
-      // create menu variables
-      var slideoutMenu = $('.slideout-menu');
-      var slideoutMenuWidth = $('.slideout-menu').width();
-      
-      // toggle open class
-      slideoutMenu.toggleClass("open");
-      
-      // slide menu
-      if (slideoutMenu.hasClass("open")) {
-            slideoutMenu.animate({
-                  left: "0px"
+var menuSlide = function(event){
+  event.preventDefault();
+  d3.select(window).on("resize", mapSizeChange);
 
-            });   
-      } else {
-            slideoutMenu.animate({
-                  left: -slideoutMenuWidth
-            }, 250);    
-      }
-    });
-});
+  // create menu variables
+  var slideoutMenu = $('.slideout-menu');
+  var slideoutMenuWidth = $('.slideout-menu').width();
+
+  // toggle open class
+  slideoutMenu.toggleClass("open");
+
+  // slide menu
+  if (slideoutMenu.hasClass("open")) {
+    slideoutMenu.animate({
+          right: "0px"
+
+    });   
+  } else {
+    slideoutMenu.animate({
+          right: -slideoutMenuWidth
+    }, 280);    
+  }
+};

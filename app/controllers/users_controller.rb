@@ -79,6 +79,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    @user.update(street_address: params[:street_address], city: params[:city], state: params[:state], zip_code: params[:zip_code], cell_phone: params[:cell_phone])
+    @user.save
+    response = true
 
+    respond_to do |format|
+      format.json{
+        render json: response
+      }
+    end
+  end
 
 end

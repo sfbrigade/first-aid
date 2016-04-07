@@ -29,15 +29,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  before_create :lng_lat
+  before_save :lng_lat
   before_save :split_name
 
   def full_name
-    if name
-      "#{name}"
-    else
+    # if name
+    #   "#{name}"
+    # else
       "#{first_name} #{last_name}"
-    end
+    # end
   end
 
   def split_name
