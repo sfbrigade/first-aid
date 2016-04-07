@@ -20,7 +20,8 @@ class CharitiesController < ApplicationController
     if request.xhr?
         respond_to do |format|
           in_area_charities.each do |charity|
-            if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude < negative_longitude_calc) && (charity.longitude > positive_longitude_calc)
+            if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude > negative_longitude_calc) && (charity.longitude < positive_longitude_calc)
+              p "this is inside stuff"
               response << charity
             end
           end
