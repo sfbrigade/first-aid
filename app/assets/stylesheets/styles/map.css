@@ -199,3 +199,8 @@
 #mystats{
   display: none;
 }
+
+.slideout-image {
+  margin-left: 25px;
+  height: 35px;
+}

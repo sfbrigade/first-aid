@@ -21,7 +21,9 @@
                 = link_to 'Login', '/users/sign_in', class: 'btn btn-success navbar-btn btn-one'
               - else
                 = "Signed in as #{current_user.full_name}"
+                = link_to image_tag('40logo.png'), '#', class: 'slideout-image slideout-menu-toggle'
                 = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-success navbar-btn btn-one logout'
+
       %script{:src => "//d3js.org/d3.v3.min.js"}
       %script{:src => "//d3js.org/topojson.v1.min.js"}
       %script{:src => "http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"}
