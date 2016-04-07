@@ -179,7 +179,7 @@
   height: 200 px;
 }
 
-@media screen and (min-width: 1200px) {
+/*@media screen and (min-width: 1200px) {
   .slideout-menu-toggle{
     display: none;
   }
@@ -190,9 +190,12 @@
    .slideout-menu-toggle{
     display: visible;
   }
+}*/
+
+.viewAllStats{
+  display: none;
 }
 
-
-
-
-
+#mystats{
+  display: none;
+}

@@ -6,6 +6,18 @@ $(document).ready(function () {
    $('.viewAllStats').on("click", dAllBarChart)     
    $('.viewMyStats').on("click", dPieChart)
    $('.viewMyStats').on("click", dBarChart)
+   $('.viewMyStats').on("click", function(){
+      $(this).append('#mystats')
+      $(this).hide()
+      $('.viewAllStats').show()
+
+   })
+    $('.viewAllStats').on("click", function(){
+      $(this).hide()
+      $('.viewMyStats').show()
+   })
+
+
    $('.slideout-menu-toggle').on("click", dPieChart)
    $('.slideout-menu-toggle').on("click", dBarChart)
    // $('.slideout-menu-toggle').on("click", dPieChartBig)
@@ -16,6 +28,7 @@ $(document).ready(function () {
 
 
 //side bar
+
 
     $('.slideout-menu-toggle').on('click', function(event){
       event.preventDefault();
