@@ -17,7 +17,7 @@ setTimeout(function() {
                 var data = response[0].amount
                 var total_amount = response[0].total_amount
 
-              var colors = ['#c8e5e8','#282efa', '#505cf6', '#a0b7ed', '#7889f1'];
+              var colors = ['#418a40','#282efa', '#505cf6', '#a0b7ed', '#7889f1'];
 
               var colorscale = d3.scale.linear().domain([0,data.length]).range(colors);
 
@@ -145,7 +145,7 @@ setTimeout(function() {
                 var data = response[0].amount
                 var total_amount = response[0].total_amount
 
-              var colors = ['#c8e5e8','#282efa', '#505cf6', '#a0b7ed', '#7889f1'];
+              var colors = ['#418a40','#418a40', '#418a40', '#418a40', '#418a40'];
 
               var colorscale = d3.scale.linear().domain([0,data.length]).range(colors);
 
