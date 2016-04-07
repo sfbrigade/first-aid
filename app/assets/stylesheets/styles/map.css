@@ -193,8 +193,24 @@
 
 .charity_info {
   position: relative;
-  bottom: 35em;
+  bottom: 37em;
   width: 15%;
+}
+
+.charity_phone {
+  border-bottom: 1px solid;
+}
+
+#nearby_chars {
+  border-bottom: 1px solid black;
+  color: #009245;
+  font-size: 22px;
+}
+
+.charity_title {
+  font-size: 18px;
+  text-decoration: underline;
+  color: inherit;
 }
 
 

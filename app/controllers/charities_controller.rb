@@ -11,12 +11,11 @@ class CharitiesController < ApplicationController
     @disaster = Disaster.find(params[:disaster_id])
     positive_latitude_calc = @disaster.latitude + rounded_latitude
     negative_latitude_calc = @disaster.latitude - rounded_latitude
-    positive_longitude_calc = @disaster.longitude + latitude_longitude_distance
-    negative_longitude_calc = @disaster.longitude - latitude_longitude_distance
+    positive_longitude_calc = @disaster.longitude + 0.3
+    negative_longitude_calc = @disaster.longitude - 0.3
     @charities = @disaster.charities  #Charities that have donated to this disaster
     in_area_charities = Charity.all
     response = []
-      p "iim here in charities"
     if request.xhr?
         respond_to do |format|
           in_area_charities.each do |charity|
@@ -64,10 +63,6 @@ class CharitiesController < ApplicationController
   end
 
   private
-
-    def latitude_longitude_distance
-      (rounded_latitude/Math::cos(@disaster.latitude))
-    end
 
     def rounded_latitude
       radius = 1000
