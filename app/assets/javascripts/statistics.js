@@ -8,6 +8,10 @@ $(document).ready(function () {
    $('.viewMyStats').on("click", dBarChart)
    $('.slideout-menu-toggle').on("click", dPieChart)
    $('.slideout-menu-toggle').on("click", dBarChart)
+   // $('.slideout-menu-toggle').on("click", dPieChartBig)
+   // $(window).on("load", dPieChartBig)
+
+   // $(window).on("load", dBarChart)
 
 
 
@@ -26,14 +30,17 @@ $(document).ready(function () {
       
       // slide menu
       if (slideoutMenu.hasClass("open")) {
+            $(this).hide();
             slideoutMenu.animate({
-                  left: "0px"
+                  right: "0px"
+      
 
             });   
       } else {
+            $('.slideout-menu-toggle').show();
             slideoutMenu.animate({
-                  left: -slideoutMenuWidth
-            }, 250);    
+                  right: -slideoutMenuWidth
+            }, 280);    
       }
     });
 });
