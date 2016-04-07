@@ -7,14 +7,18 @@ $(document).ready(function () {
    $('.viewMyStats').on("click", dPieChart)
    $('.viewMyStats').on("click", dBarChart)
    $('.viewMyStats').on("click", function(){
-      $(this).append('#mystats')
       $(this).hide()
       $('.viewAllStats').show()
+      $('.statisticstitle').empty()
+      $('.statisticstitle').append('My Statistics')
+
 
    })
     $('.viewAllStats').on("click", function(){
       $(this).hide()
       $('.viewMyStats').show()
+      $('.statisticstitle').empty()
+      $('.statisticstitle').append('All Statistics')
    })
 
 
