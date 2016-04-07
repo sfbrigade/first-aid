@@ -41,29 +41,14 @@
       .col-lg-offset-10.col-lg-2.col-md-2.pull-right.text-center
         .slideout-menu
           %h3
-            %div.statisticstitle
-              My Statistics
+            .statisticstitle
+              My Donations
             %a.slideout-menu-toggle{:href => "#"} ×
-          %a.viewAllStats
+          %a.statsbutton.viewAllStats
             All Stats
-            / :javascript
-            /   $('.viewAllStats').on("click", dAllPieChart)
-            /   $('.viewAllStats').on("click", dAllBarChart)
-          %a.viewMyStats
+          %a.statsbutton.viewMyStats
             My Stats
-            / :javascript
-            /   $('.viewMyStats').on("click", dPieChart)
-            /   $('.viewMyStats').on("click", dBarChart)
-          #wrapper.center-block
-            / :javascript
-            /   $('.slideout-menu-toggle').on("click", dPieChart)
+          #wrapper
           #wrapper2
-            / :javascript
-            /   $('.slideout-menu-toggle').on("click", dBarChart)
-            %a.statsbutton.viewAllStats
-              View all Stats
-            %a.statsbutton.viewMyStats
-              View my Stats
-          #wrapper.center-block
-          #wrapper2
+
 

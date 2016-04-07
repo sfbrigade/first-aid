@@ -126,7 +126,7 @@ setTimeout(function() {
           })
   	   })
 
-   }, 1000);
+   }, 500);
 }
 
 var dAllPieChart = function(){
@@ -238,8 +238,8 @@ setTimeout(function() {
                     d3.select(this).transition()
                        .duration(200)
                        .attr("d", arc);
-                    d3.select("#value").text('$' + total_amount).style('fill', 'orange')
-                    d3.select("#category").text("Total").style('fill', 'orange')
+                    d3.select("#value").text('$' + total_amount).style('fill', '#333')
+                    d3.select("#category").text("Total").style('fill', '#333')
 
                    })
           .transition().delay(function(d, i) { return i * 200; }).duration(200)
@@ -254,6 +254,6 @@ setTimeout(function() {
           })
       
 
-   }, 1000);
+   }, 500);
 }
 

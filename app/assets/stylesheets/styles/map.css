@@ -1,3 +1,42 @@
+  .d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+
+
+.statsbutton{
+  color: gray;
+}
+
+.statsbutton:hover{
+  color: #009245;
+  text-decoration: none;
+}
+
 
 .slideout-menu {
 
@@ -37,12 +76,12 @@
 .slideout-menu ul {
   list-style: none;
   font-weight: 300;
-  border-top: 1px solid #151515;
-  border-bottom: 1px solid #454545;
+  /*border-top: 1px solid #151515;*/
+  /*border-bottom: 1px solid #454545;*/
 }
 .slideout-menu ul li {
-  border-top: 1px solid #454545;
-  border-bottom: 1px solid #151515;
+  /*border-top: 1px solid #454545;*/
+  /*border-bottom: 1px solid #151515;*/
 }
 .slideout-menu ul li a {
   position: relative;
@@ -106,6 +145,9 @@
     fill: none;
     pointer-events: all;
   }
+.viewMyStats{
+  display: none;
+}
 
 .statsbutton{
   position:absolute;
@@ -117,11 +159,11 @@
     fill: #aaa;
   }
   statepath:hover {
-    fill: orange;
+    fill: #009245;
   }
 
   #states .active {
-    fill: orange;
+    fill: #009245;
   }
 
   #state-borders {
@@ -132,35 +174,6 @@
     stroke-linecap: round;
     pointer-events: none;
   }
-
-  .d3-tip {
-  line-height: 1;
-  font-weight: bold;
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  border-radius: 2px;
-}
-
-
-.d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  width: 100%;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.8);
-  content: "\25BC";
-  position: absolute;
-  text-align: center;
-}
-
-
-.d3-tip.n:after {
-  margin: -1px 0 0 0;
-  top: 100%;
-  left: 0;
-}
 
 .axis path,
 .axis line {
