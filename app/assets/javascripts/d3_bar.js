@@ -7,7 +7,7 @@ var dBarChart = function(){
 
   var margin = {top: 40, right: 20, bottom: 70, left: 40},
       width = 250 - margin.left - margin.right,
-      height = 250 - margin.top - margin.bottom;
+      height = 300 - margin.top - margin.bottom;
 
 
   var formatPercent = d3.format(".0%");
@@ -25,6 +25,7 @@ var dBarChart = function(){
   var yAxis = d3.svg.axis()
       .scale(y)
       .orient("left")
+      .tickFormat(d3.format("d"))
 
   var svg = d3.select("#wrapper2").append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -37,7 +38,7 @@ var dBarChart = function(){
     .offset([-10, 0])
     .style('z-index', '99999999')
     .html(function(d) {
-      return "<strong>Category:</strong> <span style='color:red'>" + d.category + "</span> <br><strong>Frequency:</strong> <span style='color:red'>" + d.frequency+ "</span>";
+      return "<strong>Category:</strong> <span style='color:red'>" + d.category + "</span> <br><br><strong>Frequency:</strong> <span style='color:red'>" + d.frequency+ "</span>";
       console.log("Tip")
     })
 
@@ -64,11 +65,12 @@ var dBarChart = function(){
           .attr("transform", "translate(0," + height + ")")
           .call(xAxis)
         .selectAll("text")
-          .attr("y", 0)
-          .attr("x", 9)
-          .attr("dy", ".35em")
-          .attr("transform", "rotate(90)")
-          .style("text-anchor", "start");
+          .remove()
+          // .attr("y", 0)
+          // .attr("x", 9)
+          // .attr("dy", ".35em")
+          // .attr("transform", "rotate(90)")
+          // .style("text-anchor", "start");
 
     svg.append("g")
         .attr("class", "y axis")
@@ -80,6 +82,9 @@ var dBarChart = function(){
         .style("text-anchor", "end")
         .text("Frequency");
 
+
+ 
+    
 
   svg.selectAll(".bar")
       .data(data)
@@ -111,7 +116,7 @@ var dBarChart = function(){
   })//close ajax
 })//close outer ajax
 
-}, 1000);//
+}, 500);//
 }
 
 
@@ -141,6 +146,7 @@ var dAllBarChart = function(){
   var yAxis = d3.svg.axis()
       .scale(y)
       .orient("left")
+      .tickFormat(d3.format("d"))
 
   var tip = d3.tip()
     .attr('class', 'd3-tip')
@@ -226,5 +232,5 @@ var dAllBarChart = function(){
   })//close ajax
 
 
-}, 1000);//
+}, 500);//
 }

@@ -15,7 +15,19 @@ class CharitiesController < ApplicationController
     negative_latitude_calc = @disaster.latitude - rounded_latitude
     positive_longitude_calc = @disaster.longitude + 0.3
     negative_longitude_calc = @disaster.longitude - 0.3
+    p "positive_latitude_calc"
+      p positive_latitude_calc
+      p "negative_latitude_calc"
+      p negative_latitude_calc
+      p "positive_longitude_calc"
+      p positive_longitude_calc
+      p "negative_longitude_calc"
+      p negative_longitude_calc
     in_area_charities.each do |charity|
+      p "#{charity.title} lat"
+          p charity.latitude
+          p "#{charity.title} lon"
+          p charity.longitude
       if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude > negative_longitude_calc) && (charity.longitude < positive_longitude_calc)
          @charities << charity
       end

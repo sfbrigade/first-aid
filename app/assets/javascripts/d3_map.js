@@ -136,7 +136,7 @@ d3.select(window).on("resize", mapSizeChange);
                       return "red"
                     }
               }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
-                return "orange"
+                return "yellow"
               }else{
                 return "yellow"
               }
