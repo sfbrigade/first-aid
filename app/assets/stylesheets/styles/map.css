@@ -177,19 +177,20 @@
   width: 200 px;
   height: 200 px;
 }
-/*
-@media screen and (min-width: 941px) {
-  #wrapper{
-    visibility: visible;
+
+@media screen and (min-width: 1200px) {
+  .slideout-menu-toggle{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 1201px) {
+   .slideout-menu-toggle{
+    display: visible;
   }
 }
 
-@media screen and (max-width: 940px) {
-  #wrapper{
-    visibility: hidden;
-  }
-}
-*/
 
 
 
