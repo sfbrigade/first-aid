@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_donations = @user.donations
 
-    @n_of_donations = {}
+    @n_of_donations = {"Earthquake"=>0, "Hurricane"=>0, "Tornado"=>0, "Flood"=>0, "Wild fire"=>0}
     @donation_total = {}
     # @user_charities = @user.charities
 
