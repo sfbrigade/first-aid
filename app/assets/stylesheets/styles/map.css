@@ -1,8 +1,8 @@
 .slideout-menu {
   position: fixed;
   top: 25px;
-  left: -270px;
-  width: 270px;
+  left: -280px;
+  width: 280px;
   height: 100%;
   background: #333;
   z-index: 100;
