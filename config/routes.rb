@@ -15,12 +15,12 @@ Rails.application.routes.draw do
   end
 
   get '/all_donations', to: 'maps#all_donations',as: :all_donations
- 
+
 
   root 'maps#index'
 
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  # require 'sidekiq/web'
+  # mount Sidekiq::Web => '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

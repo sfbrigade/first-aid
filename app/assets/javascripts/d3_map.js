@@ -3,7 +3,7 @@ var dMap = function(){
 
 d3.select(window).on("resize", mapSizeChange);
 
-  
+
   var projection = d3.geo.albersUsa()
       .scale(1100)
   var path = d3.geo.path()
@@ -12,8 +12,8 @@ d3.select(window).on("resize", mapSizeChange);
             .append("svg")
             .attr("width", "100%")
               .append("g")
-   
-  // This creates a responsive size for the map   
+
+  // This creates a responsive size for the map
   d3.select("g").attr("transform", "scale(" + $(".map-body").width()/900 + ")");
       $("svg").height($(".map-body").width()*0.618);
 
@@ -28,7 +28,7 @@ d3.select(window).on("resize", mapSizeChange);
   var width = $(".map-body").width(),
       height = $(".map-body").height(),
       centered;
-  
+
   // This is the map
   d3.json("/assets/us.json", function(error, us) {
     if (error) throw error;
@@ -45,7 +45,7 @@ d3.select(window).on("resize", mapSizeChange);
           d3.select(this).style("fill", "orange")})
         .on("mouseout", function(){
           d3.select(this).style("fill", "#aaa")})
-        
+
 
     g.append("path")
         .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
@@ -98,7 +98,7 @@ d3.select(window).on("resize", mapSizeChange);
            .attr("class", "disaster_link")
            .attr("xlink:href", function(d) {
                 return "/disasters/" + d.disasters_id;
-            }) 
+            })
            .append("circle")
            .attr("cx", function(d) {
               var coords = projection([d.lon, d.lat]);
@@ -152,7 +152,7 @@ d3.select(window).on("resize", mapSizeChange);
              .transition()
              .duration(250)
              .attr("r", 5)
- 
+
            g.selectAll("circle").on('mouseover', tip.show)
            .on('mouseout', tip.hide)
 
@@ -262,7 +262,7 @@ setInterval(disasters, 30000);
   setTimeout(disasters, 1500); // create disasters
 
 
-  var tip = d3.tip()//create Tool Tips 
+  var tip = d3.tip()//create Tool Tips
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function(d) {
@@ -271,26 +271,26 @@ setInterval(disasters, 30000);
     })
 
   svg.call(tip);
-  
-}
 
 
-var getCoordinates = function(data){
-      var lat = data.latitude
-      var long = data.longitude
 
-      infowindow = new google.maps.InfoWindow();
-      var service = new google.maps.places.PlacesService();
-      service.nearbySearch({
-        location: {lat: lat, lng: long},
-        radius: 32000,
-        type: ['food']
-      }, callback);
+// var getCoordinates = function(data){
+//       var lat = data.latitude
+//       var long = data.longitude
+
+//       infowindow = new google.maps.InfoWindow();
+//       var service = new google.maps.places.PlacesService();
+//       service.nearbySearch({
+//         location: {lat: lat, lng: long},
+//         radius: 32000,
+//         type: ['food']
+//       }, callback);
 
 
-      function callback(results, status) {
-        console.log(results)
-      }
+//       function callback(results, status) {
+//         console.log(results)
+//       }
     
-  } 
+//   } 
 
+}

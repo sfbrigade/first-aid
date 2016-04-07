@@ -9,6 +9,7 @@ class DisastersController < ApplicationController
     @disasters = Disaster.all
     response = []
     if request.xhr?
+      p "im in disasters"
       @disasters.each do |disaster|
         response << {lon: disaster.longitude, lat: disaster.latitude, disasters_id: disaster.id, category: disaster.category, date: disaster.created_at}
         end

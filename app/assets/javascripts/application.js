@@ -29,3 +29,5 @@
 //= require d3_map
 //= require d3_bar
 
+//= require disaster
+//= require charities

@@ -64,8 +64,8 @@ class User < ActiveRecord::Base
   end
 
   def test_email
-    @user = User.last
-    MailWorker.perform_in(1.minute, @user.id)
+    # @user = User.last
+    # MailWorker.perform_in(1.minute, @user.id)
   end
 
 end
