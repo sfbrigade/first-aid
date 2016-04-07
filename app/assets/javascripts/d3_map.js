@@ -1,5 +1,6 @@
 var dMap = function(){
 
+
 d3.select(window).on("resize", mapSizeChange);
 
   
@@ -80,7 +81,8 @@ d3.select(window).on("resize", mapSizeChange);
         .style("stroke-width", 1.5 / k + "px");
   }//close clicked function
 
-  var cities = function(){
+  disasters = function(){
+    console.log("timer")
   // the cordinates csv is here
     $.ajax({
       type: "GET",
@@ -119,11 +121,20 @@ d3.select(window).on("resize", mapSizeChange);
               oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
               var last_weeks_date = oneWeekAgo.toLocaleDateString();
 
+              // var fiveMinsAgo = new Date();
+              // fiveMinsAgo.setDate(fiveMinsAgo.getDate() - units*360000);
+              // var last_weeks_date = oneWeekAgo.toLocaleDateString();
+
               var dateOfDisaster = new Date(d.date);
               var disaster_date = dateOfDisaster.toLocaleDateString();
 
+          
               if(disaster_date === todays_date){
-                return "red"
+                    if (dateOfDisaster.getTime() > today.getTime()- 18 * 60000){
+                      return "green"}
+                    else{
+                      return "red"
+                    }
               }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
                 return "orange"
               }else{
@@ -147,9 +158,108 @@ d3.select(window).on("resize", mapSizeChange);
 
       })// close Ajax done
 
-  }
+  }// closing disasters
 
-  setTimeout(cities, 1500); // create disasters
+
+
+
+
+  // var recentDisasters = function(){
+  //   console.log("inside the function")
+
+  //      $.ajax({
+  //     type: "GET",
+  //     url: "/disasters",
+  //     dataType: "json"
+  //   })
+  //   .done(function(response) { // start making circles with data
+
+  //       g.selectAll("newcircle")
+  //          .data(response)
+  //          .enter()
+  //          .append("a")
+  //          .attr("class", "disaster_link")
+  //          .attr("xlink:href", function(d) {
+  //               return "/disasters/" + d.disasters_id;
+  //           }) 
+  //          .append("newcircle")
+  //          .attr("cx", function(d) {
+  //             var coords = projection([d.lon, d.lat]);
+  //             if (coords) {
+  //                  return coords[0];
+  //             }
+  //          })
+  //          .attr("cy", function(d) {
+  //                  var coords = projection([d.lon, d.lat]);
+  //             if (coords) {
+  //                  return coords[1];
+  //             }
+  //          })
+  //           .style("fill", function(d){
+
+  //             var today = new Date();
+  //             var todays_date = today.toLocaleDateString()
+
+  //             var oneWeekAgo = new Date();
+  //             oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+  //             var last_weeks_date = oneWeekAgo.toLocaleDateString();
+
+  //             var dateOfDisaster = new Date(d.date);
+  //             var disaster_date = dateOfDisaster.toLocaleDateString();
+
+  //             if(disaster_date === todays_date){
+  //               return "purple"
+  //             }else if (disaster_date < todays_date && disaster_date > last_weeks_date){
+  //               return "orange"
+  //             }else{
+  //               return "yellow"
+  //             }
+  //           })//close style function
+  //           .style("position", "relative").style("z-index", "100")
+  //            .attr("r", 0)
+  //            .transition()
+  //            .duration(250)
+  //            .attr("r", 7)
+  //            .transition()
+  //            .duration(250)
+  //            .attr("r", 2)
+  //            .transition()
+  //            .duration(250)
+  //            .attr("r", 5)
+ 
+  //          g.selectAll("newcircle").on('mouseover', tip.show)
+  //          .on('mouseout', tip.hide)
+
+  //     })// close Ajax done
+
+  // }// closing disasters
+
+
+
+setInterval(disasters, 30000);
+
+  // console.log("before")
+  // 'user strict'
+  // console.log("after")
+  // var dispatcher = new WebSocketRails('localhost:3000/websocket'),
+  //   channel      = dispatcher.subscribe('disasters');
+
+  // channel.bind('new_disaster', function(disaster) {
+  //   console.log("hello im inside the event listener")
+  //   // console.log("hello there is a " + disaster.category + " at " + disaster.longitude + " "  + disaster.latitude +"!")
+  //   setTimeout(recentDisasters(disaster), 1000)
+  // });
+
+
+
+  // dispatcher.trigger('new_disaster', function() {
+  //   console.log("hello")
+  // })
+
+
+
+
+  setTimeout(disasters, 1500); // create disasters
 
 
   var tip = d3.tip()//create Tool Tips 
@@ -183,3 +293,4 @@ var getCoordinates = function(data){
       }
     
   } 
+
