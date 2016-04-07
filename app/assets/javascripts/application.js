@@ -15,10 +15,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require d3
-//= require d3_fun
-//= require barchart
 //= require map
-//= require piechart
 //= require stripe
 
 //= require websocket
@@ -28,3 +25,9 @@
 
 //= require statbarcall
 
+//= require d3_pie
+//= require d3_map
+//= require d3_bar
+
+//= require disaster
+//= require charities

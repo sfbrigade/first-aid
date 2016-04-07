@@ -14,18 +14,12 @@ Rails.application.routes.draw do
     get '/signout', to: 'devise/sessions#destroy', as: :signout
   end
 
-<<<<<<< HEAD
-=======
   get '/sidebar', to: 'map#sidebar',as: :sidebar
- 
 
-
-
->>>>>>> master
   root 'maps#index'
 
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  # require 'sidekiq/web'
+  # mount Sidekiq::Web => '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
