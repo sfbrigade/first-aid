@@ -18,29 +18,31 @@ var charityInformation = function(){
     event.preventDefault();
     var url = $(this).attr('href')
     // console.log(url)
+    var that = this
     $.ajax({
        url: url + "/charities",
        type: "GET"
     })
     .done(function(data){
-      console.log(data)
-        charityList = $('.test');
+      // console.log(that)
+      var url2 = $(that).attr('href')
+      console.log(url2)
+        charityList = $('.charity_info');
         charityList.toggleClass("open")
         console.log(charityList.hasClass("open"))
         if (charityList.hasClass("open")){
           for(i=0;i<data.length;i++){
-            $('.test').append(data[i].title)
-            $('.test').append(data[i].city)
-            $('.test').append(data[i].state)
-            $('.test').append(data[i].description)
-            $('.test').append(data[i].url)
-            $('.test').append(data[i].phone)
-            $('.test').append(data[i].street_address)
+            $('.charity_info').append('<a href="' + url2  + '/charities/' + data[i].id + '"class="charity_title"> '+ data[i].title + '</a>')
+            $('.charity_info').append("<p class='charity_city'>"+data[i].city+ ", " + data[i].state +"<p>")
+            $('.charity_info').append("<p class='charity_description>"+data[i].description+"<p>")
+            // $('.charity_info').append(data[i].url)
+            $('.charity_info').append("<p class='charity_phone'>"+data[i].phone+"<p>")
+            // $('.charity_info').append("<p>"+data[i].street_address+"<p>")
+            $('.charity_info').append("<hr>")
           }
         }else{
-          $('.test').empty()
+          $('.charity_info').empty()
         }
-      // }
     })
   })
 }

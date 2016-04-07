@@ -145,6 +145,16 @@
     title: Faker::Company.name,
     description: Faker::Company.catch_phrase,
     url: Faker::Internet.url,
+    street_address: "900 S Grand Central Pkwy",
+    city: "Las Vegas",
+    state: "NV",
+    zip_code: 89106,
+    phone: Faker::PhoneNumber.phone_number)
+
+    Charity.create!(
+    title: Faker::Company.name,
+    description: Faker::Company.catch_phrase,
+    url: Faker::Internet.url,
     street_address: "1500 Sugar Bowl Dr",
     city: "New Orleans",
     state: "LA",

@@ -1,4 +1,4 @@
-.slideout-menu {
+/*.slideout-menu {
   position: fixed;
   top: 25px;
   left: -270px;
@@ -83,7 +83,7 @@
 
 .main-sidebar-left {
   left: 0;
-  text-align: left; }
+  text-align: left; }*/
 
 [data-ssbplugin="sbwrapper"] {
   padding: 1em; }
@@ -190,6 +190,26 @@
   }
 }
 */
+
+.charity_info {
+  position: relative;
+  bottom: 35em;
+  width: 15%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
