@@ -219,8 +219,6 @@ var dAllBarChart = function(){
 
       // svg.selectAll(".bar").call(axis).selectAll("text").remove();
 
-
-
   });
 
 
