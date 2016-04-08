@@ -306,9 +306,18 @@ h4{
 
 
 #charities{
-  background: yellow;
-  width: 200 px;
-  height: 200 px;
+  text-align: center;
+  width: 275px;
+  height: auto;
+  border-right: 1px solid #e4e4e4;
+}
+
+.charity-wrapper {
+  width: 250px;
+  height: 600px;
+  line-height: 1.5em;
+  overflow: auto;
+  padding: 5px;
 }
 
 /*@media screen and (min-width: 1200px) {
@@ -327,6 +336,11 @@ h4{
 
 .us_map {
   background-color: white;
+}
+
+.charity-address, .charity-city {
+  margin-bottom: 2px;
+  font-size: 15px;
 }
 
 .charity_info {
@@ -349,7 +363,7 @@ h4{
   font-size: 18px;
   text-decoration: none;
   color: inherit;
-
+  text-align: center;
 }
 
 .charity_title:hover {
@@ -396,6 +410,17 @@ h4{
   .slideout-image {
     right: 425px;
   }
+
+}
+
+@media (max-width: 900px) {
+  #charities {
+    border: none;
+    width: 100%;
+  }
+  .charity-wrapper {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -404,5 +429,12 @@ h4{
   }
   nav {
     height: 51px;
+  }
+  #charities {
+    border: none;
+    width: 100%;
+  }
+  .charity-wrapper {
+    width: 100% !important;
   }
 }
