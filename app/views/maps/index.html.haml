@@ -34,31 +34,25 @@
           modalCall();
       .col-lg-8.col-md-12.col-lg-push-2
         .map-body.center-block
-      .col-lg-2.col-md-12.col-lg-pull-8
-        #charities
-          .us_map
-            .charity_info
-            .all_charities
-              #nearby_chars
-                -if user_signed_in?
-                  Charities Close to You
-                -else
-                  All Charities
-              = render "list_charities"
+      .col-lg-2.col-md-12.col-lg-pull-8#charities
+        .charity_info
+        .all_charities
+          #nearby_chars
+            -if user_signed_in?
+              Charities Close to You
+            -else
+              All Charities
+          = render "list_charities"
       .col-lg-offset-10.col-lg-2.col-md-2.pull-right.text-center
         .slideout-menu
-          %h3
-            .statisticstitle
-              My Donations
-            %a.slideout-menu-toggle{:href => "#"} ×
-            %li.tg-list-item
-              %input#cb2.tgl.tgl-ios{type: "checkbox"}
-              %label.tgl-btn{for: "cb2"}
-          / %a.statsbutton.viewAllStats
-          /   All Stats
-          / %a.statsbutton.viewMyStats
-          /   My Stats
+          = image_tag('hero.svg', class: 'hero')
+          %a.slideout-menu-toggle{:href => "#"} ×
+          %li.tg-list-item
+            %input#cb2.tgl.tgl-ios{type: "checkbox"}
+            %label.tgl-btn{for: "cb2"}
           #wrapper
+          .statisticstitle
+            My Donations
           #wrapper2
 
 
