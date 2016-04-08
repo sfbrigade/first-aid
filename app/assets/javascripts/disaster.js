@@ -30,10 +30,12 @@ var charityInformation = function(){
         charityList.toggleClass("open")
 //         console.log(charityList.hasClass("open"))
         if (charityList.hasClass("open")){
+          $('.all_charities').hide()
           $('.charity_info').append(data)
 
         }else{
           $('.charity_info').empty()
+          $('.all_charities').show()
         }
     })
   })

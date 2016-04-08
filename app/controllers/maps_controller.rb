@@ -1,8 +1,9 @@
 class MapsController < ApplicationController
   def index
+    @charities = Charity.all
     if user_signed_in?
       user = current_user
-      if user.latitude != nil 
+      if user.latitude != nil
         positive_latitude_calc = user.latitude + rounded_latitude
         negative_latitude_calc = user.latitude - rounded_latitude
         positive_longitude_calc = user.longitude + 0.3
