@@ -3,13 +3,19 @@
   - @charities.each do |charity|
     %a.charity_title{href: "/disasters/#{@disaster.id}/charities/#{charity.id}"}= charity.title
     %br
-    = charity.street_address
-    = charity.city
-    = charity.state
-    = charity.phone
     - if current_user
+      = charity.street_address
+      = charity.city
+      = charity.state
+      = charity.phone
       - @charity = charity
       = render "stripe_form"
+    - else
+      = charity.street_address
+      = charity.city
+      = charity.state
+      .charity_phone
+        = charity.phone
     %br
 
 
