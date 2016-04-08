@@ -345,10 +345,10 @@ li.tg-list-item {
 
 .charity_phone {
   border-bottom: 1px solid;
+  padding-bottom: 5%;
 }
 
 #nearby_chars {
-  border-bottom: 1px solid black;
   color: #009245;
   font-size: 22px;
 }

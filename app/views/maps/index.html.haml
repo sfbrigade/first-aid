@@ -36,11 +36,16 @@
         .map-body.center-block
       .col-lg-2.col-md-12.col-lg-pull-8#charities
         .charity_info
+        .all_charities
+          #nearby_chars
+            -if user_signed_in?
+              Charities Close to You
+            -else
+              All Charities
+          = render "list_charities"
       .col-lg-offset-10.col-lg-2.col-md-2.pull-right.text-center
         .slideout-menu
-          / %h3
           = image_tag('hero.svg', class: 'hero')
-
           %a.slideout-menu-toggle{:href => "#"} ×
           %li.tg-list-item
             %input#cb2.tgl.tgl-ios{type: "checkbox"}
