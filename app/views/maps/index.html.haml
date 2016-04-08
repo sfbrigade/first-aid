@@ -44,10 +44,13 @@
             .statisticstitle
               My Donations
             %a.slideout-menu-toggle{:href => "#"} ×
-          %a.statsbutton.viewAllStats
-            All Stats
-          %a.statsbutton.viewMyStats
-            My Stats
+            %li.tg-list-item
+              %input#cb2.tgl.tgl-ios{type: "checkbox"}
+              %label.tgl-btn{for: "cb2"}
+          / %a.statsbutton.viewAllStats
+          /   All Stats
+          / %a.statsbutton.viewMyStats
+          /   My Stats
           #wrapper
           #wrapper2
 
