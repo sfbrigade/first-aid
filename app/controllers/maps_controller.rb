@@ -41,13 +41,14 @@ class MapsController < ApplicationController
   def all_donations
 
     @donations = Donation.all
-    @n_of_donations = {"Earthquake"=>0, "Hurricane"=>0, "Tornado"=>0, "Flood"=>0, "Wild fire"=>0}
-    @donation_total = {"Earthquake"=>0, "Hurricane"=>0, "Tornado"=>0, "Flood"=>0, "Wild fire"=>0}
+    @n_of_donations = {"Earthquake"=>0, "Hurricane"=>0, "Tornado"=>0, "Flood"=>0, "Wildfire"=>0}
+    @donation_total = {"Earthquake"=>0, "Hurricane"=>0, "Tornado"=>0, "Flood"=>0, "Wildfire"=>0}
 
     @donations.each do |donation|
       d_amount = donation.amount
       dis_id = donation.disaster_id
       category = Disaster.find(dis_id).category.capitalize
+      p category
       if @n_of_donations[category]
         @n_of_donations[category] += 1
       else
