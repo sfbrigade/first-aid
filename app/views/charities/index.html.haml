@@ -1,17 +1,16 @@
 #nearby_chars Nearby Charities
-- @charities.each do |charity|
-  %br
-  %a.charity_title{href: "/disasters/#{@disaster.id}/charities/#{charity.id}"}= charity.title
-  %br
-  = charity.street_address
-  = charity.city
-  = charity.state
-  %br
+%div{:style => "width:250px;height:600px;line-height:1.5em;overflow:auto;padding:5px;"}
+  - @charities.each do |charity|
+    %a.charity_title{href: "/disasters/#{@disaster.id}/charities/#{charity.id}"}= charity.title
+    %br
+    = charity.street_address
+    = charity.city
+    = charity.state
     = charity.phone
-  %br
-  - if current_user
-    - @charity = charity
-    = render "stripe_form"
+    - if current_user
+      - @charity = charity
+      = render "stripe_form"
+    %br
 
 
 

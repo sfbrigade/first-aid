@@ -20,6 +20,10 @@ class UsersController < ApplicationController
   end
 
 
+  def index
+    redirect_to root_path
+  end
+
   def show
 
     @user = User.find(params[:id])

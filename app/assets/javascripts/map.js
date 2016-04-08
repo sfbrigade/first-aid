@@ -11,9 +11,14 @@ $(document).on("page:change", function() {
   // // $('.slideout-menu-toggle').on("click", dPieChart)
   // // $('.slideout-menu-toggle').on("click", dBarChart)
   $('#update-address').on('submit', updateAddress)    
-
+  $('.navbar-brand').on('click', freshRe)
 })
 
+function freshRe(event) {
+  event.preventDefault(),
+  window.location = '/',
+  location.reload()
+}
 
 function mapSizeChange() {
     d3.select("g").attr("transform", "scale(" + $(".map-body").width()/900 + ")");

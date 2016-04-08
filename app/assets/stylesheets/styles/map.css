@@ -183,7 +183,7 @@ h4{
   vertical-align: top;
 }
 .slideout-menu .slideout-menu-toggle:hover {
-  color: #fff;
+  color: #009245;
 }
 .slideout-menu ul {
   list-style: none;
@@ -347,8 +347,14 @@ h4{
 
 .charity_title {
   font-size: 18px;
-  text-decoration: underline;
+  text-decoration: none;
   color: inherit;
+
+}
+
+.charity_title:hover {
+  color: #009245;
+  text-decoration: none;
 }
 
 
@@ -373,6 +379,10 @@ h4{
 
 #mystats{
   display: none;
+}
+
+.slideout-image img {
+  height: 40px;
 }
 
 .slideout-image {
