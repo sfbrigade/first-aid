@@ -34,22 +34,21 @@
           modalCall();
       .col-lg-8.col-md-12.col-lg-push-2
         .map-body.center-block
-      .col-lg-2.col-md-12.col-lg-pull-8
-        #charities
-          .us_map
-            .charity_info
+      .col-lg-2.col-md-12.col-lg-pull-8#charities
+        .charity_info
       .col-lg-offset-10.col-lg-2.col-md-2.pull-right.text-center
         .slideout-menu
-          %h3
-            .statisticstitle
-              My Donations
-            %a.slideout-menu-toggle{:href => "#"} &times;
-          %a.statsbutton.viewAllStats
-            All Stats
-          %a.statsbutton.viewMyStats
-            My Stats
+          / %h3
           = image_tag('hero.svg', class: 'hero')
+
+          %a.slideout-menu-toggle{:href => "#"} ×
+          %li.tg-list-item
+            %input#cb2.tgl.tgl-ios{type: "checkbox"}
+            %label.tgl-btn{for: "cb2"}
           #wrapper
+          .statisticstitle
+            My Donations
           #wrapper2
+
 
 

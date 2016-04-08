@@ -61,8 +61,7 @@ class CharitiesController < ApplicationController
       rescue Stripe::CardError => e
         flash[:problem] = e.message
       end
-      p "hereeeeee"
-      redirect_to "/disasters/#{params[:disaster_id]}/charities/#{params[:id]}"
+      redirect_to root_path
 
   end
 

@@ -1,23 +1,30 @@
-$(document).ready(function () {
+$(document).on("page:change", function() {
 
 
+  $('#cb2').on("click", function(){
+   console.log('outside')
+   console.log($(this).attr('checked'))
+   event.preventDefault
+      if ($(this).attr('checked')){    
+         dPieChart()
+         dBarChart()
+         $('.statisticstitle').empty()
+         $('.statisticstitle').append('My Donations')
+         $(this).attr('checked', false)
+         }
+      else{  
+         console.log("testing")
+         dAllPieChart()
+         dAllBarChart()
+         $('.statisticstitle').empty()
+         $('.statisticstitle').append('All Donations')
+         $(this).attr('checked', true)  
+      }
+   })
 //calling pie charts
-   $('.viewAllStats').on("click", dAllPieChart)
-   $('.viewAllStats').on("click", dAllBarChart)     
-   $('.viewMyStats').on("click", dPieChart)
-   $('.viewMyStats').on("click", dBarChart)
-   $('.viewMyStats').on("click", function(){
-      $(this).hide()
-      $('.viewAllStats').show()
-      $('.statisticstitle').empty()
-      $('.statisticstitle').append('My Donations')
-   })
-    $('.viewAllStats').on("click", function(){
-      $(this).hide()
-      $('.viewMyStats').show()
-      $('.statisticstitle').empty()
-      $('.statisticstitle').append('All Donations')
-   })
+
+
+    
    $('.slideout-menu-toggle').on("click", dPieChart)
    $('.slideout-menu-toggle').on("click", dBarChart)
 
