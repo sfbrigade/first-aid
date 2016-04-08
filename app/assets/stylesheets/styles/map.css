@@ -7,6 +7,14 @@ h4{
   color: #999;
 }
 
+li.tg-list-item {
+  list-style: none;
+}
+
+.statisticstitle {
+  font-size: 18px;
+}
+
 .tgl{
   display: none;
   // add default box-sizing for this scope
@@ -20,7 +28,7 @@ h4{
   }
   + .tgl-btn{
     outline: 0;
-    display: block;
+    margin: 0 auto;
     width: 4em;
     height: 2em;
     position: relative;
@@ -29,6 +37,7 @@ h4{
     &:after, &:before{
       position: relative;
       display: block;
+      list-style: none;
       content: "";
       width: 50%;
       height: 100%;
@@ -70,7 +79,7 @@ h4{
 }
 .tgl-ios{
   + .tgl-btn{
-    background: #fbfbfb;
+    background: #86d993;
     border-radius: 2em;
     padding: 2px;
     transition: all .4s ease;
@@ -170,7 +179,7 @@ h4{
 }
 .slideout-menu .slideout-menu-toggle {
   position: absolute;
-  top: 12px;
+  top: 30px;
   left: 10px;
   display: inline-block;
   padding: 6px 9px 5px;
@@ -303,12 +312,19 @@ h4{
   display: none;
 }
 
-
-
 #charities{
-  background: yellow;
-  width: 200 px;
-  height: 200 px;
+ text-align: center;
+  width: 275px;
+  height: auto;
+  border-right: 1px solid #e4e4e4;
+}
+
+.charity-wrapper {
+  width: 250px;
+  height: 600px;
+  line-height: 1.5em;
+  overflow: auto;
+  padding: 5px;
 }
 
 /*@media screen and (min-width: 1200px) {
@@ -325,14 +341,18 @@ h4{
 }*/
 
 
-.us_map {
+/*.us_map {
   background-color: white;
+}*/
+
+.charity-address, .charity-city {
+  margin-bottom: 2px;
+  font-size: 15px;
 }
 
 .charity_info {
   position: relative;
   /*width: 15%;*/
-  background-color: white;
 }
 
 .charity_phone {
@@ -349,28 +369,13 @@ h4{
   font-size: 18px;
   text-decoration: none;
   color: inherit;
-
+  text-align: center;
 }
 
 .charity_title:hover {
   color: #009245;
   text-decoration: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .viewMyStats{
   display: none;
@@ -392,9 +397,25 @@ h4{
   margin-left: 25px;
   vertical-align: middle;
 }
+
+#wrapper {
+  position: relative;
+  right: 2.5%;
+}
 @media (min-width: 769px) {
   .slideout-image {
     right: 425px;
+  }
+
+}
+
+@media (max-width: 900px) {
+  #charities {
+    border: none;
+    width: 100%;
+  }
+  .charity-wrapper {
+    width: 100% !important;
   }
 }
 
@@ -404,5 +425,12 @@ h4{
   }
   nav {
     height: 51px;
+  }
+  #charities {
+    border: none;
+    width: 100%;
+  }
+  .charity-wrapper {
+    width: 100% !important;
   }
 }
