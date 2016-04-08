@@ -28,18 +28,10 @@ class DisasterWorker
           # TwilioWorker.perform_async(user.id, disaster.id)
         # end
       end
-
-<<<<<<< HEAD
-  #     if response.length > 0
-  #       WebsocketRails[:disasters].trigger(:new_disaster, response.to_json)
-  #       response = []
-  #     end
-=======
       if response.length > 0
         WebsocketRails[:disasters].trigger(:new_disaster, response.to_json)
         response = []
       end
->>>>>>> master
     end
   end
 end

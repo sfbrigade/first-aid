@@ -239,21 +239,6 @@
   color: inherit;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .viewMyStats{
   display: none;
 }
@@ -273,6 +258,11 @@
   /*right: 100px;*/
   margin-left: 25px;
   vertical-align: middle;
+}
+
+#wrapper {
+  position: relative;
+  right: 2.5%;
 }
 @media (min-width: 769px) {
   .slideout-image {

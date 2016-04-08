@@ -14,7 +14,7 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            = link_to image_tag('brand-logo.svg'), '/', class: 'navbar-brand'
+            = link_to image_tag('brand-logo.svg'), root_path, class: 'navbar-brand'
           - if user_signed_in?
             .nav.navbar-nav 
               = link_to image_tag('stats.svg'), '#', class: 'slideout-image slideout-menu-toggle navbar-btn'
