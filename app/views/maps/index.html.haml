@@ -39,25 +39,12 @@
           .us_map
             .charity_info
             .all_charities
-              #nearby_chars Charities
-              %div{:style => "width:250px;height:600px;line-height:1.5em;overflow:auto;padding:5px;"}
-                - @charities.each do |charity|
-                  = charity.title
-                  %br
-                  - if current_user
-                    = charity.street_address
-                    = charity.city
-                    = charity.state
-                    = charity.phone
-                    - @charity = charity
-                    = render "stripe_form"
-                  - else
-                    = charity.street_address
-                    = charity.city
-                    = charity.state
-                    .charity_phone
-                      = charity.phone
-                  %br
+              #nearby_chars
+                -if user_signed_in?
+                  Charities Close to You
+                -else
+                  All Charities
+              = render "list_charities"
       .col-lg-offset-10.col-lg-2.col-md-2.pull-right.text-center
         .slideout-menu
           %h3

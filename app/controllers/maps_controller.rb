@@ -1,6 +1,6 @@
 class MapsController < ApplicationController
   def index
-    @charities = Charity.all
+        @charities = Charity.all
     if user_signed_in?
       user = current_user
       if user.latitude != nil
@@ -9,12 +9,12 @@ class MapsController < ApplicationController
         positive_longitude_calc = user.longitude + 0.3
         negative_longitude_calc = user.longitude - 0.3
         in_area_charities = Charity.all
-        @response = []
+        @charities = []
 
         in_area_charities.each do |charity|
 
           if (charity.latitude > negative_latitude_calc) && (charity.latitude < positive_latitude_calc) && (charity.longitude > negative_longitude_calc) && (charity.longitude < positive_longitude_calc)
-            @response << charity
+            @charities << charity
           end
         end
       end
