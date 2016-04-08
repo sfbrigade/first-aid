@@ -7,6 +7,14 @@ h4{
   color: #999;
 }
 
+li.tg-list-item {
+  list-style: none;
+}
+
+.statisticstitle {
+  font-size: 18px;
+}
+
 .tgl{
   display: none;
   // add default box-sizing for this scope
@@ -20,7 +28,7 @@ h4{
   }
   + .tgl-btn{
     outline: 0;
-    display: block;
+    margin: 0 auto;
     width: 4em;
     height: 2em;
     position: relative;
@@ -29,6 +37,7 @@ h4{
     &:after, &:before{
       position: relative;
       display: block;
+      list-style: none;
       content: "";
       width: 50%;
       height: 100%;
@@ -70,7 +79,7 @@ h4{
 }
 .tgl-ios{
   + .tgl-btn{
-    background: #fbfbfb;
+    background: #86d993;
     border-radius: 2em;
     padding: 2px;
     transition: all .4s ease;
@@ -170,7 +179,7 @@ h4{
 }
 .slideout-menu .slideout-menu-toggle {
   position: absolute;
-  top: 12px;
+  top: 30px;
   left: 10px;
   display: inline-block;
   padding: 6px 9px 5px;
@@ -301,15 +310,6 @@ h4{
 
 .x.axis path {
   display: none;
-}
-
-
-
-#charities{
-  text-align: center;
-  width: 275px;
-  height: auto;
-  border-right: 1px solid #e4e4e4;
 }
 
 .charity-wrapper {
