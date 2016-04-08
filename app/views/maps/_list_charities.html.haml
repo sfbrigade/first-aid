@@ -1,15 +1,14 @@
-#nearby_chars Charities Near Disaster
 %div{:style => "width:250px;height:600px;line-height:1.5em;overflow:auto;padding:5px;"}
   - @charities.each do |charity|
-    %a.charity_title{href: "/disasters/#{@disaster.id}/charities/#{charity.id}"}= charity.title
-    %br
+    .charity_title
+      = charity.title
     - if current_user
       = charity.street_address
       = charity.city
       = charity.state
       = charity.phone
       - @charity = charity
-      = render "stripe_form"
+      = render "charities/stripe_form"
     - else
       = charity.street_address
       = charity.city
@@ -17,13 +16,3 @@
       .charity_phone
         = charity.phone
     %br
-
-
-
-
-
-
-
-
-
-

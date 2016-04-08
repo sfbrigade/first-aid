@@ -10,10 +10,10 @@
     first_name: "Todd",
     last_name: "Seller",
     email: "me@toddseller.com",
-    street_address: "1600 Pennsylvania Ave NW",
-    city: "Washington",
-    state: "DC",
-    zip_code: 20500,
+    street_address: "490 Connecticut",
+    city: "San Francisco",
+    state: "CA",
+    zip_code: 94107,
     # cell_phone: Faker::PhoneNumber.cell_phone,
     password: 'password',
     password_confirmation: 'password')
@@ -477,17 +477,79 @@
     Disaster.create!(
     latitude: 34.1,
     longitude: -118.24,
-    category: "Earthquake")
+    category: "Wildfire")
 
     Disaster.create!(
     latitude: 30.26,
     longitude: -97.74,
     category:"Tornado")
 
+    Disaster.create!(
+    latitude: 28.11,
+    longitude: -113.74,
+    category:"flood")
+
 30.times do
   Donation.create!(
     user_id: rand(1..10),
     charity_id: rand(1..13),
-    disaster_id: rand(1..10),
+    disaster_id: rand(1..4),
     amount: rand(1..100))
 end
+
+Donation.create!(
+    user_id: 1,
+    charity_id: rand(1..13),
+    disaster_id: 1,
+    amount: rand(1..100)
+    )
+
+Donation.create!(
+    user_id: 1,
+    charity_id: rand(1..13),
+    disaster_id: 1,
+    amount: rand(1..100)
+    )
+
+Donation.create!(
+    user_id: 1,
+    charity_id: rand(1..13),
+    disaster_id: 1,
+    amount: rand(1..100)
+    )
+
+
+Donation.create!(
+    user_id: 1,
+    charity_id: rand(1..13),
+    disaster_id: 2,
+    amount: rand(1..100)
+    )
+
+Donation.create!(
+    user_id: 1,
+    charity_id: rand(1..13),
+    disaster_id: 3,
+    amount: rand(1..100)
+    )
+
+Donation.create!(
+    user_id: 1,
+    charity_id: rand(1..13),
+    disaster_id: 3,
+    amount: rand(1..100)
+    )
+
+Donation.create!(
+    user_id: 1,
+    charity_id: rand(1..13),
+    disaster_id: 4,
+    amount: rand(1..100)
+    )
+
+Donation.create!(
+    user_id: 1,
+    charity_id: rand(1..13),
+    disaster_id: 5,
+    amount: rand(1..100)
+    )
