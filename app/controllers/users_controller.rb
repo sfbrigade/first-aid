@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_donations = @user.donations
 
-    @n_of_donations = {"Earthquake"=>0, "Hurricane"=>0, "Tornado"=>0, "Flood"=>0, "Wild fire"=>0}
+    @n_of_donations = {"Earthquake"=>0, "Hurricane"=>0, "Tornado"=>0, "Flood"=>0, "Wildfire"=>0}
     @donation_total = {}
     # @user_charities = @user.charities
 
@@ -62,7 +62,8 @@ class UsersController < ApplicationController
           total_amount += donation[1]/100
     end
 
-
+    donation_amount_array.sort! { |a, b| a[:value] <=> b[:value] }# sort is not working
+    donation_amount_array.reverse!
 
     hero = nil
     highest = 0
