@@ -85,7 +85,9 @@ setTimeout(function() {
         d3.select("#value").text("$" + i).style('fill', '#333')
         setTimeout(function(){
             changeValue(i += parseInt(total_amount/100) ) //total_amount/100
-        }, 0.5);}
+        }, 0.5);}else{
+          d3.select("#value").text("$" + total_amount).style('fill', '#333')
+        }
       }
 
       changeValue(0);
@@ -213,7 +215,8 @@ setTimeout(function() {
         d3.select("#value").text("$" + i).style('fill', '#333')
         setTimeout(function(){
             changeValue(i += parseInt(total_amount/100) ) //total_amount/100
-        }, 0.5);}
+        }, 0.5);}else{
+        d3.select("#value").text("$" + total_amount).style('fill', '#333')}
       }
 
       changeValue(0);
