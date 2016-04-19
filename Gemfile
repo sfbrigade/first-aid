@@ -44,7 +44,7 @@ gem 'whenever', :require => false
 gem 'd3-rails'
 
 gem 'letter_opener'
-gem 'launch'
+gem 'launch', '~> 2.0'
 gem 'sidekiq'
 gem 'sidekiq-client-cli'
 gem 'bootstrap-sass', '~> 3.3.6'
